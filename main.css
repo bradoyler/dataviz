@@ -25,3 +25,12 @@ body {
   stroke-opacity: 0.1;
   pointer-events: all;
 }
+
+.axis--x path {
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
