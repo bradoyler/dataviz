@@ -1,6 +1,4 @@
-body {
-  padding-top: 30px;
-}
+body { padding-top: 30px; }
 
 .land {
   fill: #ddd;
@@ -26,11 +24,15 @@ body {
   pointer-events: all;
 }
 
-.axis--x path {
+/* line chart */
+#lineChart {
+  margin:auto; 
+  max-width: 900px;
 }
+
+.axis--x path {}
 
 .line {
   fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
+  stroke-width: 3.5px;
 }

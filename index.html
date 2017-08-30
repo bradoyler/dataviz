@@ -8,25 +8,24 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <title>Flight Sim</title>
+    <title>Data Viz</title>
     <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="main.css" rel="stylesheet">
+    <link href="./styles/main.css" rel="stylesheet">
   </head>
   <body>
     <div class="container">
+      
       <h2>Passengers per Flight</h2>
-      <span>data provided by <a target="_blank" href="https://www.transtats.bts.gov/Data_Elements.aspx">Bureau of Transportaion Statistics</a></span>
-      <div class="viz">
-        <svg id="lineChart" width="800" height="500"></svg>
-      </div>
+      <span>data provided by <a target="_blank" href="https://www.transtats.bts.gov/Data_Elements.aspx">
+        Bureau of Transportaion Statistics</a></span>
+      <div id="lineChart"><svg width="100%"></svg></div>
+      
       <h2>US Flights </h2>
-      <div class="viz">
-        <svg id="us-map" width="960" height="600"></svg>
-      </div>
+      <div id="us-map"><svg width="100%"></svg></div>
     </div><!-- /.container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.min.js"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
-    <script src="main.js"></script>
+    <script src="scripts/main.bundle.js"></script>
   </body>
 </html>
