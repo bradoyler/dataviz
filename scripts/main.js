@@ -1,1 +1,3 @@
-import './modules/chart'
+import './modules/barchart'
+import './modules/linechart'
+import './modules/map'

@@ -36,3 +36,26 @@ body { padding-top: 30px; }
   fill: none;
   stroke-width: 3.5px;
 }
+
+/* bar chart*/
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.label {
+  fill: black;
+  font: 10px sans-serif;
+}
+
+.y path, .y stroke, .y line {
+  display: none;
+}
+
+.x path, .x stroke {
+  display: none;
+}

@@ -1,6 +1,6 @@
 /* global d3 */
-var svg = d3.select('#lineChart svg')
-var margin = {top: 20, right: 40, bottom: 30, left: 50}
+var svg = d3.select('#linechart svg')
+var margin = {top: 20, right: 60, bottom: 30, left: 50}
 var width = svg.node().clientWidth - margin.left - margin.right
 var outerHeight = width * 0.67
 svg.attr('height', outerHeight)
@@ -26,8 +26,8 @@ function type (d, _, columns) {
 
 function ready (error, data) {
   if (error) throw error
-  // 2,5 = top 3, 1,2 = single
-  var carriers = data.columns.slice(1, 2).map(function (id) {
+  // 2,6 = top 4, 1,2 = single
+  var carriers = data.columns.slice(2, 6).map(function (id) {
     return {
       id: id,
       values: data.map(function (d) {
@@ -69,8 +69,6 @@ function ready (error, data) {
       .attr('class', 'line')
       .attr('d', function (d) { return line(d.values) })
       .style('stroke', function (d) { return z(d.id) })
-
-  // var carrierNames = { UA: 'United', }
 
   carrier.append('text')
       .datum(function (d) { return {id: d.id, value: d.values[d.values.length - 1]} })

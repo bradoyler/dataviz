@@ -70,10 +70,83 @@
 "use strict";
 
 
+__webpack_require__(1);
+
 __webpack_require__(2);
 
+__webpack_require__(3);
+
 /***/ }),
-/* 1 */,
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* global d3 */
+
+var margin = {
+  top: 20,
+  right: 20,
+  bottom: 30,
+  left: 60
+};
+
+var width = 960 - margin.left - margin.right;
+var height = 500 - margin.top - margin.bottom;
+
+var svg = d3.select('#barchart svg').attr('height', height + margin.top + margin.bottom).append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+var x = d3.scaleLinear().range([0, width]);
+
+var y = d3.scaleBand().range([height, 0]);
+
+var xAxis = d3.axisBottom(x).ticks(6).tickFormat(function (d) {
+  if (d >= 1000 && d < 1000000) {
+    d = d / 1000 + 'K';
+  }
+  if (d >= 1000000) {
+    d = d / 1000000 + 'M';
+  }
+  return d;
+}).tickSizeInner([height]);
+var yAxis = d3.axisLeft(y);
+
+d3.csv('data/carriers.csv', type, function (error, data) {
+  if (error) throw error;
+
+  data.sort(function (a, b) {
+    return a.flights - b.flights;
+  });
+  var minVal = d3.min(data, function (d) {
+    return d.flights;
+  });
+  var min = minVal - minVal * 0.1;
+  var max = d3.max(data, function (d) {
+    return d.flights;
+  });
+  x.domain([min, max]);
+  y.domain(data.map(function (d) {
+    return d.carrier;
+  })).paddingInner(0.2);
+
+  svg.append('g').attr('class', 'x axis').attr('transform', 'translate(0,' + -2 + ')').call(xAxis);
+
+  svg.append('g').attr('class', 'y axis').call(yAxis);
+
+  svg.selectAll('.bar').data(data).enter().append('rect').attr('class', 'bar').attr('x', 0).attr('height', y.bandwidth()).attr('y', function (d) {
+    return y(d.carrier);
+  }).attr('width', function (d) {
+    return x(d.flights);
+  });
+});
+
+function type(d) {
+  d.flights = +d.flights;
+  return d;
+}
+
+/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -81,8 +154,8 @@ __webpack_require__(2);
 
 
 /* global d3 */
-var svg = d3.select('#lineChart svg');
-var margin = { top: 20, right: 40, bottom: 30, left: 50 };
+var svg = d3.select('#linechart svg');
+var margin = { top: 20, right: 60, bottom: 30, left: 50 };
 var width = svg.node().clientWidth - margin.left - margin.right;
 var outerHeight = width * 0.67;
 svg.attr('height', outerHeight);
@@ -110,8 +183,8 @@ function type(d, _, columns) {
 
 function ready(error, data) {
   if (error) throw error;
-  // 2,5 = top 3, 1,2 = single
-  var carriers = data.columns.slice(1, 2).map(function (id) {
+  // 2,6 = top 4, 1,2 = single
+  var carriers = data.columns.slice(2, 6).map(function (id) {
     return {
       id: id,
       values: data.map(function (d) {
@@ -150,8 +223,6 @@ function ready(error, data) {
     return z(d.id);
   });
 
-  // var carrierNames = { UA: 'United', }
-
   carrier.append('text').datum(function (d) {
     return { id: d.id, value: d.values[d.values.length - 1] };
   }).attr('transform', function (d) {
@@ -162,6 +233,87 @@ function ready(error, data) {
 }
 
 // $(window).resize(render)
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* global d3, topojson */
+
+var svg = d3.select('#us-map svg');
+var width = 960; // +svg.attr('width')
+var height = 600; // +svg.attr('height')
+
+var projection = d3.geoAlbers().translate([width / 2, height / 2]).scale(1280);
+
+// var radius = d3.scaleSqrt()
+//     .domain([0, 100])
+//     .range([0, 14])
+
+var path = d3.geoPath().projection(projection).pointRadius(2.5);
+
+var voronoi = d3.voronoi().extent([[-1, -1], [width + 1, height + 1]]);
+
+d3.queue().defer(d3.json, 'data/us.json').defer(d3.csv, 'data/airports.csv', typeAirport).defer(d3.csv, 'data/flights.csv', typeFlight).await(ready);
+
+function ready(error, us, airports, flights) {
+    // console.log(error, us);
+    if (error) throw error;
+
+    var airportByIata = d3.map(airports, function (d) {
+        return d.iata;
+    });
+
+    flights.forEach(function (flight) {
+        var source = airportByIata.get(flight.origin);
+        var target = airportByIata.get(flight.destination);
+        source.arcs.coordinates.push([source, target]);
+        target.arcs.coordinates.push([target, source]);
+    });
+
+    airports = airports.filter(function (d) {
+        return d.arcs.coordinates.length;
+    });
+
+    svg.append('path').datum(topojson.feature(us, us.objects.land)).attr('class', 'land').attr('d', path);
+
+    svg.append('path').datum(topojson.mesh(us, us.objects.states, function (a, b) {
+        return a !== b;
+    })).attr('class', 'state-borders').attr('d', path);
+
+    svg.append('path').datum({ type: 'MultiPoint', coordinates: airports }).attr('class', 'airport-dots').attr('d', path);
+
+    var airport = svg.selectAll('.airport').data(airports).enter().append('g').attr('class', 'airport');
+
+    airport.append('title').text(function (d) {
+        return d.iata + '\n' + d.arcs.coordinates.length + ' flights';
+    });
+
+    airport.append('path').attr('class', 'airport-arc').attr('d', function (d) {
+        return path(d.arcs);
+    });
+
+    airport.append('path').data(voronoi.polygons(airports.map(projection))).attr('class', 'airport-cell').attr('d', function (d) {
+        return d ? 'M' + d.join('L') + 'Z' : null;
+    });
+}
+
+function typeAirport(d) {
+    d[0] = +d.longitude;
+    d[1] = +d.latitude;
+    d.arcs = { type: 'MultiLineString', coordinates: [] };
+    return d;
+}
+
+function typeFlight(d) {
+    d.count = +d.count;
+    return d;
+}
+
+// https://bl.ocks.org/mbostock/7608400/e5974d9bba45bc9ab272d98dd7427567aafd55bc
 
 /***/ })
 /******/ ]);
