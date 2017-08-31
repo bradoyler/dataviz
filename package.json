@@ -5,14 +5,19 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack --watch & python -m SimpleHTTPServer",
+    "lint": "standard app/scripts/**/*.js --verbose",
+    "format": "standard app/scripts/**/*.js --fix",
+    "start": "webpack --watch & browser-sync start --server app --files app/**/*.css, app/scripts/*.bundle.js, app/**/*.html --no-online --no-ui --reload-delay=600",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "billboard.js": "^1.0.1",
     "bootstrap": "3.3.7",
     "d3": "4.10.0",
+    "topojson": "^3.0.0",
+    "topojson-client": "^3.0.0",
     "webpack": "3.5.5"
   },
   "devDependencies": {
@@ -20,6 +25,7 @@
     "babel-loader": "7.1.2",
     "babel-preset-es2015": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
+    "browser-sync": "^2.18.13",
     "coffee-loader": "0.8.0",
     "coffeescript": "1.12.7",
     "standard": "10.0.3"

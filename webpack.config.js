@@ -2,13 +2,13 @@ const path = require('path')
 
 module.exports = function () {
   return {
-    context: path.resolve(__dirname, 'scripts/'),
+    context: path.resolve(__dirname, 'app/scripts/'),
     entry: {
       main: './main.js'
     },
     // devtool: config.devBuild ? 'cheap-module-eval-source-map' : false,
     output: {
-      path: path.resolve(__dirname, 'scripts/'),
+      path: path.resolve(__dirname, 'app/scripts/'),
       filename: '[name].bundle.js'
     },
     module: {
