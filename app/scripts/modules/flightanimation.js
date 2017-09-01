@@ -114,7 +114,6 @@ function ready (error, topo, airports) {
 
   let start = 0
   function flyBatch (flightCnt = 10) {
-    console.log('>>>')
     if ($flightmap.offset().top + $flightmap.height() < $(window).scrollTop()) return
 
     let end = start + flightCnt

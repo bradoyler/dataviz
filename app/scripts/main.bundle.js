@@ -490,7 +490,6 @@ function ready(error, topo, airports) {
   function flyBatch() {
     var flightCnt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
 
-    console.log('>>>');
     if ($flightmap.offset().top + $flightmap.height() < $(window).scrollTop()) return;
 
     var end = start + flightCnt;
