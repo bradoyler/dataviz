@@ -75,12 +75,12 @@
 // import * as topojson from 'topojson-client'
 
 var svg = d3.select('#us-map svg');
-var width = 960; // +svg.attr('width')
-var height = 600; // +svg.attr('height')
+var width = +svg.attr('width');
+var height = +svg.attr('height');
 
-var projection = d3.geoAlbers().translate([width / 2, height / 2]).scale(1280);
+var projection = d3.geoAlbers().translate([width / 2, height / 2]).scale(960);
 
-// var radius = d3.scaleSqrt()
+// const radius = d3.scaleSqrt()
 //     .domain([0, 100])
 //     .range([0, 14])
 

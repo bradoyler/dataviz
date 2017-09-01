@@ -1,23 +1,22 @@
 /* global d3, topojson */
 // import * as topojson from 'topojson-client'
 
-var svg = d3.select('#us-map svg')
-var width = 960 // +svg.attr('width')
-var height = 600 // +svg.attr('height')
+const svg = d3.select('#us-map svg')
+const width = +svg.attr('width')
+const height = +svg.attr('height')
 
-var projection = d3.geoAlbers()
-    .translate([width / 2, height / 2])
-    .scale(1280)
+const projection = d3.geoAlbers()
+    .translate([width / 2, height / 2]).scale(960)
 
-// var radius = d3.scaleSqrt()
+// const radius = d3.scaleSqrt()
 //     .domain([0, 100])
 //     .range([0, 14])
 
-var path = d3.geoPath()
+const path = d3.geoPath()
     .projection(projection)
     .pointRadius(2.5)
 
-var voronoi = d3.voronoi()
+const voronoi = d3.voronoi()
     .extent([[-1, -1], [width + 1, height + 1]])
 
 d3.queue()
@@ -30,11 +29,11 @@ function ready (error, us, airports, flights) {
   // console.log(error, us);
   if (error) throw error
 
-  var airportByIata = d3.map(airports, d => d.iata)
+  const airportByIata = d3.map(airports, d => d.iata)
 
   flights.forEach((flight) => {
-    var source = airportByIata.get(flight.origin)
-    var target = airportByIata.get(flight.destination)
+    const source = airportByIata.get(flight.origin)
+    const target = airportByIata.get(flight.destination)
     source.arcs.coordinates.push([source, target])
     target.arcs.coordinates.push([target, source])
   })
@@ -56,7 +55,7 @@ function ready (error, us, airports, flights) {
       .attr('class', 'airport-dots')
       .attr('d', path)
 
-  var airport = svg.selectAll('.airport')
+  const airport = svg.selectAll('.airport')
     .data(airports)
     .enter().append('g')
       .attr('class', 'airport')
