@@ -1,5 +1,42 @@
 body { padding-top: 30px; }
 
+/* flight animation */
+.states {
+  fill: #eee;
+  stroke: #6cb0e0;
+  stroke-width: 0.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.airports {
+  fill: #036;
+  stroke: #6cb0e0;
+  stroke-width: 0.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.route {
+  fill: none;
+  stroke-width: 0;
+}
+.plane {
+  fill: gray;
+  stroke-width: 0;
+}
+@media(max-width: 768px) {
+  #map {
+    margin-top: -100px;
+  }
+}
+@media(min-width: 768px) {
+  #map {
+    margin-top: -300px;
+  }
+}
+
+/* map */
 .land {
   fill: #ddd;
 }

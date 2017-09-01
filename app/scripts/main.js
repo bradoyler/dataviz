@@ -1,4 +1,5 @@
 import barchart from './modules/barchart'
+import './modules/flightanimation'
 import './modules/map'
 import './modules/billboardcharts'
 import linechart from './modules/timeSeriesLineChart'

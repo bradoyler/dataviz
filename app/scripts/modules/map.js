@@ -1,11 +1,9 @@
 /* global d3, topojson */
-
 const svg = d3.select('#us-map svg')
 const width = +svg.attr('width')
 const height = +svg.attr('height')
 
-const projection = d3.geoAlbers()
-    .translate([width / 2, height / 2]).scale(960)
+const projection = d3.geoAlbers().translate([width / 2, height / 2]).scale(960)
 
 // const radius = d3.scaleSqrt()
 //     .domain([0, 100])
@@ -29,6 +27,7 @@ function ready (error, us, airports, flights) {
   if (error) throw error
 
   const airportByIata = d3.map(airports, d => d.iata)
+  // console.log(airportByIata, '>>>');
 
   flights.forEach((flight) => {
     const source = airportByIata.get(flight.origin)
@@ -60,7 +59,10 @@ function ready (error, us, airports, flights) {
       .attr('class', 'airport')
 
   airport.append('title')
-      .text(d => d.iata + '\n' + d.arcs.coordinates.length + ' flights')
+      .text(d => {
+        // console.log(d.arcs, 'arcs')
+        return d.iata + '\n' + d.arcs.coordinates.length + ' flights'
+      })
 
   airport.append('path')
       .attr('class', 'airport-arc')
