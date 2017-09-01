@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -72,7 +72,6 @@
 
 
 /* global d3, topojson */
-// import * as topojson from 'topojson-client'
 
 var svg = d3.select('#us-map svg');
 var width = +svg.attr('width');
@@ -148,7 +147,7 @@ function typeFlight(d) {
 
 /***/ }),
 
-/***/ 18:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -156,20 +155,148 @@ function typeFlight(d) {
 
 /* global bb */
 
-bb.generate({
-  bindto: '#bbchart1',
+var timeSeriesFromCSV = {
   data: {
-    columns: [['data1', 30, 200, 100, 170, 150, 250], ['data2', 130, 100, 140, 35, 110, 50]],
-    types: {
-      data1: 'line',
-      data2: 'area-spline'
-    },
-    colors: {
-      data1: 'red',
-      data2: 'green'
+    type: 'spline',
+    x: 'date',
+    url: './data/loadfactor.csv'
+  },
+  transition: {
+    duration: 900
+  },
+  point: {
+    show: false
+  },
+  axis: {
+    date: {
+      type: 'timeseries',
+      tick: { format: '%Y' }
     }
-  }
+  },
+  bindto: '#bbchart1'
+};
+
+bb.generate(timeSeriesFromCSV);
+
+/***/ }),
+
+/***/ 24:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
+
+exports.default = function (selector, dataUrl, yText) {
+  var svg = d3.select(selector);
+  var margin = { top: 20, right: 60, bottom: 30, left: 50 };
+  var width = svg.node().clientWidth - margin.left - margin.right;
+  var outerHeight = width * 0.67;
+  svg.attr('height', outerHeight);
+  var height = outerHeight - margin.top - margin.bottom;
+
+  var g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+  var x = d3.scaleTime().rangeRound([0, width]);
+  var y = d3.scaleLinear().rangeRound([height, 0]);
+  var z = d3.scaleOrdinal(d3.schemeCategory20);
+
+  var line = d3.line().curve(d3.curveNatural).x(function (d) {
+    return x(d.date);
+  }).y(function (d) {
+    return y(d.colValue);
+  });
+
+  d3.csv(dataUrl, type, ready);
+
+  function ready(error, data) {
+    if (error) throw error;
+    // 2,6 = top 4, 1,2 = single
+    var rows = data.columns.slice(1).map(function (id) {
+      return {
+        id: id,
+        values: data.map(function (d) {
+          return { date: d.date, colValue: d[id] };
+        })
+      };
+    });
+
+    x.domain(d3.extent(data, function (d) {
+      return d.date;
+    }));
+
+    y.domain([d3.min(rows, function (c) {
+      return d3.min(c.values, function (d) {
+        return d.colValue;
+      });
+    }), d3.max(rows, function (c) {
+      return d3.max(c.values, function (d) {
+        return d.colValue;
+      });
+    })]);
+
+    z.domain(rows.map(function (c) {
+      return c.id;
+    }));
+
+    g.append('g').attr('class', 'axis axis--x').attr('transform', 'translate(0,' + height + ')').call(d3.axisBottom(x));
+
+    g.append('g').attr('class', 'axis axis--y').call(d3.axisLeft(y)).append('text').attr('transform', 'rotate(-90)').attr('y', 6).attr('dy', '0.71em').attr('fill', '#000').text(yText);
+
+    var row = g.selectAll('.row').data(rows).enter().append('g').attr('class', 'row');
+
+    row.append('path').attr('class', 'line').attr('d', function (d) {
+      return line(d.values);
+    }).style('stroke', function (d) {
+      return z(d.id);
+    });
+
+    row.append('text').datum(function (d) {
+      return { id: d.id, value: d.values[d.values.length - 1] };
+    }).attr('transform', function (d) {
+      return 'translate(' + x(d.value.date) + ',' + y(d.value.colValue) + ')';
+    }).attr('x', 3).attr('dy', '0.35em').style('font', '12px sans-serif').text(function (d) {
+      return d.id;
+    });
+  }
+};
+
+/* global d3 */
+
+function type(d, _, columns) {
+  d.date = d3.timeParse('%Y')(d.date);
+  for (var i = 1, n = columns.length, c; i < n; ++i) {
+    d[c = columns[i]] = +d[c];
+  }return d;
+}
+
+/***/ }),
+
+/***/ 6:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _barchart = __webpack_require__(7);
+
+var _barchart2 = _interopRequireDefault(_barchart);
+
+__webpack_require__(10);
+
+__webpack_require__(22);
+
+var _timeSeriesLineChart = __webpack_require__(24);
+
+var _timeSeriesLineChart2 = _interopRequireDefault(_timeSeriesLineChart);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _barchart2.default)('#barchart svg', 'data/carriers.csv');
+(0, _timeSeriesLineChart2.default)('#linechart svg', 'data/fpp.csv', 'Passengers Per Flight');
+(0, _timeSeriesLineChart2.default)('#linechart0 svg', 'data/loadfactor.csv', 'Load Factor');
 
 /***/ }),
 
@@ -179,21 +306,60 @@ bb.generate({
 "use strict";
 
 
-__webpack_require__(8);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-__webpack_require__(9);
+exports.default = function (selector, dataUrl) {
+  var width = 960 - margin.left - margin.right;
+  var height = 500 - margin.top - margin.bottom;
 
-__webpack_require__(10);
+  var svg = d3.select(selector).attr('height', height + margin.top + margin.bottom).append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-__webpack_require__(18);
+  var x = d3.scaleLinear().range([0, width]);
 
-/***/ }),
+  var y = d3.scaleBand().range([height, 0]);
 
-/***/ 8:
-/***/ (function(module, exports, __webpack_require__) {
+  var xAxis = d3.axisBottom(x).ticks(6).tickFormat(function (d) {
+    if (d >= 1000 && d < 1000000) {
+      d = d / 1000 + 'K';
+    }
+    if (d >= 1000000) {
+      d = d / 1000000 + 'M';
+    }
+    return d;
+  }).tickSizeInner([height]);
+  var yAxis = d3.axisLeft(y);
 
-"use strict";
+  d3.csv(dataUrl, type, function (error, data) {
+    if (error) throw error;
 
+    data.sort(function (a, b) {
+      return a.flights - b.flights;
+    });
+    var minVal = d3.min(data, function (d) {
+      return d.flights;
+    });
+    var min = minVal - minVal * 0.1;
+    var max = d3.max(data, function (d) {
+      return d.flights;
+    });
+    x.domain([min, max]);
+    y.domain(data.map(function (d) {
+      return d.carrier;
+    })).paddingInner(0.2);
+
+    svg.append('g').attr('class', 'x axis').attr('transform', 'translate(0,' + -2 + ')').call(xAxis);
+
+    svg.append('g').attr('class', 'y axis').call(yAxis);
+
+    svg.selectAll('.bar').data(data).enter().append('rect').attr('class', 'bar').attr('x', 0).attr('height', y.bandwidth()).attr('y', function (d) {
+      return y(d.carrier);
+    }).attr('width', function (d) {
+      return x(d.flights);
+    });
+  });
+};
 
 /* global d3 */
 
@@ -204,148 +370,10 @@ var margin = {
   left: 60
 };
 
-var width = 960 - margin.left - margin.right;
-var height = 500 - margin.top - margin.bottom;
-
-var svg = d3.select('#barchart svg').attr('height', height + margin.top + margin.bottom).append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-var x = d3.scaleLinear().range([0, width]);
-
-var y = d3.scaleBand().range([height, 0]);
-
-var xAxis = d3.axisBottom(x).ticks(6).tickFormat(function (d) {
-  if (d >= 1000 && d < 1000000) {
-    d = d / 1000 + 'K';
-  }
-  if (d >= 1000000) {
-    d = d / 1000000 + 'M';
-  }
-  return d;
-}).tickSizeInner([height]);
-var yAxis = d3.axisLeft(y);
-
-d3.csv('data/carriers.csv', type, function (error, data) {
-  if (error) throw error;
-
-  data.sort(function (a, b) {
-    return a.flights - b.flights;
-  });
-  var minVal = d3.min(data, function (d) {
-    return d.flights;
-  });
-  var min = minVal - minVal * 0.1;
-  var max = d3.max(data, function (d) {
-    return d.flights;
-  });
-  x.domain([min, max]);
-  y.domain(data.map(function (d) {
-    return d.carrier;
-  })).paddingInner(0.2);
-
-  svg.append('g').attr('class', 'x axis').attr('transform', 'translate(0,' + -2 + ')').call(xAxis);
-
-  svg.append('g').attr('class', 'y axis').call(yAxis);
-
-  svg.selectAll('.bar').data(data).enter().append('rect').attr('class', 'bar').attr('x', 0).attr('height', y.bandwidth()).attr('y', function (d) {
-    return y(d.carrier);
-  }).attr('width', function (d) {
-    return x(d.flights);
-  });
-});
-
 function type(d) {
   d.flights = +d.flights;
   return d;
 }
-
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/* global d3 */
-var svg = d3.select('#linechart svg');
-var margin = { top: 20, right: 60, bottom: 30, left: 50 };
-var width = svg.node().clientWidth - margin.left - margin.right;
-var outerHeight = width * 0.67;
-svg.attr('height', outerHeight);
-var height = outerHeight - margin.top - margin.bottom;
-
-var g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-var x = d3.scaleTime().rangeRound([0, width]);
-var y = d3.scaleLinear().rangeRound([height, 0]);
-var z = d3.scaleOrdinal(d3.schemeCategory20);
-
-var line = d3.line().curve(d3.curveNatural).x(function (d) {
-  return x(d.date);
-}).y(function (d) {
-  return y(d.ppf);
-});
-
-d3.csv('data/fpp.csv', type, ready);
-
-function type(d, _, columns) {
-  d.date = d3.timeParse('%Y')(d.date);
-  for (var i = 1, n = columns.length, c; i < n; ++i) {
-    d[c = columns[i]] = +d[c];
-  }return d;
-}
-
-function ready(error, data) {
-  if (error) throw error;
-  // 2,6 = top 4, 1,2 = single
-  var carriers = data.columns.slice(2, 6).map(function (id) {
-    return {
-      id: id,
-      values: data.map(function (d) {
-        return { date: d.date, ppf: d[id] };
-      })
-    };
-  });
-
-  x.domain(d3.extent(data, function (d) {
-    return d.date;
-  }));
-
-  y.domain([d3.min(carriers, function (c) {
-    return d3.min(c.values, function (d) {
-      return d.ppf;
-    });
-  }), d3.max(carriers, function (c) {
-    return d3.max(c.values, function (d) {
-      return d.ppf;
-    });
-  })]);
-
-  z.domain(carriers.map(function (c) {
-    return c.id;
-  }));
-
-  g.append('g').attr('class', 'axis axis--x').attr('transform', 'translate(0,' + height + ')').call(d3.axisBottom(x));
-
-  g.append('g').attr('class', 'axis axis--y').call(d3.axisLeft(y)).append('text').attr('transform', 'rotate(-90)').attr('y', 6).attr('dy', '0.71em').attr('fill', '#000').text('Passengers Per Flight');
-
-  var carrier = g.selectAll('.carrier').data(carriers).enter().append('g').attr('class', 'carrier');
-
-  carrier.append('path').attr('class', 'line').attr('d', function (d) {
-    return line(d.values);
-  }).style('stroke', function (d) {
-    return z(d.id);
-  });
-
-  carrier.append('text').datum(function (d) {
-    return { id: d.id, value: d.values[d.values.length - 1] };
-  }).attr('transform', function (d) {
-    return 'translate(' + x(d.value.date) + ',' + y(d.value.ppf) + ')';
-  }).attr('x', 3).attr('dy', '0.35em').style('font', '10px sans-serif').text(function (d) {
-    return d.id;
-  });
-}
-
-// $(window).resize(render)
 
 /***/ })
 

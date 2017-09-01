@@ -1,5 +1,4 @@
 /* global d3, topojson */
-// import * as topojson from 'topojson-client'
 
 const svg = d3.select('#us-map svg')
 const width = +svg.attr('width')

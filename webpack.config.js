@@ -4,7 +4,8 @@ module.exports = function () {
   return {
     context: path.resolve(__dirname, 'app/scripts/'),
     entry: {
-      main: './main.js'
+      main: './main.js',
+      vendor: './vendor.js'
     },
     // devtool: config.devBuild ? 'cheap-module-eval-source-map' : false,
     output: {

@@ -16,6 +16,7 @@
     "billboard.js": "^1.0.1",
     "bootstrap": "3.3.7",
     "d3": "4.10.0",
+    "jquery": "^3.2.1",
     "topojson": "^3.0.0",
     "topojson-client": "^3.0.0",
     "webpack": "3.5.5"
