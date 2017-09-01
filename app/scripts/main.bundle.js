@@ -404,10 +404,8 @@ var _routes2 = _interopRequireDefault(_routes);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function rAFscroll(fn) {
-  var rAF = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame ||
-  // IE Fallback, you can even fallback to onscroll
-  function (callback) {
-    window.setTimeout(callback, 1000 / 60);
+  var rAF = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame || function (callback) {
+    setTimeout(callback, 1000 / 60);
   };
 
   var lastPosition = -1;

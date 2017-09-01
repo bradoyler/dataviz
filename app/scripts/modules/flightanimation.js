@@ -2,13 +2,9 @@
 import flightRoutes from './routes'
 
 function rAFscroll (fn) {
-  const rAF = window.requestAnimationFrame ||
-               window.webkitRequestAnimationFrame ||
-               window.mozRequestAnimationFrame ||
-               window.msRequestAnimationFrame ||
-               window.oRequestAnimationFrame ||
-               // IE Fallback, you can even fallback to onscroll
-               function (callback) { window.setTimeout(callback, 1000 / 60) }
+  const rAF = window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
+               window.mozRequestAnimationFrame || window.msRequestAnimationFrame ||
+               window.oRequestAnimationFrame || function (callback) { setTimeout(callback, 1000 / 60) }
 
   let lastPosition = -1
   function loop () {
