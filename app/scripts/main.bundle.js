@@ -94,7 +94,7 @@ var _timeSeriesLineChart2 = _interopRequireDefault(_timeSeriesLineChart);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _barchart2.default)('#barchart svg', 'data/carriers.csv');
-(0, _timeSeriesLineChart2.default)('#linechart svg', 'data/fpp.csv', 'Passengers Per Flight');
+// linechart('#linechart svg', 'data/fpp.csv', 'Passengers Per Flight')
 (0, _timeSeriesLineChart2.default)('#linechart0 svg', 'data/loadfactor.csv', 'Load Factor');
 
 /***/ }),
