@@ -9,8 +9,9 @@ function type (d, _, columns) {
 export default function (selector, dataUrl, yText) {
   const svg = d3.select(selector)
   const margin = {top: 20, right: 60, bottom: 30, left: 50}
-  const width = svg.node().clientWidth - margin.left - margin.right
+  const width = svg.attr('width') - margin.left - margin.right
   const outerHeight = width * 0.67
+  console.log('>> width', svg.attr('width'))
   svg.attr('height', outerHeight)
   const height = outerHeight - margin.top - margin.bottom
 

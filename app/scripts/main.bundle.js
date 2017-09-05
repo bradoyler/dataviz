@@ -81,13 +81,13 @@ var _barchart = __webpack_require__(8);
 
 var _barchart2 = _interopRequireDefault(_barchart);
 
-__webpack_require__(22);
-
 __webpack_require__(9);
 
-__webpack_require__(10);
+__webpack_require__(11);
 
-var _timeSeriesLineChart = __webpack_require__(11);
+__webpack_require__(12);
+
+var _timeSeriesLineChart = __webpack_require__(13);
 
 var _timeSeriesLineChart2 = _interopRequireDefault(_timeSeriesLineChart);
 
@@ -180,224 +180,7 @@ function type(d) {
 "use strict";
 
 
-/* global d3, topojson */
-var svg = d3.select('#us-map svg');
-var width = +svg.attr('width');
-var height = +svg.attr('height');
-
-var projection = d3.geoAlbers().translate([width / 2, height / 2]).scale(960);
-
-// const radius = d3.scaleSqrt()
-//     .domain([0, 100])
-//     .range([0, 14])
-
-var path = d3.geoPath().projection(projection).pointRadius(2.5);
-
-var voronoi = d3.voronoi().extent([[-1, -1], [width + 1, height + 1]]);
-
-d3.queue().defer(d3.json, 'data/us.json').defer(d3.csv, 'data/airports.csv', typeAirport).defer(d3.csv, 'data/flights.csv', typeFlight).await(ready);
-
-function ready(error, us, airports, flights) {
-    // console.log(error, us);
-    if (error) throw error;
-
-    var airportByIata = d3.map(airports, function (d) {
-        return d.iata;
-    });
-    // console.log(airportByIata, '>>>');
-
-    flights.forEach(function (flight) {
-        var source = airportByIata.get(flight.origin);
-        var target = airportByIata.get(flight.destination);
-        source.arcs.coordinates.push([source, target]);
-        target.arcs.coordinates.push([target, source]);
-    });
-
-    airports = airports.filter(function (d) {
-        return d.arcs.coordinates.length;
-    });
-
-    svg.append('path').datum(topojson.feature(us, us.objects.land)).attr('class', 'land').attr('d', path);
-
-    svg.append('path').datum(topojson.mesh(us, us.objects.states, function (a, b) {
-        return a !== b;
-    })).attr('class', 'state-borders').attr('d', path);
-
-    svg.append('path').datum({ type: 'MultiPoint', coordinates: airports }).attr('class', 'airport-dots').attr('d', path);
-
-    var airport = svg.selectAll('.airport').data(airports).enter().append('g').attr('class', 'airport');
-
-    airport.append('title').text(function (d) {
-        // console.log(d.arcs, 'arcs')
-        return d.iata + '\n' + d.arcs.coordinates.length + ' flights';
-    });
-
-    airport.append('path').attr('class', 'airport-arc').attr('d', function (d) {
-        return path(d.arcs);
-    });
-
-    airport.append('path').data(voronoi.polygons(airports.map(projection))).attr('class', 'airport-cell').attr('d', function (d) {
-        return d ? 'M' + d.join('L') + 'Z' : null;
-    });
-}
-
-function typeAirport(d) {
-    d[0] = +d.longitude;
-    d[1] = +d.latitude;
-    d.arcs = { type: 'MultiLineString', coordinates: [] };
-    return d;
-}
-
-function typeFlight(d) {
-    d.count = +d.count;
-    return d;
-}
-
-// https://bl.ocks.org/mbostock/7608400/e5974d9bba45bc9ab272d98dd7427567aafd55bc
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/* global bb */
-
-var timeSeriesFromCSV = {
-  data: {
-    type: 'spline',
-    x: 'date',
-    url: './data/loadfactor.csv'
-  },
-  transition: {
-    duration: 900
-  },
-  point: {
-    show: false
-  },
-  axis: {
-    date: {
-      type: 'timeseries',
-      tick: { format: '%Y' }
-    }
-  },
-  bindto: '#bbchart1'
-};
-
-bb.generate(timeSeriesFromCSV);
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports.default = function (selector, dataUrl, yText) {
-  var svg = d3.select(selector);
-  var margin = { top: 20, right: 60, bottom: 30, left: 50 };
-  var width = svg.node().clientWidth - margin.left - margin.right;
-  var outerHeight = width * 0.67;
-  svg.attr('height', outerHeight);
-  var height = outerHeight - margin.top - margin.bottom;
-
-  var g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-  var x = d3.scaleTime().rangeRound([0, width]);
-  var y = d3.scaleLinear().rangeRound([height, 0]);
-  var z = d3.scaleOrdinal(d3.schemeCategory20);
-
-  var line = d3.line().curve(d3.curveNatural).x(function (d) {
-    return x(d.date);
-  }).y(function (d) {
-    return y(d.colValue);
-  });
-
-  d3.csv(dataUrl, type, ready);
-
-  function ready(error, data) {
-    if (error) throw error;
-    // 2,6 = top 4, 1,2 = single
-    var rows = data.columns.slice(1).map(function (id) {
-      return {
-        id: id,
-        values: data.map(function (d) {
-          return { date: d.date, colValue: d[id] };
-        })
-      };
-    });
-
-    x.domain(d3.extent(data, function (d) {
-      return d.date;
-    }));
-
-    y.domain([d3.min(rows, function (c) {
-      return d3.min(c.values, function (d) {
-        return d.colValue;
-      });
-    }), d3.max(rows, function (c) {
-      return d3.max(c.values, function (d) {
-        return d.colValue;
-      });
-    })]);
-
-    z.domain(rows.map(function (c) {
-      return c.id;
-    }));
-
-    g.append('g').attr('class', 'axis axis--x').attr('transform', 'translate(0,' + height + ')').call(d3.axisBottom(x));
-
-    g.append('g').attr('class', 'axis axis--y').call(d3.axisLeft(y)).append('text').attr('transform', 'rotate(-90)').attr('y', 6).attr('dy', '0.71em').attr('fill', '#000').text(yText);
-
-    var row = g.selectAll('.row').data(rows).enter().append('g').attr('class', 'row');
-
-    row.append('path').attr('class', 'line').attr('d', function (d) {
-      return line(d.values);
-    }).style('stroke', function (d) {
-      return z(d.id);
-    });
-
-    row.append('text').datum(function (d) {
-      return { id: d.id, value: d.values[d.values.length - 1] };
-    }).attr('transform', function (d) {
-      return 'translate(' + x(d.value.date) + ',' + y(d.value.colValue) + ')';
-    }).attr('x', 3).attr('dy', '0.35em').style('font', '12px sans-serif').text(function (d) {
-      return d.id;
-    });
-  }
-};
-
-/* global d3 */
-
-function type(d, _, columns) {
-  d.date = d3.timeParse('%Y')(d.date);
-  for (var i = 1, n = columns.length, c; i < n; ++i) {
-    d[c = columns[i]] = +d[c];
-  }return d;
-}
-
-/***/ }),
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _routes = __webpack_require__(23);
+var _routes = __webpack_require__(10);
 
 var _routes2 = _interopRequireDefault(_routes);
 
@@ -515,7 +298,7 @@ $(window).resize(function () {
 });
 
 /***/ }),
-/* 23 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -525,6 +308,214 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = [['LAS', 'MSY'], ['SPI', 'IAD'], ['MSP', 'IND'], ['CLT', 'DAB'], ['CLE', 'PVD'], ['CLE', 'DTW'], ['SYR', 'ATL'], ['MSY', 'DFW'], ['ORD', 'CAE'], ['IAH', 'LAS'], ['ATL', 'SAN'], ['MSP', 'FNT'], ['PIR', 'JAX'], ['BOS', 'MYR'], ['CVG', 'MDT'], ['SYR', 'MCO'], ['DFW', 'MSN'], ['DFW', 'IAH'], ['PNS', 'ATL'], ['VPS', 'CVG'], ['CVG', 'MCO'], ['CLT', 'CVG'], ['BWI', 'ABQ'], ['BFL', 'FAT'], ['MFR', 'RDM'], ['GSP', 'ORD'], ['IAH', 'PDX'], ['CLE', 'ROC'], ['IAH', 'TYS'], ['BOI', 'PHX'], ['ATL', 'PBI'], ['DSM', 'PHX'], ['DEN', 'SEA'], ['LAS', 'FNT'], ['IAD', 'DAY'], ['SAT', 'MCI'], ['KOA', 'LIH'], ['BUR', 'RNO'], ['MEM', 'MLI'], ['PHL', 'STT'], ['ORF', 'DTW'], ['IND', 'BOS'], ['ATL', 'MOB'], ['ATL', 'DTW'], ['CMH', 'CLT'], ['RNO', 'ONT'], ['MSY', 'MEM'], ['HPN', 'PBI'], ['LEX', 'COS'], ['BUR', 'PDX'], ['EWR', 'MTJ'], ['MSP', 'CVG'], ['LAX', 'MFR'], ['ACV', 'SFO'], ['FNT', 'DTW'], ['DEN', 'ABQ'], ['AEX', 'DFW'], ['MIA', 'SFO'], ['ATL', 'SBN'], ['LEX', 'CVG'], ['OTZ', 'ANC'], ['ORD', 'VPS'], ['PNS', 'MEM'], ['ASE', 'RFD'], ['IAD', 'AUS'], ['RNO', 'PHX'], ['CVG', 'ANC'], ['MSY', 'SAT'], ['DTW', 'AZO'], ['BIL', 'SLC'], ['ATL', 'PHF'], ['SAN', 'AUS'], ['FAT', 'SAN'], ['MEM', 'SDF'], ['ORD', 'MQT'], ['MIA', 'ORF'], ['SAT', 'CVG'], ['ATL', 'MYR'], ['PHL', 'PIT'], ['CVG', 'DCA'], ['LSE', 'MSP'], ['SJC', 'LAX'], ['SLC', 'JAC'], ['SEA', 'BOI'], ['ISP', 'MCO'], ['IAH', 'MCI'], ['SAN', 'HNL'], ['LGA', 'FLL'], ['TPA', 'CLE'], ['STL', 'ABQ'], ['AMA', 'ABQ'], ['LAX', 'MCI'], ['CMH', 'EWR'], ['ICT', 'MSP'], ['STT', 'CLT'], ['SAV', 'IAD'], ['SEA', 'BUR'], ['BDL', 'IND'], ['ANC', 'SEA'], ['ORD', 'PHL'], ['IAD', 'MDT'], ['DEN', 'CRW'], ['ORD', 'FSD'], ['SHV', 'DTW'], ['TPA', 'PHX'], ['RNO', 'SJC'], ['TYS', 'CVG'], ['IAD', 'MIA'], ['PHL', 'MSP'], ['PHX', 'GEG'], ['PHL', 'BUF'], ['BOI', 'SFO'], ['LAX', 'MTJ'], ['TLH', 'FLL'], ['PHL', 'LGA'], ['MCI', 'PIT'], ['AUS', 'BNA'], ['SFO', 'PIT'], ['DEN', 'ONT'], ['CLT', 'LIT'], ['JFK', 'ALB'], ['BOS', 'MDW'], ['BDL', 'ORD'], ['PWM', 'CLT'], ['ATL', 'LIT'], ['EWR', 'PDX'], ['CLE', 'CVG'], ['ATL', 'ICT'], ['SMF', 'ORD'], ['SDF', 'EWR'], ['DEN', 'IAH'], ['DFW', 'DTW'], ['SAN', 'STL'], ['DTW', 'MCI'], ['EWR', 'AVL'], ['TLH', 'CLT'], ['SCC', 'BRW'], ['SMF', 'BUR'], ['ATL', 'CAK'], ['LAX', 'EWR'], ['CMH', 'ICT'], ['ILM', 'CLT'], ['ITO', 'HNL'], ['CLT', 'BOS'], ['FLL', 'OAK'], ['ATL', 'JAC'], ['FLL', 'LAS'], ['ATL', 'SJC'], ['LGA', 'PHL'], ['SBP', 'SLC'], ['DEN', 'CYS'], ['BMI', 'MCO'], ['ORD', 'OAK'], ['BWI', 'LIT'], ['BOI', 'GEG'], ['DTW', 'RIC'], ['SNA', 'LAS'], ['SGF', 'DTW'], ['SAT', 'AMA'], ['DAB', 'CVG'], ['SEA', 'SIT'], ['MKE', 'EWR'], ['PIT', 'BWI'], ['ORD', 'FCA'], ['FLL', 'LAX'], ['STL', 'SFO'], ['BOS', 'IAD'], ['BQN', 'JFK'], ['DTW', 'CRW'], ['BQN', 'MCO'], ['SGF', 'STL'], ['EUG', 'LAX'], ['GEG', 'PHX'], ['DCA', 'XNA'], ['FNT', 'ORD'], ['HSV', 'MCO'], ['PHF', 'ATL'], ['CMH', 'GRR'], ['TPA', 'DCA'], ['SLC', 'CLT'], ['CVG', 'CLE'], ['PHX', 'LAS'], ['PHX', 'MKE'], ['SLC', 'ORD'], ['IAH', 'SAV'], ['DEN', 'MTJ'], ['GRK', 'IAH'], ['BOS', 'LAX'], ['IAH', 'SAN'], ['MKE', 'BDL'], ['LGA', 'XNA'], ['CVG', 'ROA'], ['MDW', 'SAT'], ['ROC', 'LAS'], ['BNA', 'DFW'], ['IAH', 'MAF'], ['HOU', 'TUL'], ['PHX', 'MRY'], ['RSW', 'DEN'], ['OKC', 'CVG'], ['DEN', 'RKS'], ['DEN', 'BFL'], ['MCI', 'LNK'], ['PHX', 'OAK'], ['LGB', 'PDX'], ['SEA', 'DEN'], ['MFE', 'DFW'], ['SLC', 'SJC'], ['PDX', 'SNA'], ['DAB', 'JAX'], ['LAX', 'SFO'], ['MFR', 'RDD'], ['MSP', 'GTF'], ['CVG', 'COS'], ['DEN', 'LIH'], ['CAE', 'MEM'], ['IAH', 'DEN'], ['ACK', 'EWR'], ['ATL', 'MEI'], ['DAY', 'DTW'], ['ORD', 'EWR'], ['DCA', 'BNA'], ['BIL', 'PIH'], ['CVG', 'PBI'], ['LGA', 'PIT'], ['LAN', 'MSP'], ['ICT', 'DEN'], ['ORD', 'CID'], ['IND', 'DFW'], ['LAX', 'FAT'], ['ICT', 'COS'], ['BHM', 'SDF'], ['RSW', 'ATL'], ['FLL', 'IAD'], ['CDC', 'LAX'], ['SAN', 'LAX'], ['BTR', 'DFW'], ['DCA', 'RDU'], ['SAN', 'BWI'], ['SLC', 'FLL'], ['RAP', 'TWF'], ['IAD', 'ABQ'], ['DCA', 'TPA'], ['DFW', 'BUR'], ['SNA', 'LAX'], ['PHX', 'OKC'], ['ELP', 'TUS'], ['SFO', 'TWF'], ['CWA', 'ORD'], ['XNA', 'SGF'], ['JAN', 'BWI'], ['CRW', 'ORD'], ['BDL', 'GRB'], ['BWI', 'MIA'], ['SJC', 'SAN'], ['IND', 'MDW'], ['IAD', 'BUF'], ['ACY', 'ATL'], ['LIH', 'HNL'], ['DFW', 'MEM'], ['DEN', 'DRO'], ['MSY', 'CMH'], ['IAH', 'BWI'], ['PBI', 'CMH'], ['BUF', 'JFK'], ['SLC', 'PSC'], ['MCO', 'JAX'], ['CLT', 'ORF'], ['RNO', 'IAH'], ['HNL', 'DEN'], ['TYS', 'MCO'], ['CLE', 'BHM'], ['SLC', 'OKC'], ['DSM', 'IAH'], ['SDF', 'SLC'], ['SYR', 'CVG'], ['ORF', 'MDW'], ['OKC', 'DFW'], ['FAI', 'SLC'], ['DEN', 'ROC'], ['CIC', 'FAT'], ['JFK', 'SRQ'], ['CLE', 'IAD'], ['JFK', 'OAK'], ['TPA', 'FNT'], ['XNA', 'LAX'], ['FSD', 'SLC'], ['GJT', 'LAX'], ['DEN', 'FAT'], ['DEN', 'ELP'], ['BWI', 'ALB'], ['RDU', 'DEN'], ['SEA', 'MCI'], ['CLT', 'MEM'], ['PSP', 'SFO'], ['SAT', 'MEM'], ['PHX', 'BUR'], ['BUR', 'PMD'], ['MSP', 'CLE'], ['BDL', 'LAS'], ['SLC', 'MSY'], ['ORD', 'ELP'], ['SJC', 'EWR'], ['ATL', 'OMA'], ['SYR', 'CLE'], ['MRY', 'SLC'], ['AVP', 'ORD'], ['RST', 'MSP'], ['PHL', 'ORF'], ['ROC', 'BWI'], ['MSO', 'SFO'], ['MSP', 'MDT'], ['HPN', 'TPA'], ['TUS', 'MDW'], ['EUG', 'PDX'], ['JFK', 'CMH'], ['HNL', 'ORD'], ['ORD', 'RDU'], ['ATL', 'CHS'], ['PSP', 'SEA'], ['CLT', 'SDF'], ['COS', 'MEM'], ['VLD', 'ATL'], ['BUF', 'PHL'], ['ATL', 'TOL'], ['DFW', 'EGE'], ['YUM', 'LAS'], ['OAK', 'MCI'], ['MCI', 'TUS'], ['PNS', 'DFW'], ['GEG', 'LGB'], ['SEA', 'JNU'], ['DAB', 'ATL'], ['SFO', 'BWI'], ['BOS', 'CVG'], ['SLC', 'CMH'], ['MIA', 'EWR'], ['ATL', 'PDX'], ['IAD', 'PHL'], ['JFK', 'AUS'], ['JFK', 'HDN'], ['MCO', 'IAD'], ['LGA', 'CMH'], ['BNA', 'STL'], ['BNA', 'MSY'], ['PBI', 'ATL'], ['MKE', 'SFO'], ['JFK', 'ORD'], ['IAD', 'DTW'], ['SLC', 'LAS'], ['SEA', 'PHL'], ['LGA', 'VPS'], ['DRO', 'ABQ'], ['MDT', 'DFW'], ['BOS', 'STT'], ['IND', 'PIT'], ['IAD', 'SAN'], ['ANC', 'ATL'], ['JAX', 'BHM'], ['BWI', 'HOU'], ['SAT', 'CLT'], ['GUC', 'DEN'], ['CAE', 'DFW'], ['FLL', 'AUS'], ['HOU', 'HRL'], ['STT', 'ATL'], ['EWR', 'CMH'], ['SBP', 'FAT'], ['MEM', 'CLE'], ['SWF', 'ATL'], ['MKE', 'TUS'], ['CLE', 'ABQ'], ['SAT', 'SLC'], ['CLE', 'SAV'], ['ISP', 'TPA'], ['MCO', 'LAS'], ['LAS', 'MKE'], ['PSP', 'DFW'], ['CVG', 'JFK'], ['IAD', 'SPI'], ['OAK', 'SNA'], ['DTW', 'ITH'], ['BHM', 'STL'], ['IAH', 'BNA'], ['BWI', 'BUF'], ['MCO', 'IND'], ['DCA', 'MHT'], ['EYW', 'ATL'], ['ORD', 'GEG'], ['MAF', 'DAL'], ['LAS', 'GEG'], ['IAD', 'BUR'], ['MDT', 'DTW'], ['BNA', 'MSP'], ['LEX', 'LGA'], ['CHS', 'EWR'], ['SLC', 'PSP'], ['ORD', 'MDT'], ['ONT', 'TUS'], ['PDX', 'ONT'], ['MYR', 'LGA'], ['PHX', 'OGG'], ['DTW', 'LAS'], ['ANC', 'JNU'], ['RDU', 'CVG'], ['ATL', 'VPS'], ['JFK', 'BGR'], ['MEM', 'BDL'], ['OTH', 'PDX'], ['PHX', 'MDW'], ['DEN', 'GRR'], ['MSP', 'LIT'], ['LIH', 'KOA'], ['BUR', 'PSP'], ['MCI', 'OMA'], ['CMH', 'MCI'], ['OAK', 'TUS'], ['MEM', 'CLT'], ['BHM', 'EWR'], ['TPA', 'CLT'], ['OMA', 'CVG'], ['TUS', 'ABQ'], ['JFK', 'CLE'], ['PHL', 'SEA'], ['PHX', 'LAX'], ['BIS', 'DEN'], ['PHX', 'ABQ'], ['BDL', 'PHL'], ['SLC', 'FCA'], ['BUF', 'RSW'], ['MHT', 'IAD'], ['DEN', 'MSO'], ['STL', 'OMA'], ['MSP', 'MCI'], ['SMF', 'LAX'], ['BZN', 'MSP'], ['SFO', 'EUG'], ['ABQ', 'CLE'], ['OME', 'ANC'], ['SFO', 'MDW'], ['AVL', 'CVG'], ['COS', 'MKE'], ['MFR', 'PHX'], ['MCO', 'PBI'], ['IAH', 'BDL'], ['MKE', 'GRR'], ['MCI', 'ABQ'], ['DFW', 'GRR'], ['MKE', 'BNA'], ['HDN', 'ORD'], ['DCA', 'LAX'], ['KOA', 'SAN'], ['SBN', 'ORD'], ['PBI', 'LGA'], ['DFW', 'CHA'], ['FLL', 'LGB'], ['SBP', 'LAS'], ['GSO', 'MSP'], ['SNA', 'PDX'], ['ORF', 'CLT'], ['SLC', 'ATL'], ['MCO', 'CLT'], ['DSM', 'DEN'], ['JAX', 'IAH'], ['BOI', 'DEN'], ['DTW', 'EWR'], ['ALB', 'ATL'], ['ABQ', 'LAX'], ['MKE', 'GRB'], ['EVV', 'DTW'], ['BTR', 'CVG'], ['EGE', 'MIA'], ['TYS', 'IAD'], ['MKE', 'STL'], ['MSY', 'LAX'], ['ROC', 'ATL'], ['IAH', 'CRW'], ['AGS', 'LGA'], ['DCA', 'MSN'], ['MKE', 'PIT'], ['TPA', 'SDF'], ['SJU', 'FLL'], ['DFW', 'SJC'], ['LFT', 'IAH'], ['MLI', 'LAS'], ['MKE', 'PHL'], ['IND', 'XNA'], ['TPA', 'CMH'], ['LGA', 'GSP'], ['BNA', 'MEM'], ['IAH', 'OKC'], ['RDU', 'MIA'], ['OKC', 'PHX'], ['MSY', 'MCO'], ['ANC', 'DLG'], ['DEN', 'RSW'], ['CLT', 'PDX'], ['IND', 'MKE'], ['TPA', 'BUF'], ['DFW', 'GRK'], ['CLT', 'IAH'], ['PHX', 'TPA'], ['DTW', 'PIT'], ['LGA', 'PBI'], ['SAN', 'BOS'], ['OKC', 'BWI'], ['CMH', 'BOS'], ['ANC', 'FAI'], ['SLC', 'STL'], ['SLC', 'COD'], ['PHX', 'MCI'], ['PIT', 'GRB'], ['BWI', 'SAV'], ['PHL', 'DEN'], ['GSO', 'LGA'], ['BWI', 'CLE'], ['SBA', 'PHX'], ['ORD', 'CMI'], ['SLC', 'SBA'], ['SLC', 'YUM'], ['DTW', 'SCE'], ['SEA', 'MCO'], ['MSY', 'DEN'], ['IAH', 'MGM'], ['FAR', 'MSP'], ['SBA', 'SJC'], ['ABQ', 'PDX'], ['SYR', 'PHL'], ['ATL', 'BZN'], ['MCO', 'MHT'], ['SFO', 'CLE'], ['PSG', 'JNU'], ['PIT', 'DEN'], ['PBI', 'CLE'], ['LEX', 'DFW'], ['HSV', 'MEM'], ['EGE', 'JFK'], ['TYS', 'ORD'], ['ATL', 'AUS'], ['STL', 'PHL'], ['BWI', 'GRR'], ['CLE', 'BDL'], ['ORD', 'GPT'], ['TUL', 'MCI'], ['ABQ', 'DEN'], ['DFW', 'MSP'], ['AZO', 'XNA'], ['PBI', 'JFK'], ['DFW', 'BUF'], ['PDX', 'MCI']];
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* global d3, topojson */
+var svg = d3.select('#us-map svg');
+var width = +svg.attr('width');
+var height = +svg.attr('height');
+
+var projection = d3.geoAlbers().translate([width / 2, height / 2]).scale(960);
+
+// const radius = d3.scaleSqrt()
+//     .domain([0, 100])
+//     .range([0, 14])
+
+var path = d3.geoPath().projection(projection).pointRadius(2.5);
+
+var voronoi = d3.voronoi().extent([[-1, -1], [width + 1, height + 1]]);
+
+d3.queue().defer(d3.json, 'data/us.json').defer(d3.csv, 'data/airports.csv', typeAirport).defer(d3.csv, 'data/flights.csv', typeFlight).await(ready);
+
+function ready(error, us, airports, flights) {
+    // console.log(error, us);
+    if (error) throw error;
+
+    var airportByIata = d3.map(airports, function (d) {
+        return d.iata;
+    });
+    // console.log(airportByIata, '>>>');
+
+    flights.forEach(function (flight) {
+        var source = airportByIata.get(flight.origin);
+        var target = airportByIata.get(flight.destination);
+        source.arcs.coordinates.push([source, target]);
+        target.arcs.coordinates.push([target, source]);
+    });
+
+    airports = airports.filter(function (d) {
+        return d.arcs.coordinates.length;
+    });
+
+    svg.append('path').datum(topojson.feature(us, us.objects.land)).attr('class', 'land').attr('d', path);
+
+    svg.append('path').datum(topojson.mesh(us, us.objects.states, function (a, b) {
+        return a !== b;
+    })).attr('class', 'state-borders').attr('d', path);
+
+    svg.append('path').datum({ type: 'MultiPoint', coordinates: airports }).attr('class', 'airport-dots').attr('d', path);
+
+    var airport = svg.selectAll('.airport').data(airports).enter().append('g').attr('class', 'airport');
+
+    airport.append('title').text(function (d) {
+        // console.log(d.arcs, 'arcs')
+        return d.iata + '\n' + d.arcs.coordinates.length + ' flights';
+    });
+
+    airport.append('path').attr('class', 'airport-arc').attr('d', function (d) {
+        return path(d.arcs);
+    });
+
+    airport.append('path').data(voronoi.polygons(airports.map(projection))).attr('class', 'airport-cell').attr('d', function (d) {
+        return d ? 'M' + d.join('L') + 'Z' : null;
+    });
+}
+
+function typeAirport(d) {
+    d[0] = +d.longitude;
+    d[1] = +d.latitude;
+    d.arcs = { type: 'MultiLineString', coordinates: [] };
+    return d;
+}
+
+function typeFlight(d) {
+    d.count = +d.count;
+    return d;
+}
+
+// https://bl.ocks.org/mbostock/7608400/e5974d9bba45bc9ab272d98dd7427567aafd55bc
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* global bb */
+
+var timeSeriesFromCSV = {
+  data: {
+    type: 'spline',
+    x: 'date',
+    url: './data/loadfactor.csv'
+  },
+  transition: {
+    duration: 900
+  },
+  point: {
+    show: false
+  },
+  axis: {
+    date: {
+      type: 'timeseries',
+      tick: { format: '%Y' }
+    }
+  },
+  bindto: '#bbchart1'
+};
+
+bb.generate(timeSeriesFromCSV);
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (selector, dataUrl, yText) {
+  var svg = d3.select(selector);
+  var margin = { top: 20, right: 60, bottom: 30, left: 50 };
+  var width = svg.attr('width') - margin.left - margin.right;
+  var outerHeight = width * 0.67;
+  console.log('>> width', svg.attr('width'));
+  svg.attr('height', outerHeight);
+  var height = outerHeight - margin.top - margin.bottom;
+
+  var g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+  var x = d3.scaleTime().rangeRound([0, width]);
+  var y = d3.scaleLinear().rangeRound([height, 0]);
+  var z = d3.scaleOrdinal(d3.schemeCategory20);
+
+  var line = d3.line().curve(d3.curveNatural).x(function (d) {
+    return x(d.date);
+  }).y(function (d) {
+    return y(d.colValue);
+  });
+
+  d3.csv(dataUrl, type, ready);
+
+  function ready(error, data) {
+    if (error) throw error;
+    // 2,6 = top 4, 1,2 = single
+    var rows = data.columns.slice(1).map(function (id) {
+      return {
+        id: id,
+        values: data.map(function (d) {
+          return { date: d.date, colValue: d[id] };
+        })
+      };
+    });
+
+    x.domain(d3.extent(data, function (d) {
+      return d.date;
+    }));
+
+    y.domain([d3.min(rows, function (c) {
+      return d3.min(c.values, function (d) {
+        return d.colValue;
+      });
+    }), d3.max(rows, function (c) {
+      return d3.max(c.values, function (d) {
+        return d.colValue;
+      });
+    })]);
+
+    z.domain(rows.map(function (c) {
+      return c.id;
+    }));
+
+    g.append('g').attr('class', 'axis axis--x').attr('transform', 'translate(0,' + height + ')').call(d3.axisBottom(x));
+
+    g.append('g').attr('class', 'axis axis--y').call(d3.axisLeft(y)).append('text').attr('transform', 'rotate(-90)').attr('y', 6).attr('dy', '0.71em').attr('fill', '#000').text(yText);
+
+    var row = g.selectAll('.row').data(rows).enter().append('g').attr('class', 'row');
+
+    row.append('path').attr('class', 'line').attr('d', function (d) {
+      return line(d.values);
+    }).style('stroke', function (d) {
+      return z(d.id);
+    });
+
+    row.append('text').datum(function (d) {
+      return { id: d.id, value: d.values[d.values.length - 1] };
+    }).attr('transform', function (d) {
+      return 'translate(' + x(d.value.date) + ',' + y(d.value.colValue) + ')';
+    }).attr('x', 3).attr('dy', '0.35em').style('font', '12px sans-serif').text(function (d) {
+      return d.id;
+    });
+  }
+};
+
+/* global d3 */
+
+function type(d, _, columns) {
+  d.date = d3.timeParse('%Y')(d.date);
+  for (var i = 1, n = columns.length, c; i < n; ++i) {
+    d[c = columns[i]] = +d[c];
+  }return d;
+}
 
 /***/ })
 /******/ ]);
