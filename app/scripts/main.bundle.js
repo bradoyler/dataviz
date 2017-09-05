@@ -439,7 +439,7 @@ exports.default = function (selector, dataUrl, yText) {
   var margin = { top: 20, right: 60, bottom: 30, left: 50 };
   var width = svg.attr('width') - margin.left - margin.right;
   var outerHeight = width * 0.67;
-  console.log('>> width', svg.attr('width'));
+  // console.log('>> width', svg.attr('width'))
   svg.attr('height', outerHeight);
   var height = outerHeight - margin.top - margin.bottom;
 
