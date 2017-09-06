@@ -34,7 +34,7 @@ const netIncome = {
     {
       axis: 'y',
       start: 0,
-      end: -350000000,
+      end: 50000000,
       class: 'fill_red'
     }
   ],
