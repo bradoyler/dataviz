@@ -77,7 +77,7 @@
 "use strict";
 
 
-var _timeSeriesLineChart = __webpack_require__(13);
+var _timeSeriesLineChart = __webpack_require__(8);
 
 var _timeSeriesLineChart2 = _interopRequireDefault(_timeSeriesLineChart);
 
@@ -87,19 +87,113 @@ __webpack_require__(11);
 
 __webpack_require__(12);
 
-__webpack_require__(24);
+__webpack_require__(13);
 
-__webpack_require__(25);
+__webpack_require__(14);
+
+__webpack_require__(26);
+
+__webpack_require__(15);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// barchart('#barchart svg', 'data/carriers.csv')
-// // linechart('#linechart svg', 'data/fpp.csv', 'Passengers Per Flight')
-// import barchart from './modules/barchart'
 (0, _timeSeriesLineChart2.default)('#linechart0 svg', 'data/loadfactor.csv', 'Load Factor');
 
 /***/ }),
-/* 8 */,
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (selector, dataUrl, yText) {
+  var svg = d3.select(selector);
+  var margin = { top: 20, right: 60, bottom: 30, left: 50 };
+  var width = svg.attr('width') - margin.left - margin.right;
+  var outerHeight = width * 0.67;
+  // console.log('>> width', svg.attr('width'))
+  svg.attr('height', outerHeight);
+  var height = outerHeight - margin.top - margin.bottom;
+
+  var g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+  var x = d3.scaleTime().rangeRound([0, width]);
+  var y = d3.scaleLinear().rangeRound([height, 0]);
+  var z = d3.scaleOrdinal(d3.schemeCategory20);
+
+  var line = d3.line().curve(d3.curveNatural).x(function (d) {
+    return x(d.date);
+  }).y(function (d) {
+    return y(d.colValue);
+  });
+
+  d3.csv(dataUrl, type, ready);
+
+  function ready(error, data) {
+    if (error) throw error;
+    // 2,6 = top 4, 1,2 = single
+    var rows = data.columns.slice(1).map(function (id) {
+      return {
+        id: id,
+        values: data.map(function (d) {
+          return { date: d.date, colValue: d[id] };
+        })
+      };
+    });
+
+    x.domain(d3.extent(data, function (d) {
+      return d.date;
+    }));
+
+    y.domain([d3.min(rows, function (c) {
+      return d3.min(c.values, function (d) {
+        return d.colValue;
+      });
+    }), d3.max(rows, function (c) {
+      return d3.max(c.values, function (d) {
+        return d.colValue;
+      });
+    })]);
+
+    z.domain(rows.map(function (c) {
+      return c.id;
+    }));
+
+    g.append('g').attr('class', 'axis axis--x').attr('transform', 'translate(0,' + height + ')').call(d3.axisBottom(x));
+
+    g.append('g').attr('class', 'axis axis--y').call(d3.axisLeft(y)).append('text').attr('transform', 'rotate(-90)').attr('y', 6).attr('dy', '0.71em').attr('fill', '#000').text(yText);
+
+    var row = g.selectAll('.row').data(rows).enter().append('g').attr('class', 'row');
+
+    row.append('path').attr('class', 'line').attr('d', function (d) {
+      return line(d.values);
+    }).style('stroke', function (d) {
+      return z(d.id);
+    });
+
+    row.append('text').datum(function (d) {
+      return { id: d.id, value: d.values[d.values.length - 1] };
+    }).attr('transform', function (d) {
+      return 'translate(' + x(d.value.date) + ',' + y(d.value.colValue) + ')';
+    }).attr('x', 3).attr('dy', '0.35em').style('font', '12px sans-serif').text(function (d) {
+      return d.id;
+    });
+  }
+};
+
+/* global d3 */
+
+function type(d, _, columns) {
+  d.date = d3.timeParse('%Y')(d.date);
+  for (var i = 1, n = columns.length, c; i < n; ++i) {
+    d[c = columns[i]] = +d[c];
+  }return d;
+}
+
+/***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -326,32 +420,6 @@ function typeFlight(d) {
 
 /* global bb */
 
-var timeSeriesFromCSV = {
-  padding: {
-    left: 30,
-    right: 10,
-    bottom: 20
-  },
-  data: {
-    type: 'spline',
-    x: 'date',
-    url: './data/loadfactor.csv'
-  },
-  transition: {
-    duration: 900
-  },
-  point: {
-    show: false
-  },
-  axis: {
-    date: {
-      type: 'timeseries',
-      tick: { format: '%Y' }
-    }
-  },
-  bindto: '#bbchart1'
-};
-
 function largeNumberFormat(dd) {
   var sign = Math.sign(dd);
   var d = Math.abs(dd);
@@ -387,7 +455,7 @@ var netIncome = {
   regions: [{
     axis: 'y',
     start: 0,
-    end: -350000000,
+    end: 50000000,
     class: 'fill_red'
   }],
   axis: {
@@ -406,22 +474,6 @@ var netIncome = {
   }
 };
 
-bb.generate({
-  data: {
-    columns: [['Southwest', 151740277], ['United', 99769952], ['American', 144189749], ['Delta', 142286020], ['JetBlue', 38241080], ['Alaska', 24370439], ['SkyWest', 31204880], ['Other', 299051986]],
-    type: 'pie'
-  },
-  pie: {
-    label: {
-      format: function format(value, ratio, id) {
-        return id;
-      }
-    }
-  },
-  bindto: '#bbchart3'
-});
-
-bb.generate(timeSeriesFromCSV);
 bb.generate(netIncome);
 
 /***/ }),
@@ -431,105 +483,38 @@ bb.generate(netIncome);
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+/* global bb */
 
-exports.default = function (selector, dataUrl, yText) {
-  var svg = d3.select(selector);
-  var margin = { top: 20, right: 60, bottom: 30, left: 50 };
-  var width = svg.attr('width') - margin.left - margin.right;
-  var outerHeight = width * 0.67;
-  // console.log('>> width', svg.attr('width'))
-  svg.attr('height', outerHeight);
-  var height = outerHeight - margin.top - margin.bottom;
-
-  var g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-  var x = d3.scaleTime().rangeRound([0, width]);
-  var y = d3.scaleLinear().rangeRound([height, 0]);
-  var z = d3.scaleOrdinal(d3.schemeCategory20);
-
-  var line = d3.line().curve(d3.curveNatural).x(function (d) {
-    return x(d.date);
-  }).y(function (d) {
-    return y(d.colValue);
-  });
-
-  d3.csv(dataUrl, type, ready);
-
-  function ready(error, data) {
-    if (error) throw error;
-    // 2,6 = top 4, 1,2 = single
-    var rows = data.columns.slice(1).map(function (id) {
-      return {
-        id: id,
-        values: data.map(function (d) {
-          return { date: d.date, colValue: d[id] };
-        })
-      };
-    });
-
-    x.domain(d3.extent(data, function (d) {
-      return d.date;
-    }));
-
-    y.domain([d3.min(rows, function (c) {
-      return d3.min(c.values, function (d) {
-        return d.colValue;
-      });
-    }), d3.max(rows, function (c) {
-      return d3.max(c.values, function (d) {
-        return d.colValue;
-      });
-    })]);
-
-    z.domain(rows.map(function (c) {
-      return c.id;
-    }));
-
-    g.append('g').attr('class', 'axis axis--x').attr('transform', 'translate(0,' + height + ')').call(d3.axisBottom(x));
-
-    g.append('g').attr('class', 'axis axis--y').call(d3.axisLeft(y)).append('text').attr('transform', 'rotate(-90)').attr('y', 6).attr('dy', '0.71em').attr('fill', '#000').text(yText);
-
-    var row = g.selectAll('.row').data(rows).enter().append('g').attr('class', 'row');
-
-    row.append('path').attr('class', 'line').attr('d', function (d) {
-      return line(d.values);
-    }).style('stroke', function (d) {
-      return z(d.id);
-    });
-
-    row.append('text').datum(function (d) {
-      return { id: d.id, value: d.values[d.values.length - 1] };
-    }).attr('transform', function (d) {
-      return 'translate(' + x(d.value.date) + ',' + y(d.value.colValue) + ')';
-    }).attr('x', 3).attr('dy', '0.35em').style('font', '12px sans-serif').text(function (d) {
-      return d.id;
-    });
-  }
+var timeSeriesFromCSV = {
+  padding: {
+    left: 30,
+    right: 10,
+    bottom: 20
+  },
+  data: {
+    type: 'spline',
+    x: 'date',
+    url: './data/loadfactor.csv'
+  },
+  transition: {
+    duration: 900
+  },
+  point: {
+    show: false
+  },
+  axis: {
+    date: {
+      type: 'timeseries',
+      tick: { format: '%Y' }
+    }
+  },
+  bindto: '#bbchart1'
 };
 
-/* global d3 */
-
-function type(d, _, columns) {
-  d.date = d3.timeParse('%Y')(d.date);
-  for (var i = 1, n = columns.length, c; i < n; ++i) {
-    d[c = columns[i]] = +d[c];
-  }return d;
-}
+bb.generate(timeSeriesFromCSV);
 
 /***/ }),
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -578,7 +563,7 @@ bb.generate({
 });
 
 /***/ }),
-/* 25 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -632,6 +617,42 @@ bb.generate({
     show: true
   },
   bindto: '#bbchart5'
+});
+
+/***/ }),
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* global bb */
+
+var data = [['Southwest', 151740277], ['United', 99769952], ['American', 144189749], ['Delta', 142286020], ['JetBlue', 38241080], ['Alaska', 24370439], ['SkyWest', 31204880], ['Other', 299051986]];
+
+bb.generate({
+  data: {
+    columns: data,
+    type: 'pie'
+  },
+  pie: {
+    label: {
+      format: function format(value, ratio, id) {
+        return id;
+      }
+    }
+  },
+  bindto: '#bbchart3'
 });
 
 /***/ })

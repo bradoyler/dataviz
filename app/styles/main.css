@@ -98,4 +98,4 @@ body { padding-top: 30px; }
 }
 
 /* billbaord charts */
-#Regions .fill_red { fill: red; }
+#Regions .fill_red { fill: #ccc; }
