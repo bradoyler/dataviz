@@ -77,9 +77,9 @@
 "use strict";
 
 
-var _barchart = __webpack_require__(8);
+var _timeSeriesLineChart = __webpack_require__(13);
 
-var _barchart2 = _interopRequireDefault(_barchart);
+var _timeSeriesLineChart2 = _interopRequireDefault(_timeSeriesLineChart);
 
 __webpack_require__(9);
 
@@ -87,93 +87,19 @@ __webpack_require__(11);
 
 __webpack_require__(12);
 
-var _timeSeriesLineChart = __webpack_require__(13);
+__webpack_require__(24);
 
-var _timeSeriesLineChart2 = _interopRequireDefault(_timeSeriesLineChart);
+__webpack_require__(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _barchart2.default)('#barchart svg', 'data/carriers.csv');
-// linechart('#linechart svg', 'data/fpp.csv', 'Passengers Per Flight')
+// barchart('#barchart svg', 'data/carriers.csv')
+// // linechart('#linechart svg', 'data/fpp.csv', 'Passengers Per Flight')
+// import barchart from './modules/barchart'
 (0, _timeSeriesLineChart2.default)('#linechart0 svg', 'data/loadfactor.csv', 'Load Factor');
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports.default = function (selector, dataUrl) {
-  var width = 960 - margin.left - margin.right;
-  var height = 500 - margin.top - margin.bottom;
-
-  var svg = d3.select(selector).attr('height', height + margin.top + margin.bottom).append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-  var x = d3.scaleLinear().range([0, width]);
-
-  var y = d3.scaleBand().range([height, 0]);
-
-  var xAxis = d3.axisBottom(x).ticks(6).tickFormat(function (d) {
-    if (d >= 1000 && d < 1000000) {
-      d = d / 1000 + 'K';
-    }
-    if (d >= 1000000) {
-      d = d / 1000000 + 'M';
-    }
-    return d;
-  }).tickSizeInner([height]);
-  var yAxis = d3.axisLeft(y);
-
-  d3.csv(dataUrl, type, function (error, data) {
-    if (error) throw error;
-
-    data.sort(function (a, b) {
-      return a.flights - b.flights;
-    });
-    var minVal = d3.min(data, function (d) {
-      return d.flights;
-    });
-    var min = minVal - minVal * 0.1;
-    var max = d3.max(data, function (d) {
-      return d.flights;
-    });
-    x.domain([min, max]);
-    y.domain(data.map(function (d) {
-      return d.carrier;
-    })).paddingInner(0.2);
-
-    svg.append('g').attr('class', 'x axis').attr('transform', 'translate(0,' + -2 + ')').call(xAxis);
-
-    svg.append('g').attr('class', 'y axis').call(yAxis);
-
-    svg.selectAll('.bar').data(data).enter().append('rect').attr('class', 'bar').attr('x', 0).attr('height', y.bandwidth()).attr('y', function (d) {
-      return y(d.carrier);
-    }).attr('width', function (d) {
-      return x(d.flights);
-    });
-  });
-};
-
-/* global d3 */
-
-var margin = {
-  top: 20,
-  right: 20,
-  bottom: 30,
-  left: 60
-};
-
-function type(d) {
-  d.flights = +d.flights;
-  return d;
-}
-
-/***/ }),
+/* 8 */,
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -458,6 +384,12 @@ var netIncome = {
       }
     }
   },
+  regions: [{
+    axis: 'y',
+    start: 0,
+    end: -350000000,
+    class: 'fill_red'
+  }],
   axis: {
     y: {
       tick: {
@@ -585,6 +517,122 @@ function type(d, _, columns) {
     d[c = columns[i]] = +d[c];
   }return d;
 }
+
+/***/ }),
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* global bb */
+
+var data = [['Alaska', -0.39], ['American', -1.35], ['Delta', -0.4], ['ExpressJet', -1.36], ['Frontier', -2.24], ['Hawaiian', -0.69], ['JetBlue', -0.6], ['SkyWest', -0.97], ['Southwest', -0.88], ['Spirit', -2.01], ['United', -1.05], ['VirginAmerica', -0.5]];
+
+var sorted = data.sort(function (a, b) {
+  return b[1] - a[1];
+});
+var columnData = sorted.map(function (item) {
+  return item[1] + 5;
+});
+columnData.unshift('Major US Airlines'); // add the column header
+var labels = sorted.map(function (item) {
+  return item[0];
+}); // create array of labels
+
+bb.generate({
+  data: {
+    columns: [columnData],
+    type: 'bar'
+  },
+  axis: {
+    y: {
+      tick: {
+        format: function format(d) {
+          return d.toFixed(1);
+        }
+      },
+      label: 'Score'
+    },
+    x: {
+      type: 'category',
+      categories: labels,
+      show: true
+    },
+    rotated: true
+  },
+  tooltip: {
+    show: true
+  },
+  bindto: '#bbchart4'
+});
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* global bb */
+/*
+United,704426,99769952
+Southwest,1311139,151740277
+Delta,1059757,142286020
+JetBlue,337950,38241080
+American,1098210,144189749
+*/
+
+var data = [['United', 704426], ['Southwest', 1311139], ['Delta', 1059757], ['JetBlue', 337950], ['American', 1098210]];
+
+var sorted = data.sort(function (a, b) {
+  return b[1] - a[1];
+});
+var columnData = sorted.map(function (item) {
+  return item[1];
+});
+columnData.unshift('Flights');
+
+var labels = sorted.map(function (item) {
+  return item[0];
+}); // create array of labels
+
+bb.generate({
+  data: {
+    columns: [columnData],
+    type: 'bar'
+  },
+  axis: {
+    y: {
+      tick: {
+        format: function format(d) {
+          return Math.round(d);
+        }
+      },
+      label: 'Flights'
+    },
+    x: {
+      type: 'category',
+      categories: labels,
+      show: true
+    },
+    rotated: false
+  },
+  tooltip: {
+    show: true
+  },
+  bindto: '#bbchart5'
+});
 
 /***/ })
 /******/ ]);

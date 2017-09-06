@@ -96,3 +96,6 @@ body { padding-top: 30px; }
 .x path, .x stroke {
   display: none;
 }
+
+/* billbaord charts */
+#Regions .fill_red { fill: red; }

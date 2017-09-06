@@ -56,6 +56,14 @@ const netIncome = {
       format: function (d) { return '$' + largeNumberFormat(d) }
     }
   },
+  regions: [
+    {
+      axis: 'y',
+      start: 0,
+      end: -350000000,
+      class: 'fill_red'
+    }
+  ],
   axis: {
     y: {
       tick: {
