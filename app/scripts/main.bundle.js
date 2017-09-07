@@ -95,14 +95,14 @@ __webpack_require__(15);
 
 __webpack_require__(16);
 
-var _cabinVoronoi = __webpack_require__(17);
+var _cabinSpace = __webpack_require__(28);
 
-var _cabinVoronoi2 = _interopRequireDefault(_cabinVoronoi);
+var _cabinSpace2 = _interopRequireDefault(_cabinSpace);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _cabinVoronoi2.default)({ selector: '#cabin1', space: 0.0405, rowCount: 24 });
-(0, _cabinVoronoi2.default)({ selector: '#cabin2', space: 0.036, rowCount: 27 });
+(0, _cabinSpace2.default)({ selector: '#cabin1', space: 0.04, rowCount: 24 });
+(0, _cabinSpace2.default)({ selector: '#cabin2', space: 0.0357, rowCount: 27 });
 
 (0, _timeSeriesLineChart2.default)('#linechart0 svg', 'data/loadfactor.csv', 'Load Factor');
 
@@ -653,7 +653,18 @@ bb.generate({
 });
 
 /***/ }),
-/* 17 */
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -707,7 +718,7 @@ exports.default = function (_ref) {
         rowCount = _ref2.rowCount;
 
     // { space = 0.038, rowCount = 27 }
-    var seats = [{ id: 0, label: 'Seat $A', y: 0, x: 0.14 }, { id: 0, label: 'Seat $B', y: 0, x: 0.26 }, { id: 0, label: 'Seat $C', y: 0, x: 0.38 }, { id: 0, label: 'Seat $D', y: 0, x: 0.62 }, { id: 0, label: 'Seat $E', y: 0, x: 0.74 }, { id: 0, label: 'Seat $F', y: 0, x: 0.86 }];
+    var seats = [{ id: 0, label: 'Seat $A', y: -0.01, x: 0.14 }, { id: 0, label: 'Seat $B', y: -0.01, x: 0.26 }, { id: 0, label: 'Seat $C', y: -0.01, x: 0.38 }, { id: 0, label: 'Seat $D', y: -0.01, x: 0.62 }, { id: 0, label: 'Seat $E', y: -0.01, x: 0.74 }, { id: 0, label: 'Seat $F', y: -0.01, x: 0.86 }];
 
     var seatCount = 0;
     // change to 27 rows
@@ -741,39 +752,46 @@ exports.default = function (_ref) {
     });
   }
 
-  function buildVoronoiDiagram(data) {
-    // create voronoi based on the data and scales
-    return d3.voronoi().x(function (d) {
-      return xScale(d.x);
-    }).y(function (d) {
-      return yScale(d.y);
-    }).size([plotAreaWidth, plotAreaHeight])(data);
-  }
-
   var data = buildData({ space: space, rowCount: rowCount });
   buildNodes(data);
-  var voronoiDiagram = buildVoronoiDiagram(data);
 
-  function toggleVoronoi() {
-    // remove if there
-    if (!g.select('.voronoi-polygons').empty()) {
-      g.select('.voronoi-polygons').remove();
-      g.select('.voronoi-radius-circle').remove();
-      g.select('.overlay').on('mousemove.voronoi', null).on('mouseleave.voronoi', null);
-      // otherwise, add the polygons in
-    } else {
-      var voronoiPolygons = g.append('g').attr('class', 'voronoi-polygons').style('pointer-events', 'none');
+  // --- voronoi stuff --------
+  // function buildVoronoiDiagram (data) {
+  //   // create voronoi based on the data and scales
+  //   return d3.voronoi()
+  //     .x(d => xScale(d.x))
+  //     .y(d => yScale(d.y))
+  //     .size([plotAreaWidth, plotAreaHeight])(data)
+  // }
 
-      var binding = voronoiPolygons.selectAll('path').data(voronoiDiagram.polygons());
-      binding.enter().append('path').style('stroke', 'tomato').style('fill', 'none').style('opacity', 0.15).attr('d', function (d) {
-        if (d) {
-          return 'M' + d.join('L') + 'Z';
-        }
-      });
-    }
-  }
+  // let voronoiDiagram = buildVoronoiDiagram(data)
 
-  toggleVoronoi();
+  // function toggleVoronoi () {
+  //   // remove if there
+  //   if (!g.select('.voronoi-polygons').empty()) {
+  //     g.select('.voronoi-polygons').remove()
+  //     g.select('.voronoi-radius-circle').remove()
+  //     g.select('.overlay').on('mousemove.voronoi', null).on('mouseleave.voronoi', null)
+  //   // otherwise, add the polygons in
+  //   } else {
+  //     const voronoiPolygons = g.append('g')
+  //       .attr('class', 'voronoi-polygons')
+  //       .style('pointer-events', 'none')
+  //
+  //     const binding = voronoiPolygons.selectAll('path').data(voronoiDiagram.polygons())
+  //     binding.enter().append('path')
+  //       .style('stroke', 'tomato')
+  //       .style('fill', 'none')
+  //       .style('opacity', 0.15)
+  //       .attr('d', d => {
+  //         if (d) {
+  //           return `M${d.join('L')}Z`
+  //         }
+  //       })
+  //   }
+  // }
+
+  // toggleVoronoi()
 };
 
 /***/ })

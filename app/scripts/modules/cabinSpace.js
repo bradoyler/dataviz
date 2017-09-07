@@ -36,12 +36,12 @@ export default function ({ selector, space = 0.04, rowCount = 24 }) {
   function buildData ({ space, rowCount }) {
      // { space = 0.038, rowCount = 27 }
     const seats = [
-      { id: 0, label: 'Seat $A', y: 0, x: 0.14 },
-      { id: 0, label: 'Seat $B', y: 0, x: 0.26 },
-      { id: 0, label: 'Seat $C', y: 0, x: 0.38 },
-      { id: 0, label: 'Seat $D', y: 0, x: 0.62 },
-      { id: 0, label: 'Seat $E', y: 0, x: 0.74 },
-      { id: 0, label: 'Seat $F', y: 0, x: 0.86 }
+      { id: 0, label: 'Seat $A', y: -0.01, x: 0.14 },
+      { id: 0, label: 'Seat $B', y: -0.01, x: 0.26 },
+      { id: 0, label: 'Seat $C', y: -0.01, x: 0.38 },
+      { id: 0, label: 'Seat $D', y: -0.01, x: 0.62 },
+      { id: 0, label: 'Seat $E', y: -0.01, x: 0.74 },
+      { id: 0, label: 'Seat $F', y: -0.01, x: 0.86 }
     ]
 
     let seatCount = 0
@@ -72,42 +72,44 @@ export default function ({ selector, space = 0.04, rowCount = 24 }) {
       .attr('fill', d => colorScale(d.y))
   }
 
-  function buildVoronoiDiagram (data) {
-    // create voronoi based on the data and scales
-    return d3.voronoi()
-      .x(d => xScale(d.x))
-      .y(d => yScale(d.y))
-      .size([plotAreaWidth, plotAreaHeight])(data)
-  }
-
   const data = buildData({ space, rowCount })
   buildNodes(data)
-  let voronoiDiagram = buildVoronoiDiagram(data)
 
-  function toggleVoronoi () {
-    // remove if there
-    if (!g.select('.voronoi-polygons').empty()) {
-      g.select('.voronoi-polygons').remove()
-      g.select('.voronoi-radius-circle').remove()
-      g.select('.overlay').on('mousemove.voronoi', null).on('mouseleave.voronoi', null)
-    // otherwise, add the polygons in
-    } else {
-      const voronoiPolygons = g.append('g')
-        .attr('class', 'voronoi-polygons')
-        .style('pointer-events', 'none')
+// --- voronoi stuff --------
+  // function buildVoronoiDiagram (data) {
+  //   // create voronoi based on the data and scales
+  //   return d3.voronoi()
+  //     .x(d => xScale(d.x))
+  //     .y(d => yScale(d.y))
+  //     .size([plotAreaWidth, plotAreaHeight])(data)
+  // }
 
-      const binding = voronoiPolygons.selectAll('path').data(voronoiDiagram.polygons())
-      binding.enter().append('path')
-        .style('stroke', 'tomato')
-        .style('fill', 'none')
-        .style('opacity', 0.15)
-        .attr('d', d => {
-          if (d) {
-            return `M${d.join('L')}Z`
-          }
-        })
-    }
-  }
+  // let voronoiDiagram = buildVoronoiDiagram(data)
 
-  toggleVoronoi()
+  // function toggleVoronoi () {
+  //   // remove if there
+  //   if (!g.select('.voronoi-polygons').empty()) {
+  //     g.select('.voronoi-polygons').remove()
+  //     g.select('.voronoi-radius-circle').remove()
+  //     g.select('.overlay').on('mousemove.voronoi', null).on('mouseleave.voronoi', null)
+  //   // otherwise, add the polygons in
+  //   } else {
+  //     const voronoiPolygons = g.append('g')
+  //       .attr('class', 'voronoi-polygons')
+  //       .style('pointer-events', 'none')
+  //
+  //     const binding = voronoiPolygons.selectAll('path').data(voronoiDiagram.polygons())
+  //     binding.enter().append('path')
+  //       .style('stroke', 'tomato')
+  //       .style('fill', 'none')
+  //       .style('opacity', 0.15)
+  //       .attr('d', d => {
+  //         if (d) {
+  //           return `M${d.join('L')}Z`
+  //         }
+  //       })
+  //   }
+  // }
+
+  // toggleVoronoi()
 }
