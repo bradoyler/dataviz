@@ -85,19 +85,24 @@ __webpack_require__(9);
 
 __webpack_require__(11);
 
-__webpack_require__(25);
+__webpack_require__(12);
 
-__webpack_require__(26);
-
-__webpack_require__(27);
-
-__webpack_require__(28);
+__webpack_require__(13);
 
 __webpack_require__(14);
 
-__webpack_require__(29);
+__webpack_require__(15);
+
+__webpack_require__(16);
+
+var _cabinVoronoi = __webpack_require__(17);
+
+var _cabinVoronoi2 = _interopRequireDefault(_cabinVoronoi);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _cabinVoronoi2.default)({ selector: '#cabin1', space: 0.0405, rowCount: 24 });
+(0, _cabinVoronoi2.default)({ selector: '#cabin2', space: 0.036, rowCount: 27 });
 
 (0, _timeSeriesLineChart2.default)('#linechart0 svg', 'data/loadfactor.csv', 'Load Factor');
 
@@ -414,76 +419,7 @@ function typeFlight(d) {
 // https://bl.ocks.org/mbostock/7608400/e5974d9bba45bc9ab272d98dd7427567aafd55bc
 
 /***/ }),
-/* 12 */,
-/* 13 */,
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/* global bb */
-/*
-United,704426,99769952
-Southwest,1311139,151740277
-Delta,1059757,142286020
-JetBlue,337950,38241080
-American,1098210,144189749
-*/
-
-var data = [['United', 704426], ['Southwest', 1311139], ['Delta', 1059757], ['JetBlue', 337950], ['American', 1098210]];
-
-var sorted = data.sort(function (a, b) {
-  return b[1] - a[1];
-});
-var columnData = sorted.map(function (item) {
-  return item[1];
-});
-columnData.unshift('Flights');
-
-var labels = sorted.map(function (item) {
-  return item[0];
-}); // create array of labels
-
-bb.generate({
-  data: {
-    columns: [columnData],
-    type: 'bar'
-  },
-  axis: {
-    y: {
-      tick: {
-        format: function format(d) {
-          return Math.round(d);
-        }
-      },
-      label: 'Flights'
-    },
-    x: {
-      type: 'category',
-      categories: labels,
-      show: true
-    },
-    rotated: false
-  },
-  tooltip: {
-    show: true
-  },
-  bindto: '#bbchart5'
-});
-
-/***/ }),
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -548,7 +484,7 @@ var netIncome = {
 bb.generate(netIncome);
 
 /***/ }),
-/* 26 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -585,7 +521,7 @@ var timeSeriesFromCSV = {
 bb.generate(timeSeriesFromCSV);
 
 /***/ }),
-/* 27 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -634,7 +570,7 @@ bb.generate({
 });
 
 /***/ }),
-/* 28 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -660,159 +596,185 @@ bb.generate({
 });
 
 /***/ }),
-/* 29 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+/* global bb */
+/*
+United,704426,99769952
+Southwest,1311139,151740277
+Delta,1059757,142286020
+JetBlue,337950,38241080
+American,1098210,144189749
+*/
 
-/* global d3 */
+var data = [['United', 704426], ['Southwest', 1311139], ['Delta', 1059757], ['JetBlue', 337950], ['American', 1098210]];
 
-var rowSeats = [{ id: 1, label: 'Seat $A', x: 0, y: 0.14 }, { id: 2, label: 'Seat $B', x: 0, y: 0.26 }, { id: 3, label: 'Seat $C', x: 0, y: 0.38 }, { id: 4, label: 'Seat $D', x: 0, y: 0.60 }, { id: 5, label: 'Seat $E', x: 0, y: 0.72 }, { id: 6, label: 'Seat $F', x: 0, y: 0.84 }];
+var sorted = data.sort(function (a, b) {
+  return b[1] - a[1];
+});
+var columnData = sorted.map(function (item) {
+  return item[1];
+});
+columnData.unshift('Flights');
 
-var seatCount = 0;
-// change to 27 rows
-var arrays = d3.range(24).map(function (d, i) {
-  var rowNum = i + 1;
-  return rowSeats.map(function (seat) {
-    var xdiff = 0.04 * rowNum;
-    seatCount += 1;
-    var x = seat.x + xdiff;
-    var y = seat.y;
+var labels = sorted.map(function (item) {
+  return item[0];
+}); // create array of labels
 
-    console.log(seatCount, x, y, 'x, y');
-    return { id: seatCount, label: seat.label.replace('$', rowNum), x: x, y: y };
-  });
+bb.generate({
+  data: {
+    columns: [columnData],
+    type: 'bar'
+  },
+  axis: {
+    y: {
+      tick: {
+        format: function format(d) {
+          return Math.round(d);
+        }
+      },
+      label: 'Flights'
+    },
+    x: {
+      type: 'category',
+      categories: labels,
+      show: true
+    },
+    rotated: false
+  },
+  tooltip: {
+    show: true
+  },
+  bindto: '#bbchart5'
 });
 
-var data = [].concat.apply([], arrays); // merge rows
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
 
-// outer svg dimensions
-var width = 800;
-var height = 110;
+"use strict";
 
-// padding around the chart where axes will go
-var padding = {
-  top: 5,
-  right: 20,
-  bottom: 5,
-  left: 20
 
-  // inner chart dimensions, where the dots are plotted
-};var plotAreaWidth = width - padding.left - padding.right;
-var plotAreaHeight = height - padding.top - padding.bottom;
-
-// radius of points in the scatterplot
-var pointRadius = 3;
-
-// initialize scales
-var xScale = d3.scaleLinear().domain([0, 1]).range([0, plotAreaWidth]);
-var yScale = d3.scaleLinear().domain([0, 1]).range([plotAreaHeight, 0]);
-var colorScale = d3.scaleLinear().domain([0, 1]).range(['#06a', '#0bb']);
-
-// select the root container where the chart will be added
-var container = d3.select('#vis-container');
-
-// initialize main SVG
-var svg = container.append('svg').attr('width', width).attr('height', height);
-
-// the main <g> where all the chart content goes inside
-var g = svg.append('g').attr('transform', 'translate(' + padding.left + ' ' + padding.top + ')');
-
-// add in circles
-var circles = g.append('g').attr('class', 'circles');
-var binding = circles.selectAll('.data-point').data(data, function (d) {
-  return d.id;
-});
-binding.enter().append('circle').classed('data-point', true).attr('r', pointRadius).attr('cx', function (d) {
-  return xScale(d.x);
-}).attr('cy', function (d) {
-  return yScale(d.y);
-}).attr('fill', function (d) {
-  return colorScale(d.y);
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
 
-// --- interaction ---
-// initialize text output for highlighted points
-var highlightOutput = container.append('div').attr('class', 'highlight-output').style('padding-left', padding.left + 'px').style('min-height', '100px');
+exports.default = function (_ref) {
+  var selector = _ref.selector,
+      _ref$space = _ref.space,
+      space = _ref$space === undefined ? 0.04 : _ref$space,
+      _ref$rowCount = _ref.rowCount,
+      rowCount = _ref$rowCount === undefined ? 24 : _ref$rowCount;
 
-// create voronoi based on the data and scales
-var voronoiDiagram = d3.voronoi().x(function (d) {
-  return xScale(d.x);
-}).y(function (d) {
-  return yScale(d.y);
-}).size([plotAreaWidth, plotAreaHeight])(data);
+  // outer svg dimensions
+  var width = 110;
+  var height = 300;
 
-// limit how far away the mouse can be from finding a voronoi site
-var voronoiRadius = plotAreaWidth / 10;
+  // padding around the chart where axes will go
+  var padding = { top: 5, right: 20, bottom: 5, left: 20
 
-// add a circle for indicating the highlighted point
-g.append('circle').attr('class', 'highlight-circle').attr('r', pointRadius + 2) // slightly larger than our points
-.style('fill', 'none').style('display', 'none');
+    // inner chart dimensions, where the dots are plotted
+  };var plotAreaWidth = width - padding.left - padding.right;
+  var plotAreaHeight = height - padding.top - padding.bottom;
 
-// callback to highlight a point
-function highlight(d) {
-  // no point to highlight - hide the circle and clear the text
-  if (!d) {
-    d3.select('.highlight-circle').style('display', 'none');
-    highlightOutput.text('');
+  // radius of points in the scatterplot
+  var pointRadius = 3;
 
-    // otherwise, show the highlight circle at the correct position
-  } else {
-    d3.select('.highlight-circle').style('display', '').style('stroke', colorScale(d.y)).attr('cx', xScale(d.x)).attr('cy', yScale(d.y));
+  // initialize scales
+  var xScale = d3.scaleLinear().domain([0, 1]).range([0, plotAreaWidth]);
+  var yScale = d3.scaleLinear().domain([0, 1]).range([plotAreaHeight, 0]);
+  var colorScale = d3.scaleLinear().domain([0, 1]).range(['#06a', '#0bb']);
 
-    // format the highlighted data point for inspection
-    highlightOutput.html(d.label + ', ' + d.x + ' - ' + d.y + ' ');
+  // select the container and create svg
+  var container = d3.select(selector);
+  var svg = container.append('svg').attr('width', width).attr('height', height);
+
+  // the main <g> where all the chart content goes inside
+  var g = svg.append('g').attr('transform', 'translate(' + padding.left + ' ' + padding.top + ')');
+
+  // const seatShape = svg.append('path')
+  //               .attr('class', 'seat')
+  //               .attr('d', 'M45.53125,1.12696311e-14 L130,3.24237165e-14 L130,3.55271368e-14 C154.852814,5.30352672e-14 175,20.1471863 175,45 L175,84 L175,84 C175,108.852814 154.852814,129 130,129 L45.53125,129 L45.53125,129 C20.6784363,129 0.53125,108.852814 0.53125,84 L0.53125,45 L0.53125,45 C0.53125,20.1471863 20.6784363,-2.54006885e-15 45.53125,-7.10542736e-15 Z')
+
+  // ----- end inits -----
+
+  function buildData(_ref2) {
+    var space = _ref2.space,
+        rowCount = _ref2.rowCount;
+
+    // { space = 0.038, rowCount = 27 }
+    var seats = [{ id: 0, label: 'Seat $A', y: 0, x: 0.14 }, { id: 0, label: 'Seat $B', y: 0, x: 0.26 }, { id: 0, label: 'Seat $C', y: 0, x: 0.38 }, { id: 0, label: 'Seat $D', y: 0, x: 0.62 }, { id: 0, label: 'Seat $E', y: 0, x: 0.74 }, { id: 0, label: 'Seat $F', y: 0, x: 0.86 }];
+
+    var seatCount = 0;
+    // change to 27 rows
+    var allRows = d3.range(rowCount).map(function (d, i) {
+      var rowNum = i + 1;
+      return seats.map(function (seat) {
+        var ydiff = space * rowNum;
+        seatCount += 1;
+        var y = seat.y + ydiff;
+        var x = seat.x;
+
+        return { id: seatCount, label: seat.label.replace('$', rowNum), x: x, y: y };
+      });
+    });
+
+    return [].concat.apply([], allRows); // merge rows
   }
-}
 
-// callback for when the mouse moves across the overlay
-function mouseMoveHandler() {
-  // get the current mouse position
-  var _d3$mouse = d3.mouse(this),
-      _d3$mouse2 = _slicedToArray(_d3$mouse, 2),
-      mx = _d3$mouse2[0],
-      my = _d3$mouse2[1];
-
-  // use the new diagram.find() function to find the voronoi site closest to
-  // the mouse, limited by max distance defined by voronoiRadius
-
-
-  var site = voronoiDiagram.find(mx, my, voronoiRadius);
-
-  // highlight the point if we found one, otherwise hide the highlight circle
-  highlight(site && site.data);
-}
-
-// add the overlay on top of everything to take the mouse events
-g.append('rect').attr('class', 'overlay').attr('width', plotAreaWidth).attr('height', plotAreaHeight).style('fill', 'red').style('opacity', 0).on('mousemove', mouseMoveHandler).on('mouseleave', function () {
-  // hide the highlight circle when the mouse leaves the chart
-  highlight(null);
-});
-
-function toggleVoronoiDebug() {
-  // remove if there
-  if (!g.select('.voronoi-polygons').empty()) {
-    g.select('.voronoi-polygons').remove();
-    g.select('.voronoi-radius-circle').remove();
-    g.select('.overlay').on('mousemove.voronoi', null).on('mouseleave.voronoi', null);
-    // otherwise, add the polygons in
-  } else {
-    // draw the polygons
-    var voronoiPolygons = g.append('g').attr('class', 'voronoi-polygons').style('pointer-events', 'none');
-
-    var _binding = voronoiPolygons.selectAll('path').data(voronoiDiagram.polygons());
-    _binding.enter().append('path').style('stroke', 'tomato').style('fill', 'none').style('opacity', 0.15).attr('d', function (d) {
-      if (d) {
-        return 'M' + d.join('L') + 'Z';
-      }
+  function buildNodes(data) {
+    // add in circles
+    var circles = g.append('g').attr('class', 'circles');
+    var binding = circles.selectAll('.data-point').data(data, function (d) {
+      return d.id;
+    });
+    binding.enter().append('circle').classed('data-point', true).attr('r', pointRadius).attr('cx', function (d) {
+      return xScale(d.x);
+    }).attr('cy', function (d) {
+      return yScale(d.y);
+    }).attr('fill', function (d) {
+      return colorScale(d.y);
     });
   }
-}
 
-toggleVoronoiDebug();
+  function buildVoronoiDiagram(data) {
+    // create voronoi based on the data and scales
+    return d3.voronoi().x(function (d) {
+      return xScale(d.x);
+    }).y(function (d) {
+      return yScale(d.y);
+    }).size([plotAreaWidth, plotAreaHeight])(data);
+  }
+
+  var data = buildData({ space: space, rowCount: rowCount });
+  buildNodes(data);
+  var voronoiDiagram = buildVoronoiDiagram(data);
+
+  function toggleVoronoi() {
+    // remove if there
+    if (!g.select('.voronoi-polygons').empty()) {
+      g.select('.voronoi-polygons').remove();
+      g.select('.voronoi-radius-circle').remove();
+      g.select('.overlay').on('mousemove.voronoi', null).on('mouseleave.voronoi', null);
+      // otherwise, add the polygons in
+    } else {
+      var voronoiPolygons = g.append('g').attr('class', 'voronoi-polygons').style('pointer-events', 'none');
+
+      var binding = voronoiPolygons.selectAll('path').data(voronoiDiagram.polygons());
+      binding.enter().append('path').style('stroke', 'tomato').style('fill', 'none').style('opacity', 0.15).attr('d', function (d) {
+        if (d) {
+          return 'M' + d.join('L') + 'Z';
+        }
+      });
+    }
+  }
+
+  toggleVoronoi();
+};
 
 /***/ })
 /******/ ]);
