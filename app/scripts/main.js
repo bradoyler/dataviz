@@ -6,5 +6,6 @@ import './modules/bbLoadFactor'
 import './modules/bbAQR'
 import './modules/bbPieChart'
 import './modules/carriers'
+import './modules/cabinVoronoi'
 
 linechart('#linechart0 svg', 'data/loadfactor.csv', 'Load Factor')
