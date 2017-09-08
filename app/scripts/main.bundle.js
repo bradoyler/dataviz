@@ -85,17 +85,17 @@ __webpack_require__(9);
 
 __webpack_require__(11);
 
-__webpack_require__(12);
+__webpack_require__(25);
 
-__webpack_require__(13);
+__webpack_require__(26);
+
+__webpack_require__(27);
+
+__webpack_require__(28);
 
 __webpack_require__(14);
 
-__webpack_require__(15);
-
-__webpack_require__(16);
-
-var _cabinSpace = __webpack_require__(28);
+var _cabinSpace = __webpack_require__(30);
 
 var _cabinSpace2 = _interopRequireDefault(_cabinSpace);
 
@@ -419,7 +419,132 @@ function typeFlight(d) {
 // https://bl.ocks.org/mbostock/7608400/e5974d9bba45bc9ab272d98dd7427567aafd55bc
 
 /***/ }),
-/* 12 */
+/* 12 */,
+/* 13 */,
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* global bb */
+/*
+United,704426,99769952
+Southwest,1311139,151740277
+Delta,1059757,142286020
+JetBlue,337950,38241080
+American,1098210,144189749
+*/
+
+function largeNumberFormat(dd) {
+  var sign = Math.sign(dd);
+  var d = Math.abs(dd);
+  if (d >= 1000 && d < 1000000) {
+    d = Math.round(d / 1000) + 'K';
+  }
+  if (d >= 1000000) {
+    d = Math.round(d / 1000000) + 'M';
+  }
+  if (sign === -1) {
+    return '-' + d;
+  }
+  return d;
+}
+
+var dalayData = [['2002', 120038204], ['2003', 126155452], ['2004', 167252422], ['2005', 180992079], ['2006', 198793390], ['2007', 222245772], ['2008', 194357254], ['2009', 157402401], ['2010', 159070567], ['2011', 163635498], ['2012', 147175329], ['2013', 179026591], ['2014', 202684018], ['2015', 180219334], ['2016', 172208061]];
+
+var columnDataD = dalayData.map(function (item) {
+  return item[1];
+});
+var labelsD = dalayData.map(function (item) {
+  return item[0];
+});
+columnDataD.unshift('Passengers delayed');
+
+var data = [['United', 704426], ['Southwest', 1311139], ['Delta', 1059757], ['JetBlue', 337950], ['American', 1098210]];
+
+var sorted = data.sort(function (a, b) {
+  return b[1] - a[1];
+});
+var columnData = sorted.map(function (item) {
+  return item[1];
+});
+columnData.unshift('Flights');
+
+var labels = sorted.map(function (item) {
+  return item[0];
+}); // create array of labels
+
+bb.generate({
+  data: {
+    columns: [columnData],
+    type: 'bar'
+  },
+  axis: {
+    y: {
+      tick: {
+        format: function format(d) {
+          return Math.round(d);
+        }
+      },
+      label: 'Flights'
+    },
+    x: {
+      type: 'category',
+      categories: labels,
+      show: true
+    },
+    rotated: false
+  },
+  tooltip: {
+    show: true
+  },
+  bindto: '#bbchart5'
+});
+
+bb.generate({
+  data: {
+    columns: [columnDataD],
+    type: 'bar',
+    labels: {
+      format: function format(d) {
+        return largeNumberFormat(d);
+      }
+    }
+  },
+  axis: {
+    y: {
+      // tick: {
+      //   format: (d) => largeNumberFormat(d)
+      // },
+      show: false,
+      label: 'delayed'
+    },
+    x: {
+      type: 'category',
+      categories: labelsD,
+      show: true
+    },
+    rotated: false
+  },
+  tooltip: {
+    show: true
+  },
+  bindto: '#bbchart-delays'
+});
+
+/***/ }),
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -484,7 +609,7 @@ var netIncome = {
 bb.generate(netIncome);
 
 /***/ }),
-/* 13 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -521,7 +646,7 @@ var timeSeriesFromCSV = {
 bb.generate(timeSeriesFromCSV);
 
 /***/ }),
-/* 14 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -570,7 +695,7 @@ bb.generate({
 });
 
 /***/ }),
-/* 15 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -596,75 +721,8 @@ bb.generate({
 });
 
 /***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/* global bb */
-/*
-United,704426,99769952
-Southwest,1311139,151740277
-Delta,1059757,142286020
-JetBlue,337950,38241080
-American,1098210,144189749
-*/
-
-var data = [['United', 704426], ['Southwest', 1311139], ['Delta', 1059757], ['JetBlue', 337950], ['American', 1098210]];
-
-var sorted = data.sort(function (a, b) {
-  return b[1] - a[1];
-});
-var columnData = sorted.map(function (item) {
-  return item[1];
-});
-columnData.unshift('Flights');
-
-var labels = sorted.map(function (item) {
-  return item[0];
-}); // create array of labels
-
-bb.generate({
-  data: {
-    columns: [columnData],
-    type: 'bar'
-  },
-  axis: {
-    y: {
-      tick: {
-        format: function format(d) {
-          return Math.round(d);
-        }
-      },
-      label: 'Flights'
-    },
-    x: {
-      type: 'category',
-      categories: labels,
-      show: true
-    },
-    rotated: false
-  },
-  tooltip: {
-    show: true
-  },
-  bindto: '#bbchart5'
-});
-
-/***/ }),
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */
+/* 29 */,
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
