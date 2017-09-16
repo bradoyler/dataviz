@@ -85,6 +85,8 @@ var _flightAniCanvas = __webpack_require__(9);
 
 var _flightAniCanvas2 = _interopRequireDefault(_flightAniCanvas);
 
+__webpack_require__(12);
+
 __webpack_require__(13);
 
 __webpack_require__(14);
@@ -93,9 +95,7 @@ __webpack_require__(15);
 
 __webpack_require__(16);
 
-__webpack_require__(17);
-
-var _cabinSpace = __webpack_require__(18);
+var _cabinSpace = __webpack_require__(17);
 
 var _cabinSpace2 = _interopRequireDefault(_cabinSpace);
 
@@ -301,7 +301,7 @@ exports.default = function () {
     animate();
   }
 
-  d3.queue().defer(d3.json, '//ori-nodeassets.nbcnews.com/cdnassets/projects/2017/08/airplane-mode/us.json').defer(d3.json, '//ori-nodeassets.nbcnews.com/cdnassets/projects/2017/08/airplane-mode/us-airports-major.topo.json').await(ready);
+  d3.queue().defer(d3.json, 'https://nodeassets.nbcnews.com/cdnassets/projects/2017/08/airplane-mode/us.json').defer(d3.json, 'https://nodeassets.nbcnews.com/cdnassets/projects/2017/08/airplane-mode/us-airports-major.topo.json').await(ready);
 };
 
 var _routes = __webpack_require__(10);
@@ -395,8 +395,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 12 */,
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -461,7 +460,7 @@ var netIncome = {
 bb.generate(netIncome);
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -498,7 +497,7 @@ var timeSeriesFromCSV = {
 bb.generate(timeSeriesFromCSV);
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -547,7 +546,7 @@ bb.generate({
 });
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -573,7 +572,7 @@ bb.generate({
 });
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -686,7 +685,7 @@ bb.generate({
 });
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
