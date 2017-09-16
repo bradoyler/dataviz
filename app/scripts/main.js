@@ -1,6 +1,6 @@
 import linechart from './modules/timeSeriesLineChart'
-import './modules/flightanimation'
-import './modules/map'
+import flightmap from './modules/flightAniCanvas'
+// import './modules/map'
 import './modules/bbNetIncome'
 import './modules/bbLoadFactor'
 import './modules/bbAQR'
@@ -8,6 +8,7 @@ import './modules/bbPieChart'
 import './modules/carriers'
 import cabin from './modules/cabinSpace'
 
+flightmap('#flightMapTest')
 cabin({ selector: '#cabin1', space: 0.04, rowCount: 24 })
 cabin({ selector: '#cabin2', space: 0.0357, rowCount: 27 })
 

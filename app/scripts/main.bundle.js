@@ -81,26 +81,28 @@ var _timeSeriesLineChart = __webpack_require__(8);
 
 var _timeSeriesLineChart2 = _interopRequireDefault(_timeSeriesLineChart);
 
-__webpack_require__(9);
+var _flightAniCanvas = __webpack_require__(9);
 
-__webpack_require__(11);
+var _flightAniCanvas2 = _interopRequireDefault(_flightAniCanvas);
 
-__webpack_require__(25);
-
-__webpack_require__(26);
-
-__webpack_require__(27);
-
-__webpack_require__(28);
+__webpack_require__(13);
 
 __webpack_require__(14);
 
-var _cabinSpace = __webpack_require__(30);
+__webpack_require__(15);
+
+__webpack_require__(16);
+
+__webpack_require__(17);
+
+var _cabinSpace = __webpack_require__(18);
 
 var _cabinSpace2 = _interopRequireDefault(_cabinSpace);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import './modules/map'
+(0, _flightAniCanvas2.default)('#flightMapTest');
 (0, _cabinSpace2.default)({ selector: '#cabin1', space: 0.04, rowCount: 24 });
 (0, _cabinSpace2.default)({ selector: '#cabin2', space: 0.0357, rowCount: 27 });
 
@@ -207,122 +209,110 @@ function type(d, _, columns) {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var selector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '#flightmap';
+
+  var airportMap = {};
+  var $flightmap = $(selector);
+
+  if (!$flightmap[0]) return;
+  var width = 720;
+  var height = 512;
+
+  var pro = d3.geoAlbersUsa().scale(900).translate([width / 2, height / 2]);
+
+  var path = d3.geoPath().pointRadius(1.2).projection(pro);
+
+  var svg = d3.select(selector).append('svg').attr('preserveAspectRatio', 'xMidYMid').attr('viewBox', '0 0 ' + width + ' ' + height).attr('width', width).attr('height', height);
+
+  var canvasEl = d3.select(selector).append('canvas').attr('style', 'position:absolute;left:0;top:0;').attr('width', width).attr('height', height);
+
+  var canvas = canvasEl.node();
+  var ctx = canvas.getContext('2d');
+
+  // set starting values
+  var fps = 20;
+  var curveFactor = 10;
+  var points = [];
+  var batchSize = 5;
+
+  function animate() {
+    draw();
+    // request another frame
+    setTimeout(function () {
+      window.requestAnimationFrame(animate);
+    }, 1000 / fps);
+  }
+
+  // draw the current frame based on sliderValue
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (var i = 0; i < points.length; i++) {
+      if (i > batchSize) {
+        batchSize += 1;
+        break;
+      }
+      var point = points[i];
+      var start = point.start,
+          end = point.end,
+          progress = point.progress;
+
+      var wayPoint = _canvasHelpers2.default.getWaypoint(start, end, 90);
+      var controlPt = { x: wayPoint.x, y: wayPoint.y - curveFactor };
+      ctx.lineWidth = 0.5;
+      ctx.beginPath();
+      ctx.moveTo(start.x, start.y);
+      // helpers.drawLine(ctx, end, controlPt, '#000')
+
+      // draw the tracking rectangle
+      var percentFactor = progress / 100;
+      var xy = _canvasHelpers2.default.getQuadraticBezierXY(start, controlPt, end, percentFactor);
+      point.progress++;
+
+      if (progress < 101) {
+        _canvasHelpers2.default.drawDot(ctx, xy, 'grey', 0.4);
+      } else {
+        point.progress = 0;
+      }
+    }
+  }
+
+  function ready(error, topo, airports) {
+    if (error) throw error;
+
+    svg.append('g').attr('class', 'states').selectAll('path').data(topojson.feature(topo, topo.objects.states).features).enter().append('path').attr('d', path);
+
+    svg.append('g').attr('class', 'airports').selectAll('path').data(topojson.feature(airports, airports.objects.airports).features).enter().append('path').attr('id', function (d) {
+      return d.id;
+    }).attr('d', path);
+
+    var geos = topojson.feature(airports, airports.objects.airports).features;
+
+    geos.forEach(function (geo) {
+      airportMap[geo.id] = geo.geometry.coordinates;
+    });
+
+    points = _canvasHelpers2.default.generatePoints(airportMap, _routes2.default, pro);
+    animate();
+  }
+
+  d3.queue().defer(d3.json, '//ori-nodeassets.nbcnews.com/cdnassets/projects/2017/08/airplane-mode/us.json').defer(d3.json, '//ori-nodeassets.nbcnews.com/cdnassets/projects/2017/08/airplane-mode/us-airports-major.topo.json').await(ready);
+};
+
 var _routes = __webpack_require__(10);
 
 var _routes2 = _interopRequireDefault(_routes);
 
+var _canvasHelpers = __webpack_require__(11);
+
+var _canvasHelpers2 = _interopRequireDefault(_canvasHelpers);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function rAFscroll(fn) {
-  var rAF = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame || function (callback) {
-    setTimeout(callback, 1000 / 60);
-  };
-
-  var lastPosition = -1;
-  function loop() {
-    // Avoid calculations if not needed
-    if (lastPosition === window.pageYOffset) {
-      rAF(loop);
-      return false;
-    } else lastPosition = window.pageYOffset;
-    fn();
-    rAF(loop);
-  }
-  loop();
-} /* global d3, topojson, $ */
-
-
-var $flightmap = $('#flightmap');
-var currentWidth = $flightmap.width();
-var width = 938;
-var height = 620;
-
-var pro = d3.geoAlbers().scale(900).translate([width / 2, height / 2]);
-
-var path = d3.geoPath().pointRadius(1.2).projection(pro);
-
-var svg = d3.select('#flightmap').append('svg').attr('preserveAspectRatio', 'xMidYMid').attr('viewBox', '0 0 ' + width + ' ' + height).attr('width', currentWidth).attr('height', currentWidth * height / width);
-
-var airportMap = {};
-
-function transition(plane, route) {
-  var l = route.node().getTotalLength();
-  plane.transition().duration(l * 20).attrTween('transform', delta(plane, route.node())).on('end', function () {
-    route.remove();
-  }).remove();
-}
-
-function delta(plane, path) {
-  var l = path.getTotalLength();
-  return function (i) {
-    return function (t) {
-      var p = path.getPointAtLength(t * l);
-      var t2 = Math.min(t + 0.05, 1);
-      var p2 = path.getPointAtLength(t2 * l);
-      var x = p2.x - p.x;
-      var y = p2.y - p.y;
-      var r = 90 - Math.atan2(-y, x) * 180 / Math.PI;
-      var s = Math.min(Math.sin(Math.PI * t) * 0.7, 0.3);
-      return 'translate(' + p.x + ',' + p.y + ') scale(' + s + ') rotate(' + r + ')';
-    };
-  };
-}
-
-function fly(origin, destination) {
-  if (!airportMap[origin] || !airportMap[destination]) return;
-
-  var route = svg.append('path').datum({ type: 'LineString', coordinates: [airportMap[origin], airportMap[destination]] }).attr('class', 'route').attr('d', path);
-
-  // const plane = svg.append('circle').attr('cx', 5).attr('cy', 5).attr('r', 5).style('fill', 'blue')
-  var plane = svg.append('path').attr('class', 'plane').attr('d', 'm25.21488,3.93375c-0.44355,0 -0.84275,0.18332 -1.17933,0.51592c-0.33397,0.33267 -0.61055,0.80884 -0.84275,1.40377c-0.45922,1.18911 -0.74362,2.85964 -0.89755,4.86085c-0.15655,1.99729 -0.18263,4.32223 -0.11741,6.81118c-5.51835,2.26427 -16.7116,6.93857 -17.60916,7.98223c-1.19759,1.38937 -0.81143,2.98095 -0.32874,4.03902l18.39971,-3.74549c0.38616,4.88048 0.94192,9.7138 1.42461,13.50099c-1.80032,0.52703 -5.1609,1.56679 -5.85232,2.21255c-0.95496,0.88711 -0.95496,3.75718 -0.95496,3.75718l7.53,-0.61316c0.17743,1.23545 0.28701,1.95767 0.28701,1.95767l0.01304,0.06557l0.06002,0l0.13829,0l0.0574,0l0.01043,-0.06557c0,0 0.11218,-0.72222 0.28961,-1.95767l7.53164,0.61316c0,0 0,-2.87006 -0.95496,-3.75718c-0.69044,-0.64577 -4.05363,-1.68813 -5.85133,-2.21516c0.48009,-3.77545 1.03061,-8.58921 1.42198,-13.45404l18.18207,3.70115c0.48009,-1.05806 0.86881,-2.64965 -0.32617,-4.03902c-0.88969,-1.03062 -11.81147,-5.60054 -17.39409,-7.89352c0.06524,-2.52287 0.04175,-4.88024 -0.1148,-6.89989l0,-0.00476c-0.15655,-1.99844 -0.44094,-3.6683 -0.90277,-4.8561c-0.22699,-0.59493 -0.50356,-1.07111 -0.83754,-1.40377c-0.33658,-0.3326 -0.73578,-0.51592 -1.18194,-0.51592l0,0l-0.00001,0l0,0z');
-
-  transition(plane, route);
-}
-
-function ready(error, topo, airports) {
-  if (error) throw error;
-
-  svg.append('g').attr('class', 'states').selectAll('path').data(topojson.feature(topo, topo.objects.states).features).enter().append('path').attr('d', path);
-
-  svg.append('g').attr('class', 'airports').selectAll('path').data(topojson.feature(airports, airports.objects.airports).features).enter().append('path').attr('id', function (d) {
-    return d.id;
-  }).attr('d', path);
-
-  var geos = topojson.feature(airports, airports.objects.airports).features;
-
-  geos.forEach(function (geo) {
-    airportMap[geo.id] = geo.geometry.coordinates;
-  });
-
-  var start = 0;
-  function flyBatch() {
-    var flightCnt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
-
-    if ($flightmap.offset().top + $flightmap.height() < $(window).scrollTop()) return;
-
-    var end = start + flightCnt;
-    var pairs = _routes2.default.slice(start, end);
-    pairs.forEach(function (pair, idx) {
-      fly(pair[0], pair[1]);
-    });
-    start = end;
-    // reset the flight loop
-    if (pairs.length === 0) {
-      start = 0;
-    }
-  }
-
-  flyBatch(200);
-  rAFscroll(flyBatch);
-}
-
-d3.queue().defer(d3.json, 'data/us.json').defer(d3.json, 'data/us-airports-major.topo.json').await(ready);
-
-$(window).resize(function () {
-  currentWidth = $flightmap.width();
-  svg.attr('width', currentWidth);
-  svg.attr('height', currentWidth * height / width);
-});
 
 /***/ }),
 /* 10 */
@@ -343,85 +333,247 @@ exports.default = [['LAS', 'MSY'], ['SPI', 'IAD'], ['MSP', 'IND'], ['CLT', 'DAB'
 "use strict";
 
 
-/* global d3, topojson */
-var svg = d3.select('#us-map svg');
-var width = +svg.attr('width');
-var height = +svg.attr('height');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var projection = d3.geoAlbers().translate([width / 2, height / 2]).scale(960);
-
-// const radius = d3.scaleSqrt()
-//     .domain([0, 100])
-//     .range([0, 14])
-
-var path = d3.geoPath().projection(projection).pointRadius(2.5);
-
-var voronoi = d3.voronoi().extent([[-1, -1], [width + 1, height + 1]]);
-
-d3.queue().defer(d3.json, 'data/us.json').defer(d3.csv, 'data/airports.csv', typeAirport).defer(d3.csv, 'data/flights.csv', typeFlight).await(ready);
-
-function ready(error, us, airports, flights) {
-    // console.log(error, us);
-    if (error) throw error;
-
-    var airportByIata = d3.map(airports, function (d) {
-        return d.iata;
-    });
-    // console.log(airportByIata, '>>>');
-
-    flights.forEach(function (flight) {
-        var source = airportByIata.get(flight.origin);
-        var target = airportByIata.get(flight.destination);
-        source.arcs.coordinates.push([source, target]);
-        target.arcs.coordinates.push([target, source]);
-    });
-
-    airports = airports.filter(function (d) {
-        return d.arcs.coordinates.length;
-    });
-
-    svg.append('path').datum(topojson.feature(us, us.objects.land)).attr('class', 'land').attr('d', path);
-
-    svg.append('path').datum(topojson.mesh(us, us.objects.states, function (a, b) {
-        return a !== b;
-    })).attr('class', 'state-borders').attr('d', path);
-
-    svg.append('path').datum({ type: 'MultiPoint', coordinates: airports }).attr('class', 'airport-dots').attr('d', path);
-
-    var airport = svg.selectAll('.airport').data(airports).enter().append('g').attr('class', 'airport');
-
-    airport.append('title').text(function (d) {
-        // console.log(d.arcs, 'arcs')
-        return d.iata + '\n' + d.arcs.coordinates.length + ' flights';
-    });
-
-    airport.append('path').attr('class', 'airport-arc').attr('d', function (d) {
-        return path(d.arcs);
-    });
-
-    airport.append('path').data(voronoi.polygons(airports.map(projection))).attr('class', 'airport-cell').attr('d', function (d) {
-        return d ? 'M' + d.join('L') + 'Z' : null;
-    });
+// draw tracking dot at xy
+function drawDot(ctx, point, color, size) {
+  ctx.fillStyle = color;
+  ctx.strokeStyle = color;
+  // ctx.lineWidth = 1
+  ctx.beginPath();
+  ctx.arc(point.x, point.y, size, 0, Math.PI * 2, false);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
 }
 
-function typeAirport(d) {
-    d[0] = +d.longitude;
-    d[1] = +d.latitude;
-    d.arcs = { type: 'MultiLineString', coordinates: [] };
-    return d;
+function drawLine(ctx, end, controlPt, color) {
+  ctx.quadraticCurveTo(controlPt.x, controlPt.y, end.x, end.y); // curved lines
+  // ctx.lineTo(end.x, end.y) // straight lines
+  ctx.strokeStyle = '#000';
+  ctx.stroke();
 }
 
-function typeFlight(d) {
-    d.count = +d.count;
-    return d;
+function generatePoints(airportMap, routes, projection) {
+  var points = [];
+  routes.forEach(function (route, idx) {
+    var origin = airportMap[route[0]];
+    var dest = airportMap[route[1]];
+    if (origin && dest && origin.length && dest.length) {
+      var startXY = projection(origin) || [0, 0];
+      var endXY = projection(dest) || [0, 0];
+      var start = { x: startXY[0], y: startXY[1] };
+      var end = { x: endXY[0], y: endXY[1] };
+      points.push({ idx: idx, start: start, end: end, progress: 0 });
+    }
+  });
+  return points;
 }
 
-// https://bl.ocks.org/mbostock/7608400/e5974d9bba45bc9ab272d98dd7427567aafd55bc
+function getWaypoint(startPoint, endPoint, percent) {
+  var factor = percent / 100;
+  var x = startPoint.x + (endPoint.x - startPoint.x) * factor;
+  var y = startPoint.y + (endPoint.y - startPoint.y) * factor;
+  return { x: x, y: y };
+}
+
+// quadratic bezier: percent is 0-1
+function getQuadraticBezierXY(startPt, controlPt, endPt, percent) {
+  var x = Math.pow(1 - percent, 2) * startPt.x + 2 * (1 - percent) * percent * controlPt.x + Math.pow(percent, 2) * endPt.x;
+  var y = Math.pow(1 - percent, 2) * startPt.y + 2 * (1 - percent) * percent * controlPt.y + Math.pow(percent, 2) * endPt.y;
+  return { x: x, y: y };
+}
+
+exports.default = {
+  drawDot: drawDot,
+  drawLine: drawLine,
+  getQuadraticBezierXY: getQuadraticBezierXY,
+  getWaypoint: getWaypoint,
+  generatePoints: generatePoints
+};
 
 /***/ }),
 /* 12 */,
-/* 13 */,
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* global bb */
+
+function largeNumberFormat(dd) {
+  var sign = Math.sign(dd);
+  var d = Math.abs(dd);
+  if (d >= 1000 && d < 1000000) {
+    d = Math.round(d / 1000) + 'K';
+  }
+  if (d >= 1000000) {
+    d = Math.round(d / 1000000) + 'M';
+  }
+  if (sign === -1) {
+    return '-' + d;
+  }
+  return d;
+}
+
+var netIncome = {
+  bindto: '#bbchart2',
+  padding: {
+    left: 40,
+    right: 9,
+    bottom: 18
+  },
+  data: {
+    x: 'date',
+    url: './data/netIncomeTotal.csv',
+    type: 'bar',
+    labels: {
+      format: function format(d) {
+        return '$' + largeNumberFormat(d);
+      }
+    }
+  },
+  regions: [{
+    axis: 'y',
+    start: 0,
+    end: 50000000,
+    class: 'fill_red'
+  }],
+  axis: {
+    y: {
+      tick: {
+        format: function format(d) {
+          return '$' + largeNumberFormat(d);
+        }
+      },
+      label: '$USD'
+    },
+    rotated: false
+  },
+  legend: {
+    show: false
+  }
+};
+
+bb.generate(netIncome);
+
+/***/ }),
 /* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* global bb */
+
+var timeSeriesFromCSV = {
+  padding: {
+    left: 30,
+    right: 10,
+    bottom: 20
+  },
+  data: {
+    type: 'spline',
+    x: 'date',
+    url: './data/loadfactor.csv'
+  },
+  transition: {
+    duration: 900
+  },
+  point: {
+    show: false
+  },
+  axis: {
+    date: {
+      type: 'timeseries',
+      tick: { format: '%Y' }
+    }
+  },
+  bindto: '#bbchart1'
+};
+
+bb.generate(timeSeriesFromCSV);
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* global bb */
+
+var data = [['Alaska', -0.39], ['American', -1.35], ['Delta', -0.4], ['ExpressJet', -1.36], ['Frontier', -2.24], ['Hawaiian', -0.69], ['JetBlue', -0.6], ['SkyWest', -0.97], ['Southwest', -0.88], ['Spirit', -2.01], ['United', -1.05], ['VirginAmerica', -0.5]];
+
+var sorted = data.sort(function (a, b) {
+  return b[1] - a[1];
+});
+var columnData = sorted.map(function (item) {
+  return item[1] + 5;
+});
+columnData.unshift('Major US Airlines'); // add the column header
+var labels = sorted.map(function (item) {
+  return item[0];
+}); // create array of labels
+
+bb.generate({
+  data: {
+    columns: [columnData],
+    type: 'bar'
+  },
+  axis: {
+    y: {
+      tick: {
+        format: function format(d) {
+          return d.toFixed(1);
+        }
+      },
+      label: 'Score'
+    },
+    x: {
+      type: 'category',
+      categories: labels,
+      show: true
+    },
+    rotated: true
+  },
+  tooltip: {
+    show: true
+  },
+  bindto: '#bbchart4'
+});
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* global bb */
+
+var data = [['Southwest', 151740277], ['United', 99769952], ['American', 144189749], ['Delta', 142286020], ['JetBlue', 38241080], ['Alaska', 24370439], ['SkyWest', 31204880], ['Other', 299051986]];
+
+bb.generate({
+  data: {
+    columns: data,
+    type: 'pie'
+  },
+  pie: {
+    label: {
+      format: function format(value, ratio, id) {
+        return id;
+      }
+    }
+  },
+  bindto: '#bbchart3'
+});
+
+/***/ }),
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -534,195 +686,7 @@ bb.generate({
 });
 
 /***/ }),
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/* global bb */
-
-function largeNumberFormat(dd) {
-  var sign = Math.sign(dd);
-  var d = Math.abs(dd);
-  if (d >= 1000 && d < 1000000) {
-    d = Math.round(d / 1000) + 'K';
-  }
-  if (d >= 1000000) {
-    d = Math.round(d / 1000000) + 'M';
-  }
-  if (sign === -1) {
-    return '-' + d;
-  }
-  return d;
-}
-
-var netIncome = {
-  bindto: '#bbchart2',
-  padding: {
-    left: 40,
-    right: 9,
-    bottom: 18
-  },
-  data: {
-    x: 'date',
-    url: './data/netIncomeTotal.csv',
-    type: 'bar',
-    labels: {
-      format: function format(d) {
-        return '$' + largeNumberFormat(d);
-      }
-    }
-  },
-  regions: [{
-    axis: 'y',
-    start: 0,
-    end: 50000000,
-    class: 'fill_red'
-  }],
-  axis: {
-    y: {
-      tick: {
-        format: function format(d) {
-          return '$' + largeNumberFormat(d);
-        }
-      },
-      label: '$USD'
-    },
-    rotated: false
-  },
-  legend: {
-    show: false
-  }
-};
-
-bb.generate(netIncome);
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/* global bb */
-
-var timeSeriesFromCSV = {
-  padding: {
-    left: 30,
-    right: 10,
-    bottom: 20
-  },
-  data: {
-    type: 'spline',
-    x: 'date',
-    url: './data/loadfactor.csv'
-  },
-  transition: {
-    duration: 900
-  },
-  point: {
-    show: false
-  },
-  axis: {
-    date: {
-      type: 'timeseries',
-      tick: { format: '%Y' }
-    }
-  },
-  bindto: '#bbchart1'
-};
-
-bb.generate(timeSeriesFromCSV);
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/* global bb */
-
-var data = [['Alaska', -0.39], ['American', -1.35], ['Delta', -0.4], ['ExpressJet', -1.36], ['Frontier', -2.24], ['Hawaiian', -0.69], ['JetBlue', -0.6], ['SkyWest', -0.97], ['Southwest', -0.88], ['Spirit', -2.01], ['United', -1.05], ['VirginAmerica', -0.5]];
-
-var sorted = data.sort(function (a, b) {
-  return b[1] - a[1];
-});
-var columnData = sorted.map(function (item) {
-  return item[1] + 5;
-});
-columnData.unshift('Major US Airlines'); // add the column header
-var labels = sorted.map(function (item) {
-  return item[0];
-}); // create array of labels
-
-bb.generate({
-  data: {
-    columns: [columnData],
-    type: 'bar'
-  },
-  axis: {
-    y: {
-      tick: {
-        format: function format(d) {
-          return d.toFixed(1);
-        }
-      },
-      label: 'Score'
-    },
-    x: {
-      type: 'category',
-      categories: labels,
-      show: true
-    },
-    rotated: true
-  },
-  tooltip: {
-    show: true
-  },
-  bindto: '#bbchart4'
-});
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/* global bb */
-
-var data = [['Southwest', 151740277], ['United', 99769952], ['American', 144189749], ['Delta', 142286020], ['JetBlue', 38241080], ['Alaska', 24370439], ['SkyWest', 31204880], ['Other', 299051986]];
-
-bb.generate({
-  data: {
-    columns: data,
-    type: 'pie'
-  },
-  pie: {
-    label: {
-      format: function format(value, ratio, id) {
-        return id;
-      }
-    }
-  },
-  bindto: '#bbchart3'
-});
-
-/***/ }),
-/* 29 */,
-/* 30 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
