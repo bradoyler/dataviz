@@ -108,7 +108,7 @@ export default function (selector = '#flightmap') {
   }
 
   d3.queue()
-    .defer(d3.json, '//ori-nodeassets.nbcnews.com/cdnassets/projects/2017/08/airplane-mode/us.json')
-    .defer(d3.json, '//ori-nodeassets.nbcnews.com/cdnassets/projects/2017/08/airplane-mode/us-airports-major.topo.json')
+    .defer(d3.json, 'https://nodeassets.nbcnews.com/cdnassets/projects/2017/08/airplane-mode/us.json')
+    .defer(d3.json, 'https://nodeassets.nbcnews.com/cdnassets/projects/2017/08/airplane-mode/us-airports-major.topo.json')
     .await(ready)
 }
