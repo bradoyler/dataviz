@@ -1,5 +1,5 @@
 /* global d3, topojson, $ */
-import flightRoutes from './routes'
+import flightRoutes from './moreRoutes'
 import helpers from './canvasHelpers'
 
 export default function (selector = '#flightmap') {
@@ -59,10 +59,9 @@ export default function (selector = '#flightmap') {
       const { start, end, progress } = point
       var wayPoint = helpers.getWaypoint(start, end, 90)
       var controlPt = { x: wayPoint.x, y: wayPoint.y - curveFactor }
-      ctx.lineWidth = 0.5
       ctx.beginPath()
       ctx.moveTo(start.x, start.y)
-      // helpers.drawLine(ctx, end, controlPt, '#000')
+      helpers.drawLine(ctx, end, controlPt, '#000')
 
       // draw the tracking rectangle
       const percentFactor = progress / 100
@@ -70,7 +69,7 @@ export default function (selector = '#flightmap') {
       point.progress++
 
       if (progress < 101) {
-        helpers.drawDot(ctx, xy, 'grey', 0.4)
+        helpers.drawPlane(ctx, xy, 2)
       } else {
         point.progress = 0
       }
@@ -108,7 +107,7 @@ export default function (selector = '#flightmap') {
   }
 
   d3.queue()
-    .defer(d3.json, 'https://nodeassets.nbcnews.com/cdnassets/projects/2017/08/airplane-mode/us.json')
+    .defer(d3.json, 'https://nodeassets.nbcnews.com/cdnassets/projects/2017/08/airplane-mode/us-states.json')
     .defer(d3.json, 'https://nodeassets.nbcnews.com/cdnassets/projects/2017/08/airplane-mode/us-airports-major.topo.json')
     .await(ready)
 }

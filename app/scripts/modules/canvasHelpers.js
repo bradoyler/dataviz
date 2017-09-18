@@ -11,10 +11,24 @@ function drawDot (ctx, point, color, size) {
   ctx.stroke()
 }
 
+function drawPlane (ctx, point, size, img) {
+  ctx.fillStyle = '#CCC'
+  ctx.strokeStyle = '#000'
+  // ctx.lineWidth = 0.5
+  ctx.beginPath()
+  ctx.arc(point.x, point.y, size, 0, Math.PI * 2, false)
+  // var p = new window.Path2D('M10 10 h 80 v 80 h -80 Z')
+  ctx.closePath()
+  ctx.fill()
+  ctx.stroke()
+}
+
 function drawLine (ctx, end, controlPt, color) {
   ctx.quadraticCurveTo(controlPt.x, controlPt.y, end.x, end.y) // curved lines
   // ctx.lineTo(end.x, end.y) // straight lines
-  ctx.strokeStyle = '#000'
+  ctx.lineJoin = ctx.lineCap = 'round'
+  ctx.strokeStyle = '#ccc'
+  ctx.lineWidth = 0.5
   ctx.stroke()
 }
 
@@ -31,6 +45,7 @@ function generatePoints (airportMap, routes, projection) {
       points.push({ idx, start, end, progress: 0 })
     }
   })
+  console.log('points:', points.length)
   return points
 }
 
@@ -51,6 +66,7 @@ function getQuadraticBezierXY (startPt, controlPt, endPt, percent) {
 export default {
   drawDot,
   drawLine,
+  drawPlane,
   getQuadraticBezierXY,
   getWaypoint,
   generatePoints
