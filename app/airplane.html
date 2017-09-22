@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Data Viz</title>
+    <link href="./styles/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="./styles/vendor/billboard.min.css" rel="stylesheet">
+    <link href="./styles/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <h3>3000 US Flights (demo) </h3>
+      <p>This is 10% sample of all Domestic routes. Not flights.</p>
+      <div style="height: 500px; position: relative;" id="flightMapTest"></div>
+      <hr>
+      <h3>Cabin space - Boeing 737</h3>
+      <div class="">
+        <div style="margin: auto; float:left;" id="cabin1"><span> 144 Seats</span></div>
+        <div style="margin: auto;" id="cabin2"><span> 162 Seats</span></div>
+      </div>
+      <hr>
+      <!-- <h3>US Flights (demo) </h3>
+      <p>This is 10% sample of all Domestic routes. Not flights.</p>
+      <div id="flightmap"></div>
+      <div id="us-map"><svg width="940" height="500"></svg></div>
+      <hr> -->
+      <h2>Charts</h2>
+      <span>source: <a target="_blank" href="https://www.transtats.bts.gov/Data_Elements.aspx">
+              Bureau of Transportaion Statistics</a></span>
+      <h3>Passenger load factor (2002-2016)</h3>
+      <div id="bbchart1" style="max-width:940px; margin:auto;"></div>
+      <hr>
+      <h3>U.S. Airlines - profit/loss (2000-2016)</h3>
+      <div id="bbchart2" style="max-width:940px; margin:auto;"></div>
+      <hr>
+      <h3>U.S. Airline market share (2016 Passengers)</h3>
+      <div id="bbchart3" style="max-width:940px; margin:auto;"></div>
+      <hr>
+      <h3>U.S. Airline Quality Scores (2016)</h3>
+      <div id="bbchart4" style="max-width:940px; margin:auto;"></div>
+      <hr>
+      <h3>Flights by Carrier (2016)</h3>
+      <div id="bbchart5" style="max-width:940px; margin:auto;"></div>
+      <hr>
+      <h3>Passengers delayed (2002-2016)</h3>
+      <div id="bbchart-delays" style="max-width:940px; margin:auto;"></div>
+      <hr>
+      <h3>Load Factor</h3>
+      <div id="linechart0"><svg width="900"></svg></div>
+      <hr>
+      <!-- <h3>Passengers per Flight</h3>
+      <span>data provided by <a target="_blank" href="https://www.transtats.bts.gov/Data_Elements.aspx">
+        Bureau of Transportaion Statistics</a></span>
+      <div id="linechart"><svg width="900"></svg></div> -->
+
+    </div>
+    <script src="scripts/vendor.bundle.js"></script>
+    <script defer src="scripts/main.bundle.js"></script>
+  </body>
+</html>

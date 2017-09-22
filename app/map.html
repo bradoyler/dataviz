@@ -1,67 +1,22 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Map example</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js"></script>
-    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css" rel="stylesheet" />
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Map: US</title>
     <link href="./styles/vendor/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body { margin:0; padding:0; }
-        #map { width:700px; height:400px; }
-    </style>
-</head>
-<body>
-<div class="container">
-  <h2>Maps</h2>
-  <h3>Drawing a line with coordinates</h3>
-  <p>via <a href="https://www.mapbox.com/mapbox-gl-js/example/geojson-line/">geojson line example</a></p>
-  <div id="map"></div>  
-</div>
-
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhZG95bGVyIiwiYSI6ImNqN2J6dmJvMTB6MzAycW85dDZtMzNqYWIifQ.-vEpoZZYHFSc46ey_76Z_Q';
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/light-v9',
-    center: [ -7.4, 54.4],
-    zoom: 7
-});
-
-const layer1 = {
-    "id": "route",
-    "type": "line",
-    "source": {
-        "type": "geojson",
-        "data": {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                    [-7.1, 54.4],
-                    [-7.2, 54.3],
-                    [-7.3, 54.2]
-                ]
-            }
-        }
-    },
-    "layout": {
-        "line-join": "round",
-        "line-cap": "round"
-    },
-    "paint": {
-        "line-color": "#888",
-        "line-width": 8
-    }
-}
-
-map.on('load', function () {
-    map.addLayer(layer1);    
-});
-
-</script>
-
-</body>
+    <link href="./styles/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <h3>airports</h3>
+      <div id="us-map"><svg width="900" height="600"></svg></div>
+    </div>
+    <script src="scripts/vendor.bundle.js"></script>
+    <script defer src="scripts/modules/map.js"></script>
+  </body>
 </html>

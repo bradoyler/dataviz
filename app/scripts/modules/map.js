@@ -13,8 +13,8 @@ const path = d3.geoPath()
     .projection(projection)
     .pointRadius(2.5)
 
-const voronoi = d3.voronoi()
-    .extent([[-1, -1], [width + 1, height + 1]])
+// const voronoi = d3.voronoi()
+//     .extent([[-1, -1], [width + 1, height + 1]])
 
 d3.queue()
   .defer(d3.json, 'data/us.json')
@@ -48,32 +48,35 @@ function ready (error, us, airports, flights) {
       .attr('class', 'state-borders')
       .attr('d', path)
 
+  const coords = [{0: -99.68189722, 1: 32.41132}]
+
+  console.log(airports, 'airports >>')
   svg.append('path')
-      .datum({type: 'MultiPoint', coordinates: airports})
+      .datum({type: 'MultiPoint', coordinates: coords})
       .attr('class', 'airport-dots')
       .attr('d', path)
 
-  const airport = svg.selectAll('.airport')
-    .data(airports)
-    .enter().append('g')
-      .attr('class', 'airport')
-
-  airport.append('title')
-      .text(d => {
-        // console.log(d.arcs, 'arcs')
-        return d.iata + '\n' + d.arcs.coordinates.length + ' flights'
-      })
-
-  airport.append('path')
-      .attr('class', 'airport-arc')
-      .attr('d', d => path(d.arcs))
-
-  airport.append('path')
-      .data(voronoi.polygons(airports.map(projection)))
-      .attr('class', 'airport-cell')
-      .attr('d', (d) => {
-        return d ? 'M' + d.join('L') + 'Z' : null
-      })
+  // const airport = svg.selectAll('.airport')
+  //   .data(airports)
+  //   .enter().append('g')
+  //     .attr('class', 'airport')
+  //
+  // airport.append('title')
+  //     .text(d => {
+  //       // console.log(d.arcs, 'arcs')
+  //       return d.iata + '\n' + d.arcs.coordinates.length + ' flights'
+  //     })
+  //
+  // airport.append('path')
+  //     .attr('class', 'airport-arc')
+  //     .attr('d', d => path(d.arcs))
+  //
+  // airport.append('path')
+  //     .data(voronoi.polygons(airports.map(projection)))
+  //     .attr('class', 'airport-cell')
+  //     .attr('d', (d) => {
+  //       return d ? 'M' + d.join('L') + 'Z' : null
+  //     })
 }
 
 function typeAirport (d) {

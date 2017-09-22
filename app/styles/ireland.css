@@ -1,0 +1,13 @@
+body {
+  padding-top: 30px;
+}
+
+.borders {
+  fill: #ccc;
+  stroke: #fff;
+}
+
+.points {
+  fill: #000;
+  stroke: #000;
+}
