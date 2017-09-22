@@ -83,7 +83,7 @@ var height = width * 0.72; // aspect
 
 svg.attr('height', height);
 
-var proj = d3.geoAlbers().center([coords[0].long, coords[0].lat]).rotate([0, 0]).scale(22000).translate([width / 2, height / 2]);
+var proj = d3.geoAlbers().center([coords[0].long, coords[0].lat]).rotate([0, 0]).scale(35000).translate([width / 2, height / 2]);
 
 var path = d3.geoPath().projection(proj); // .pointRadius(2.5)
 
@@ -97,9 +97,9 @@ function ready(error, ireland) {
   g.selectAll('.borders').data(topojson.feature(ireland, ireland.objects.ne_10m_admin_0_sovereignty).features).enter().append('path').attr('class', 'borders').attr('d', path);
 
   drawMapPoints(g, proj, coords);
-  setTimeout(function () {
+  setInterval(function () {
     centerMap(g, proj, [coords[5].long, coords[5].lat]);
-  }, 5000);
+  }, 4000);
 }
 
 function drawMapPoints(svg, projection, coords) {
@@ -118,11 +118,22 @@ function drawMapPoints(svg, projection, coords) {
     return d.name;
   });
 }
-
+var Xpoint = -50;
+var Ypoint = -100;
 function centerMap(g, projection, latlong) {
-  var xy = [0, -250];
+  var x = Xpoint -= 1;
+  var y = Ypoint -= 100;
+  if (y < -900) {
+    Xpoint = -50;
+    Ypoint = -100;
+  }
+  var xy = [x, y];
   console.log(xy, '<< new xy');
-  g.transition().duration(1200).attr('transform', 'translate(' + xy + ') scale(0.7)').transition().duration(800).attr('transform', 'translate(' + xy + ') scale(1.3)');
+  g.transition()
+  //   .duration(1500)
+  //   .attr('transform', `scale(1)`)
+  // .transition()
+  .duration(1500).attr('transform', 'translate(' + xy + ')');
 }
 
 /***/ })

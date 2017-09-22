@@ -19,7 +19,7 @@ svg.attr('height', height)
 const proj = d3.geoAlbers()
 .center([coords[0].long, coords[0].lat])
 .rotate([0, 0])
-.scale(22000)
+.scale(35000)
 .translate([width / 2, height / 2])
 
 const path = d3.geoPath().projection(proj) // .pointRadius(2.5)
@@ -41,9 +41,9 @@ function ready (error, ireland) {
   .attr('d', path)
 
   drawMapPoints(g, proj, coords)
-  setTimeout(() => {
+  setInterval(() => {
     centerMap(g, proj, [coords[5].long, coords[5].lat])
-  }, 5000)
+  }, 4000)
 }
 
 function drawMapPoints (svg, projection, coords) {
@@ -65,14 +65,21 @@ function drawMapPoints (svg, projection, coords) {
     .append('title')
     .text((d) => d.name)
 }
-
+let Xpoint = -50
+let Ypoint = -100
 function centerMap (g, projection, latlong) {
-  const xy = [0, -250]
+  const x = Xpoint -= 1
+  const y = Ypoint -= 100
+  if (y < -900) {
+    Xpoint = -50
+    Ypoint = -100
+  }
+  const xy = [x, y]
   console.log(xy, '<< new xy')
   g.transition()
-      .duration(1200)
-      .attr('transform', `translate(${xy}) scale(0.7)`)
-    .transition()
-      .duration(800)
-      .attr('transform', `translate(${xy}) scale(1.3)`)
+    //   .duration(1500)
+    //   .attr('transform', `scale(1)`)
+    // .transition()
+      .duration(1500)
+      .attr('transform', `translate(${xy})`)
 }
