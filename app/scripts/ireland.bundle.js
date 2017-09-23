@@ -72,18 +72,21 @@
 
 
 /* global d3, topojson */
-var coords = [{ name: 'a', long: -7.5, lat: 55 }, { name: 'b', long: -7.49, lat: 54.9 }, { name: 'c', long: -7.48, lat: 54.7 }, { name: 'd', long: -7.47, lat: 54.5 }, { name: 'e', long: -7.46, lat: 54.45 }, { name: 'f', long: -7.45, lat: 54.44 }];
+
+var locationIndex = 0;
+
+var locations = [{ name: 'Londonderry, UK', lat: 54.9966120, long: -7.3085750 }, { name: 'The Peace Bridge, Derry BT48 7NN, UK', lat: 54.9979, long: -7.3159400 }, { name: 'Mullenan Rd, Londonderry BT48 9XW, UK', lat: 54.96788, long: -7.39015 }, { name: 'Fermanagh, United Kingdom', lat: 54.34383, long: -7.63187 }, { name: 'Sheridan John, DP1, Enniskillen BT92 1ED, UK', lat: 54.28067, long: -7.82704 }, { name: 'Ballindarragh, Enniskillen BT94 5NZ, UK', lat: 54.2705, long: -7.50278 }, { name: 'Newtownbutler, Enniskillen, UK', lat: 54.18207, long: -7.36064 }, { name: 'Belturbet, Kilconny, Co. Cavan, Ireland', lat: 54.10191, long: -7.44967 }];
 
 var svg = d3.select('#map').append('svg').attr('width', '100%');
 
 var _d3$select$node$getBo = d3.select('#map').node().getBoundingClientRect(),
     width = _d3$select$node$getBo.width;
 
-var height = width * 0.72; // aspect
+var height = width * 0.68;
 
 svg.attr('height', height);
 
-var proj = d3.geoAlbers().center([coords[0].long, coords[0].lat]).rotate([0, 0]).scale(35000).translate([width / 2, height / 2]);
+var proj = d3.geoAlbers().center([locations[0].long, locations[0].lat]).rotate([0, 0]).scale(35000).translate([width / 2, height / 2]);
 
 var path = d3.geoPath().projection(proj); // .pointRadius(2.5)
 
@@ -96,14 +99,22 @@ function ready(error, ireland) {
 
   g.selectAll('.borders').data(topojson.feature(ireland, ireland.objects.ne_10m_admin_0_sovereignty).features).enter().append('path').attr('class', 'borders').attr('d', path);
 
-  drawMapPoints(g, proj, coords);
+  drawMapPoints(g, proj, locations);
   setInterval(function () {
-    centerMap(g, proj, [coords[5].long, coords[5].lat]);
-  }, 4000);
+    if (locationIndex > locations.length - 1) {
+      locationIndex = 0;
+    }
+    centerMap(g, proj, locations[locationIndex]);
+    d3.select('#location').text(locations[locationIndex].name);
+    d3.select("[data-name='" + locations[locationIndex].name + "']").style('fill', 'blue').style('stroke', 'white');
+    locationIndex += 1;
+  }, 3000);
 }
 
 function drawMapPoints(svg, projection, coords) {
-  var circleGroup = svg.selectAll('circle').data(coords).enter().append('g').attr('transform', function (d) {
+  var circleGroup = svg.selectAll('circle').data(coords).enter().append('g').attr('data-name', function (d) {
+    return d.name;
+  }).attr('transform', function (d) {
     return 'translate(' + projection([d.long, d.lat]) + ')';
   }).attr('class', 'points');
 
@@ -118,22 +129,15 @@ function drawMapPoints(svg, projection, coords) {
     return d.name;
   });
 }
-var Xpoint = -50;
-var Ypoint = -100;
-function centerMap(g, projection, latlong) {
-  var x = Xpoint -= 1;
-  var y = Ypoint -= 100;
-  if (y < -900) {
-    Xpoint = -50;
-    Ypoint = -100;
-  }
-  var xy = [x, y];
-  console.log(xy, '<< new xy');
-  g.transition()
-  //   .duration(1500)
-  //   .attr('transform', `scale(1)`)
-  // .transition()
-  .duration(1500).attr('transform', 'translate(' + xy + ')');
+
+function centerMap(g, projection, location) {
+  var originXY = projection([locations[0].long, locations[0].lat]);
+  var XY = projection([location.long, location.lat]);
+  var dx = originXY[0] - XY[0];
+  var dy = originXY[1] - XY[1];
+  var xy = [dx, dy];
+  console.log('>>>', location);
+  g.transition().duration(1500).attr('transform', 'translate(' + xy + ')');
 }
 
 /***/ })

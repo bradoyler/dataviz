@@ -1,23 +1,28 @@
 /* global d3, topojson */
-const coords = [
-  { name: 'a', long: -7.5, lat: 55 },
-  { name: 'b', long: -7.49, lat: 54.9 },
-  { name: 'c', long: -7.48, lat: 54.7 },
-  { name: 'd', long: -7.47, lat: 54.5 },
-  { name: 'e', long: -7.46, lat: 54.45 },
-  { name: 'f', long: -7.45, lat: 54.44 }
+
+let locationIndex = 0
+
+const locations = [
+  { name: 'Londonderry, UK', lat: 54.9966120, long: -7.3085750 },
+  { name: 'The Peace Bridge, Derry BT48 7NN, UK', lat: 54.9979, long: -7.3159400 },
+  { name: 'Mullenan Rd, Londonderry BT48 9XW, UK', lat: 54.96788, long: -7.39015 },
+  { name: 'Fermanagh, United Kingdom', lat: 54.34383, long: -7.63187 },
+  { name: 'Sheridan John, DP1, Enniskillen BT92 1ED, UK', lat: 54.28067, long: -7.82704 },
+  { name: 'Ballindarragh, Enniskillen BT94 5NZ, UK', lat: 54.2705, long: -7.50278 },
+  { name: 'Newtownbutler, Enniskillen, UK', lat: 54.18207, long: -7.36064 },
+  { name: 'Belturbet, Kilconny, Co. Cavan, Ireland', lat: 54.10191, long: -7.44967 }
 ]
 
 const svg = d3.select('#map')
 .append('svg').attr('width', '100%')
 
 const { width } = d3.select('#map').node().getBoundingClientRect()
-const height = width * 0.72 // aspect
+const height = width * 0.68
 
 svg.attr('height', height)
 
 const proj = d3.geoAlbers()
-.center([coords[0].long, coords[0].lat])
+.center([locations[0].long, locations[0].lat])
 .rotate([0, 0])
 .scale(35000)
 .translate([width / 2, height / 2])
@@ -31,8 +36,7 @@ d3.queue()
 function ready (error, ireland) {
   if (error) throw error
 
-  const g = svg.append('g')
-    .style('stroke-width', '1.5px')
+  const g = svg.append('g').style('stroke-width', '1.5px')
 
   g.selectAll('.borders')
   .data(topojson.feature(ireland, ireland.objects.ne_10m_admin_0_sovereignty).features)
@@ -40,10 +44,17 @@ function ready (error, ireland) {
   .attr('class', 'borders')
   .attr('d', path)
 
-  drawMapPoints(g, proj, coords)
+  drawMapPoints(g, proj, locations)
   setInterval(() => {
-    centerMap(g, proj, [coords[5].long, coords[5].lat])
-  }, 4000)
+    if (locationIndex > (locations.length - 1)) {
+      locationIndex = 0
+    }
+    centerMap(g, proj, locations[locationIndex])
+    d3.select('#location').text(locations[locationIndex].name)
+    d3.select("[data-name='" + locations[locationIndex].name + "']")
+      .style('fill', 'blue').style('stroke', 'white')
+    locationIndex += 1
+  }, 3000)
 }
 
 function drawMapPoints (svg, projection, coords) {
@@ -51,6 +62,7 @@ function drawMapPoints (svg, projection, coords) {
   .data(coords)
   .enter()
   .append('g')
+  .attr('data-name', (d) => d.name)
   .attr('transform', function (d) {
     return 'translate(' + projection([d.long, d.lat]) + ')'
   })
@@ -65,21 +77,15 @@ function drawMapPoints (svg, projection, coords) {
     .append('title')
     .text((d) => d.name)
 }
-let Xpoint = -50
-let Ypoint = -100
-function centerMap (g, projection, latlong) {
-  const x = Xpoint -= 1
-  const y = Ypoint -= 100
-  if (y < -900) {
-    Xpoint = -50
-    Ypoint = -100
-  }
-  const xy = [x, y]
-  console.log(xy, '<< new xy')
+
+function centerMap (g, projection, location) {
+  const originXY = projection([locations[0].long, locations[0].lat])
+  const XY = projection([location.long, location.lat])
+  const dx = originXY[0] - XY[0]
+  const dy = originXY[1] - XY[1]
+  const xy = [dx, dy]
+  console.log('>>>', location)
   g.transition()
-    //   .duration(1500)
-    //   .attr('transform', `scale(1)`)
-    // .transition()
       .duration(1500)
       .attr('transform', `translate(${xy})`)
 }
