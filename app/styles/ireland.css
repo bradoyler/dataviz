@@ -11,3 +11,15 @@ body {
   fill: #000;
   stroke: #000;
 }
+
+.geoLine {
+ fill: none;
+ stroke: LightCoral;
+ stroke-width: 2.5;
+}
+
+.geoPoint {
+ fill: GoldenRod;
+ stroke: #000;
+ stroke-width: 1;
+}
