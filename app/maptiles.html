@@ -24,7 +24,14 @@
         <option value="terrain_nolabels">Stamen Terrain No Labels</option>
         <option value="toner">Stamen Toner</option>
         <option value="watercolor">Stamen Watercolor</option>
-        <!-- <option value="mapbox_earth">Mapbox Natural Earth</option> -->
+        <option value="google_terrain">Google Terrain</option>
+        <option value="google_satellite">Google Satellite</option>
+        <option value="google_hybrid">Google Hybrid</option>
+        <option value="esri_physical">ESRI Natural Earth</option>
+        <option value="esri_terrain">ESRI Terrain</option>
+        <option value="esri_natgeo">ESRI Nat Geo</option>
+        <option value="esri_topo">ESRI Topographic</option>
+        <option value="esri_imagery">ESRI Imagery</option>
         <option value="light_all">Carto Light All</option>
         <option value="dark_all">Carto Dark All</option>
         <option value="osm">Open Street Map</option>
@@ -72,7 +79,41 @@
     function tiles(type){
 
     	var types = {
-    		toner: function(d){ return "http://tile.stamen.com/toner/" + d[2] + "/" + d[0] + "/" + d[1] + ".png"; },
+        esri_imagery: (d) => {
+          return `https://servicesbeta.arcgisonline.com/arcgis/rest/services/Firefly_World_Imagery/MapServer/tile/${d[2]}/${d[1]}/${d[0]}.png`
+        },
+        esri_physical: (d) => {
+          const x = d[0], y = d[1] , z = d[2]
+          return `https://services.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/${z}/${y}/${x}.png`
+        },
+        esri_topo: (d) => {
+          const x = d[0], y = d[1] , z = d[2]
+          return `https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/${z}/${y}/${x}.png`
+        },
+        esri_terrain: (d) => {
+          const x = d[0], y = d[1] , z = d[2]
+          return `http://services.arcgisonline.com/arcgis/rest/services/World_Terrain_Base/MapServer/tile/${z}/${y}/${x}.png`
+        },
+        esri_natgeo: (d) => {
+          const x = d[0], y = d[1] , z = d[2]
+          return `https://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/${z}/${y}/${x}.png`
+        },
+        google_terrain: (d) => {
+          const x = d[0], y = d[1], z = d[2]
+          return `http://mt.google.com/vt/lyrs=t&x=${x}&y=${y}&z=${z}`
+        },
+        google_satellite: (d) => {
+          const x = d[0], y = d[1], z = d[2]
+          return `http://mt.google.com/vt/lyrs=s&x=${x}&y=${y}&z=${z}`
+        },
+        google_hybrid: (d) => {
+          const x = d[0], y = d[1], z = d[2]
+          return `http://mt.google.com/vt/lyrs=y&x=${x}&y=${y}&z=${z}`
+        },
+    		toner: (d) => {
+          const x = d[0], y = d[1], z = d[2]
+          return `http://tile.stamen.com/toner/${z}/${x}/${y}.png`;
+        },
     		terrain: function(d){ return "http://tile.stamen.com/terrain/" + d[2] + "/" + d[0] + "/" + d[1] + ".png"; },
         terrain_labels: function(d){ return "http://tile.stamen.com/terrain-labels/" + d[2] + "/" + d[0] + "/" + d[1] + ".png"; },
         terrain_nolabels: function(d){ return "http://tile.stamen.com/terrain-background/" + d[2] + "/" + d[0] + "/" + d[1] + ".png"; },
