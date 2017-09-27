@@ -1,0 +1,125 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "id": "Londonderry",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.308575,
+          54.996612
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "id": "Mullenan Rd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.39015,
+          54.96788
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "id": "Fermanagh",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.63187,
+          54.34383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "id": "Sheridan John, DP1, Enniskillen BT92 1ED, UK",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.82704,
+          54.28067
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "id": "Ballindarragh, Enniskillen BT94 5NZ, UK",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.50278,
+          54.2705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "id": "Newtownbutler",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.362213134765626,
+          54.181927519980945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "id": "Belturbet",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.44967,
+          54.10191
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "id": "Warrenpoint",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.2628936767578125,
+          54.10369688287697
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "id": "Parish Church",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.05020523071289,
+          54.74587920873868
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "id": "Dundalk",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.401081085205078,
+          54.00514576822198
+        ]
+      }
+    }
+  ]
+}

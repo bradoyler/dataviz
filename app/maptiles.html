@@ -38,6 +38,7 @@
         <option value="light_all">Carto Light All</option>
         <option value="dark_all">Carto Dark All</option>
         <option value="osm">Open Street Map</option>
+        <option value="mapnik">Mapnik</option>
       </select>
     </div>
     <div id="map"></div>
@@ -54,16 +55,16 @@
     var path = d3.geoPath().projection(projection);
 
     d3.queue()
-      .defer(d3.json, "data/ireland/topo.json")
+      .defer(d3.json, 'data/ireland/topo.json')
       .await(ready);
 
     function ready(error, map){
 
       centerZoom(map);
-      tiles($("select").val());
-      $("select").change(function(){
-      	tiles($(this).val());
-      });
+      tiles($('select').val());
+      $('select').change(function () {
+      	tiles($(this).val())
+      })
     }
 
     // This function "centers" and "zooms" a map by setting its projection's scale and translate according to its outer boundary
@@ -82,9 +83,11 @@
     function tiles(type){
 
     	var types = {
-        esri_imagery: (d) => {
-          return `https://servicesbeta.arcgisonline.com/arcgis/rest/services/Firefly_World_Imagery/MapServer/tile/${d[2]}/${d[1]}/${d[0]}.png`
+        mapnik: (d) => {
+          const x = d[0], y = d[1] , z = d[2]
+          return `http://www.toolserver.org/tiles/osm-no-labels/${z}/${x}/${y}.png`
         },
+        esri_imagery: (d) => `https://servicesbeta.arcgisonline.com/arcgis/rest/services/Firefly_World_Imagery/MapServer/tile/${d[2]}/${d[1]}/${d[0]}.png`,
         esri_physical: (d) => {
           const x = d[0], y = d[1] , z = d[2]
           return `https://services.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/${z}/${y}/${x}.png`
@@ -136,18 +139,17 @@
           .translate(projection([0, 0]))
           ();
 
-      var image = svg.selectAll("image")
+      var image = svg.selectAll('image')
           .data(tiles, function(i){ return i });
 
-     	image
-     			.attr("xlink:href", types[type])
+     	image.attr('xlink:href', types[type])
 
-     	image.enter().append("image")
-          .attr("xlink:href", types[type])
-          .attr("x", function(d) { return (d[0] + tiles.translate[0]) * tiles.scale; })
-          .attr("y", function(d) { return (d[1] + tiles.translate[1]) * tiles.scale; })
-          .attr("width", tiles.scale)
-          .attr("height", tiles.scale);
+     	image.enter().append('image')
+          .attr('xlink:href', types[type])
+          .attr('x', function(d) { return (d[0] + tiles.translate[0]) * tiles.scale; })
+          .attr('y', function(d) { return (d[1] + tiles.translate[1]) * tiles.scale; })
+          .attr('width', tiles.scale)
+          .attr('height', tiles.scale);
     }
     </script>
 
