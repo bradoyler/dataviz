@@ -5,13 +5,15 @@ import geojson from '../data/ireland/markers_lines.geo.json'
 
 // const locations = [
 //   { name: 'Londonderry, UK', lat: 54.9966120, long: -7.3085750 },
-//   { name: 'The Peace Bridge, Derry BT48 7NN, UK', lat: 54.9979, long: -7.3159400 },
+// //   { name: 'The Peace Bridge, Derry BT48 7NN, UK', lat: 54.9979, long: -7.3159400 },
 //   { name: 'Mullenan Rd, Londonderry BT48 9XW, UK', lat: 54.96788, long: -7.39015 },
 //   { name: 'Fermanagh, United Kingdom', lat: 54.34383, long: -7.63187 },
 //   { name: 'Sheridan John, DP1, Enniskillen BT92 1ED, UK', lat: 54.28067, long: -7.82704 },
 //   { name: 'Ballindarragh, Enniskillen BT94 5NZ, UK', lat: 54.2705, long: -7.50278 },
 //   { name: 'Newtownbutler, Enniskillen, UK', lat: 54.18207, long: -7.36064 },
 //   { name: 'Belturbet, Kilconny, Co. Cavan, Ireland', lat: 54.10191, long: -7.44967 }
+// Warrenpoint -6.2628936767578125, 54.10369688287697
+// Parish Church:-6.05020523071289, 54.74587920873868
 // ]
 
 const svg = d3.select('#map')

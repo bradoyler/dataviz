@@ -40,11 +40,8 @@
     var m = d3.marcon().width(window.innerWidth).height(window.innerHeight);
     m.render();
     var width = m.innerWidth(), height = m.innerHeight(), svg = m.svg();
-
     var projection = d3.geoMercator();
-
-    var path = d3.geoPath()
-        .projection(projection);
+    var path = d3.geoPath().projection(projection);
 
     d3.queue()
       .defer(d3.json, "data/ireland/topo.json")
@@ -57,32 +54,20 @@
       $("select").change(function(){
       	tiles($(this).val());
       });
-      // drawSubUnits(map);
     }
 
     // This function "centers" and "zooms" a map by setting its projection's scale and translate according to its outer boundary
     // It also returns the boundary itself in case you want to draw it to the map
     function centerZoom(data){
       var o = topojson.mesh(data, data.objects.ne_10m_admin_0_sovereignty, function(a, b) { return a === b; });
-
       projection.scale(0.03).translate([-0.13, -1.125]);
-
       var b = path.bounds(o),
           s = 1 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
           t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
 
       projection.scale(s).translate(t);
-
       return o;
     }
-
-    // function drawSubUnits(data){
-    //   svg.selectAll(".subunit")
-    //       .data(topojson.feature(data, data.objects.polygons).features)
-    //     .enter().append("path")
-    //       .attr("class", "subunit")
-    //       .attr("d", path);
-    // }
 
     function tiles(type){
 
