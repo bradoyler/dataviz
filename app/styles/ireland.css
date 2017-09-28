@@ -19,7 +19,7 @@ svg {
 .geoLine {
  fill: none;
  stroke: LightCoral;
- stroke-width: 2.5;
+ stroke-width: 5;
 }
 
 .geoPoint {

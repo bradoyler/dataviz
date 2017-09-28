@@ -125,7 +125,16 @@ function ready(error, ireland) {
   var lines = _markers_linesGeo2.default.features.filter(function (f) {
     return f.geometry.type === 'LineString';
   });
-  drawGeoJson(g, lines, 'geoLine');
+  var lineEls = drawGeoJson(g, lines, 'geoLine');
+  lineEls.each(function (d, i) {
+    if (i === 0) return; // skip 1st line
+    var $el = d3.select(this);
+    var totalLength = $el.node().getTotalLength();
+    $el.transition().duration(5000).attrTween('stroke-dasharray', function () {
+      return d3.interpolateString('0,' + totalLength, totalLength + ',' + totalLength);
+    });
+  });
+
   var els = drawGeoJson(g, _markersGeo2.default.features, 'geoPoint');
   els.on('mouseover', function (d, i) {
     els.attr('style', '');
