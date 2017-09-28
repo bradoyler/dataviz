@@ -59,17 +59,11 @@ function ready (error, ireland) {
     .attr('d', path)
 
   const lines = geojson.features.filter(f => f.geometry.type === 'LineString')
-  const lineEls = drawGeoJson(g, lines, 'geoLine')
-  lineEls
-    .each(function (d, i) {
-      if (i === 0) return // skip 1st line
-      const $el = d3.select(this)
-      const totalLength = $el.node().getTotalLength()
-      $el.transition().duration(5000)
-      .attrTween('stroke-dasharray', function () {
-        return d3.interpolateString('0,' + totalLength, totalLength + ',' + totalLength)
-      })
-    })
+  const linePath = drawGeoJson(g, lines, 'geoLine')
+  const totalLength = linePath.node().getTotalLength()
+  linePath
+    .transition().duration(5000)
+    .attrTween('stroke-dasharray', () => d3.interpolateString('0,' + totalLength, totalLength + ',' + totalLength))
 
   const els = drawGeoJson(g, geoMarkers.features, 'geoPoint')
   els.on('mouseover', (d, i) => {
