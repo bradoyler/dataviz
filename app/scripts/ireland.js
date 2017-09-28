@@ -2,17 +2,30 @@
 import geojson from '../data/ireland/markers_lines.geo.json'
 import geoMarkers from '../data/ireland/markers.geo.json'
 
-const svg = d3.select('#map').append('svg').attr('width', '100%')
-
 const { width } = d3.select('#map').node().getBoundingClientRect()
 const height = width * 0.6
+const svg = d3.select('#map').append('svg')
+  .attr('width', width)
+  .attr('height', height)
 
-svg.attr('height', height)
+const image = svg.append('image')
+      .attr('xlink:href', 'https://user-images.githubusercontent.com/425966/30931698-5c6b5888-a37a-11e7-980f-791406e2cb37.jpg')
+      .attr('width', 2000)
+      .attr('height', 2000)
+      .attr('x', -200)
+      .attr('y', -500)
+      .attr('transform', 'scale(' + width / 2000 + ')')
 
-const proj = d3.geoAlbers()
-.center([-7.5, 54])
+const g = svg.append('g')
+  .style('stroke-width', '1.5px')
+  .attr('transform', 'scale(' + width / 2000 + ')')
+
+const lat = -9.92 // left/right
+const long = 54.59 // up/down
+const proj = d3.geoMercator()
+.center([lat, long])
 .rotate([0, 0])
-.scale(15000)
+.scale(5700)
 .translate([width / 2, height / 2])
 
 const path = d3.geoPath().projection(proj)
@@ -30,16 +43,21 @@ function drawGeoJson (svg, features, className) {
     .attr('d', path)
 }
 
+window.addEventListener('resize', () => {
+  const { width } = d3.select('#map').node().getBoundingClientRect()
+  svg.attr('width', width) // .attr('height', width * 0.6)
+  image.attr('transform', 'scale(' + width / 2000 + ')')
+  g.attr('transform', 'scale(' + width / 2000 + ')')
+})
+
 function ready (error, ireland) {
   if (error) throw error
 
-  const g = svg.append('g').style('stroke-width', '1.5px')
-
   g.selectAll('.borders')
-  .data(topojson.feature(ireland, ireland.objects.ne_10m_admin_0_sovereignty).features)
-  .enter().append('path')
-  .attr('class', 'borders')
-  .attr('d', path)
+    .data(topojson.feature(ireland, ireland.objects.ne_10m_admin_0_sovereignty).features)
+    .enter().append('path')
+    .attr('class', 'borders')
+    .attr('d', path)
 
   const lines = geojson.features.filter(f => f.geometry.type === 'LineString')
   drawGeoJson(g, lines, 'geoLine')

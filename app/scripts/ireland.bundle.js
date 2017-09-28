@@ -75,23 +75,26 @@ var _markers_linesGeo = __webpack_require__(21);
 
 var _markers_linesGeo2 = _interopRequireDefault(_markers_linesGeo);
 
-var _markersGeo = __webpack_require__(32);
+var _markersGeo = __webpack_require__(22);
 
 var _markersGeo2 = _interopRequireDefault(_markersGeo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* global d3, topojson */
-var svg = d3.select('#map').append('svg').attr('width', '100%');
-
 var _d3$select$node$getBo = d3.select('#map').node().getBoundingClientRect(),
     width = _d3$select$node$getBo.width;
 
 var height = width * 0.6;
+var svg = d3.select('#map').append('svg').attr('width', width).attr('height', height);
 
-svg.attr('height', height);
+var image = svg.append('image').attr('xlink:href', 'https://user-images.githubusercontent.com/425966/30931698-5c6b5888-a37a-11e7-980f-791406e2cb37.jpg').attr('width', 2000).attr('height', 2000).attr('x', -200).attr('y', -500).attr('transform', 'scale(' + width / 2000 + ')');
 
-var proj = d3.geoAlbers().center([-7.5, 54]).rotate([0, 0]).scale(15000).translate([width / 2, height / 2]);
+var g = svg.append('g').style('stroke-width', '1.5px').attr('transform', 'scale(' + width / 2000 + ')');
+
+var lat = -9.92; // left/right
+var long = 54.59; // up/down
+var proj = d3.geoMercator().center([lat, long]).rotate([0, 0]).scale(5700).translate([width / 2, height / 2]);
 
 var path = d3.geoPath().projection(proj);
 
@@ -103,10 +106,17 @@ function drawGeoJson(svg, features, className) {
   }).attr('d', path);
 }
 
+window.addEventListener('resize', function () {
+  var _d3$select$node$getBo2 = d3.select('#map').node().getBoundingClientRect(),
+      width = _d3$select$node$getBo2.width;
+
+  svg.attr('width', width); // .attr('height', width * 0.6)
+  image.attr('transform', 'scale(' + width / 2000 + ')');
+  g.attr('transform', 'scale(' + width / 2000 + ')');
+});
+
 function ready(error, ireland) {
   if (error) throw error;
-
-  var g = svg.append('g').style('stroke-width', '1.5px');
 
   g.selectAll('.borders').data(topojson.feature(ireland, ireland.objects.ne_10m_admin_0_sovereignty).features).enter().append('path').attr('class', 'borders').attr('d', path);
 
@@ -132,7 +142,7 @@ module.exports = {"type":"FeatureCollection","features":[{"type":"Feature","prop
 
 /***/ }),
 
-/***/ 32:
+/***/ 22:
 /***/ (function(module, exports) {
 
 module.exports = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"id":"Londonderry","geometry":{"type":"Point","coordinates":[-7.308575,54.996612]}},{"type":"Feature","properties":{},"id":"Mullenan Rd","geometry":{"type":"Point","coordinates":[-7.39015,54.96788]}},{"type":"Feature","properties":{},"id":"Fermanagh","geometry":{"type":"Point","coordinates":[-7.63187,54.34383]}},{"type":"Feature","properties":{},"id":"Sheridan John, DP1, Enniskillen BT92 1ED, UK","geometry":{"type":"Point","coordinates":[-7.82704,54.28067]}},{"type":"Feature","properties":{},"id":"Ballindarragh, Enniskillen BT94 5NZ, UK","geometry":{"type":"Point","coordinates":[-7.50278,54.2705]}},{"type":"Feature","properties":{},"id":"Newtownbutler","geometry":{"type":"Point","coordinates":[-7.362213134765626,54.181927519980945]}},{"type":"Feature","properties":{},"id":"Belturbet","geometry":{"type":"Point","coordinates":[-7.44967,54.10191]}},{"type":"Feature","properties":{},"id":"Warrenpoint","geometry":{"type":"Point","coordinates":[-6.2628936767578125,54.10369688287697]}},{"type":"Feature","properties":{},"id":"Parish Church","geometry":{"type":"Point","coordinates":[-6.05020523071289,54.74587920873868]}},{"type":"Feature","properties":{},"id":"Dundalk","geometry":{"type":"Point","coordinates":[-6.401081085205078,54.00514576822198]}}]}

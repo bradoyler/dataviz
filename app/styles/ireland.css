@@ -1,9 +1,12 @@
 body {
   padding-top: 30px;
 }
+svg {
+  overflow: hidden;  
+}
 
 .borders {
-  fill: #ccc;
+  fill: transparent;
   stroke: #fff;
 }
 

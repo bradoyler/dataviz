@@ -5,9 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-      body {
-        margin: 0;
-      }
+      body { margin: 0;}
+
       #select {
       	position: absolute;
       	width: 100%;
@@ -71,7 +70,7 @@
     // It also returns the boundary itself in case you want to draw it to the map
     function centerZoom(data){
       var o = topojson.mesh(data, data.objects.ne_10m_admin_0_sovereignty, function(a, b) { return a === b; });
-      projection.scale(0.03).translate([-0.13, -1.125]);
+      projection.scale(0.03025).translate([-0.13, -1.125]);
       var b = path.bounds(o),
           s = 1 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
           t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
