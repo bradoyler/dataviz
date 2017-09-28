@@ -2,7 +2,7 @@
 import geojson from '../data/ireland/markers_lines.geo.json'
 import geoMarkers from '../data/ireland/markers.geo.json'
 
-const { width } = d3.select('#map').node().getBoundingClientRect()
+const {width} = d3.select('#map').node().getBoundingClientRect()
 const height = width * 0.6
 const svg = d3.select('#map').append('svg')
   .attr('width', width)
@@ -10,25 +10,24 @@ const svg = d3.select('#map').append('svg')
 
 const image = svg.append('image')
       .attr('xlink:href', 'https://user-images.githubusercontent.com/425966/30931698-5c6b5888-a37a-11e7-980f-791406e2cb37.jpg')
-      .attr('width', 2000)
+      .attr('width', 2500)
       .attr('height', 2000)
-      .attr('x', -200)
-      .attr('y', -500)
+      .attr('x', -612) // left/right
+      .attr('y', -565) // up/down
       .attr('transform', 'scale(' + width / 2000 + ')')
 
 const g = svg.append('g')
   .style('stroke-width', '1.5px')
   .attr('transform', 'scale(' + width / 2000 + ')')
 
-const lat = -9.92 // left/right
+const lat = -9 // left/right
 const long = 54.59 // up/down
 const proj = d3.geoMercator()
 .center([lat, long])
 .rotate([0, 0])
-.scale(5700)
-.translate([width / 2, height / 2])
+.scale(7100)
 
-const path = d3.geoPath().projection(proj)
+const path = d3.geoPath().projection(proj).pointRadius(8)
 
 d3.queue()
   .defer(d3.json, 'data/ireland/topo.json')
@@ -63,7 +62,6 @@ function ready (error, ireland) {
   drawGeoJson(g, lines, 'geoLine')
   const els = drawGeoJson(g, geoMarkers.features, 'geoPoint')
   els.on('mouseover', (d, i) => {
-    // console.log(d, i)
     els.attr('style', '')
     d3.select('[data-id="' + d.id + '"]').attr('style', 'fill: #000')
     d3.select('#msg').html('Location:' + d.id)

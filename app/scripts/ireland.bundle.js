@@ -88,15 +88,17 @@ var _d3$select$node$getBo = d3.select('#map').node().getBoundingClientRect(),
 var height = width * 0.6;
 var svg = d3.select('#map').append('svg').attr('width', width).attr('height', height);
 
-var image = svg.append('image').attr('xlink:href', 'https://user-images.githubusercontent.com/425966/30931698-5c6b5888-a37a-11e7-980f-791406e2cb37.jpg').attr('width', 2000).attr('height', 2000).attr('x', -200).attr('y', -500).attr('transform', 'scale(' + width / 2000 + ')');
+var image = svg.append('image').attr('xlink:href', 'https://user-images.githubusercontent.com/425966/30931698-5c6b5888-a37a-11e7-980f-791406e2cb37.jpg').attr('width', 2500).attr('height', 2000).attr('x', -612) // left/right
+.attr('y', -565) // up/down
+.attr('transform', 'scale(' + width / 2000 + ')');
 
 var g = svg.append('g').style('stroke-width', '1.5px').attr('transform', 'scale(' + width / 2000 + ')');
 
-var lat = -9.92; // left/right
+var lat = -9; // left/right
 var long = 54.59; // up/down
-var proj = d3.geoMercator().center([lat, long]).rotate([0, 0]).scale(5700).translate([width / 2, height / 2]);
+var proj = d3.geoMercator().center([lat, long]).rotate([0, 0]).scale(7100);
 
-var path = d3.geoPath().projection(proj);
+var path = d3.geoPath().projection(proj).pointRadius(8);
 
 d3.queue().defer(d3.json, 'data/ireland/topo.json').await(ready);
 
@@ -126,7 +128,6 @@ function ready(error, ireland) {
   drawGeoJson(g, lines, 'geoLine');
   var els = drawGeoJson(g, _markersGeo2.default.features, 'geoPoint');
   els.on('mouseover', function (d, i) {
-    // console.log(d, i)
     els.attr('style', '');
     d3.select('[data-id="' + d.id + '"]').attr('style', 'fill: #000');
     d3.select('#msg').html('Location:' + d.id);

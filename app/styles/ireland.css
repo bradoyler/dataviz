@@ -1,8 +1,9 @@
 body {
   padding-top: 30px;
 }
+
 svg {
-  overflow: hidden;  
+  overflow: hidden;
 }
 
 .borders {
