@@ -3,7 +3,9 @@
   "features": [
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Londonderry"
+      },
       "id": "Londonderry",
       "geometry": {
         "type": "Point",
@@ -15,7 +17,9 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Mullenan Road"
+      },
       "id": "Mullenan Rd",
       "geometry": {
         "type": "Point",
@@ -27,61 +31,67 @@
     },
     {
       "type": "Feature",
-      "properties": {},
-      "id": "Fermanagh",
+      "properties": {
+        "name": "88 Innishroosk Road, Currogs, Lisnaskea, BT92 0PS"
+      },
+      "id": "Lisnaskea",
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -7.63187,
-          54.34383
+          -7.4984588,
+          54.2521987
         ]
       }
     },
     {
       "type": "Feature",
-      "properties": {},
-      "id": "Sheridan John, DP1, Enniskillen BT92 1ED, UK",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -7.82704,
-          54.28067
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "id": "Ballindarragh, Enniskillen BT94 5NZ, UK",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -7.50278,
-          54.2705
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "id": "Newtownbutler",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -7.362213134765626,
-          54.181927519980945
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Staghall, Old School, Drumacon, Belturbet"
+      },
       "id": "Belturbet",
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -7.44967,
-          54.10191
+          -7.4680225,
+          54.0957871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Legnabrocky Farms BT92 1EW"
+      },
+      "id": "Legnabrocky Farms",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.8232173,
+          54.2543531
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "id": "Jonesborough",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.3587273,
+          54.1637592
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "id": "Newry River Memorial",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.3392627,
+          54.1722935
         ]
       }
     },
@@ -92,32 +102,22 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -6.2628936767578125,
-          54.10369688287697
+          -6.256386,
+          54.0999246
         ]
       }
     },
     {
       "type": "Feature",
-      "properties": {},
-      "id": "Parish Church",
+      "id": "Newtownbutler",
+      "properties": {
+        "name": "15 Galloon Road Derrydoon, Newtownbutler, BT92 8HN"
+      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -6.05020523071289,
-          54.74587920873868
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "id": "Dundalk",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -6.401081085205078,
-          54.00514576822198
+          -8.249196,
+          54.3227898
         ]
       }
     }
