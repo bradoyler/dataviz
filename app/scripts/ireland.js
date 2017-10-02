@@ -1,6 +1,5 @@
 /* global d3, topojson */
 import geojson from '../data/ireland/markers_lines.geo.json'
-import geoMarkers from '../data/ireland/markers.geo.json'
 
 const {width} = d3.select('#map').node().getBoundingClientRect()
 const height = width * 0.6
@@ -65,10 +64,11 @@ function ready (error, ireland) {
     .transition().duration(5000)
     .attrTween('stroke-dasharray', () => d3.interpolateString('0,' + totalLength, totalLength + ',' + totalLength))
 
-  const els = drawGeoJson(g, geoMarkers.features, 'geoPoint')
+  const markers = geojson.features.filter(f => f.geometry.type === 'Point')
+  const els = drawGeoJson(g, markers, 'geoPoint')
   els.on('mouseover', (d, i) => {
     els.attr('style', '')
     d3.select('[data-id="' + d.id + '"]').attr('style', 'fill: #000')
-    d3.select('#msg').html('Location:' + d.id)
+    d3.select('#msg').html('Location: ' + d.properties.name)
   })
 }

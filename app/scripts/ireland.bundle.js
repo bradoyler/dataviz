@@ -75,15 +75,11 @@ var _markers_linesGeo = __webpack_require__(21);
 
 var _markers_linesGeo2 = _interopRequireDefault(_markers_linesGeo);
 
-var _markersGeo = __webpack_require__(22);
-
-var _markersGeo2 = _interopRequireDefault(_markersGeo);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* global d3, topojson */
 var _d3$select$node$getBo = d3.select('#map').node().getBoundingClientRect(),
-    width = _d3$select$node$getBo.width;
+    width = _d3$select$node$getBo.width; /* global d3, topojson */
+
 
 var height = width * 0.6;
 var svg = d3.select('#map').append('svg').attr('width', width).attr('height', height);
@@ -131,11 +127,14 @@ function ready(error, ireland) {
     return d3.interpolateString('0,' + totalLength, totalLength + ',' + totalLength);
   });
 
-  var els = drawGeoJson(g, _markersGeo2.default.features, 'geoPoint');
+  var markers = _markers_linesGeo2.default.features.filter(function (f) {
+    return f.geometry.type === 'Point';
+  });
+  var els = drawGeoJson(g, markers, 'geoPoint');
   els.on('mouseover', function (d, i) {
     els.attr('style', '');
     d3.select('[data-id="' + d.id + '"]').attr('style', 'fill: #000');
-    d3.select('#msg').html('Location:' + d.id);
+    d3.select('#msg').html('Location: ' + d.properties.name);
   });
 }
 
@@ -144,14 +143,7 @@ function ready(error, ireland) {
 /***/ 21:
 /***/ (function(module, exports) {
 
-module.exports = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"name":"Londonderry"},"id":"Londonderry","geometry":{"type":"Point","coordinates":[-7.3203,54.9921]}},{"type":"Feature","properties":{"name":"Mullenan Road"},"id":"Mullenan Rd","geometry":{"type":"Point","coordinates":[-7.39015,54.96788]}},{"type":"Feature","properties":{"name":"88 Innishroosk Road, Currogs, Lisnaskea, BT92 0PS"},"id":"Lisnaskea","geometry":{"type":"Point","coordinates":[-7.4984588,54.2521987]}},{"type":"Feature","properties":{"name":"Staghall, Old School, Drumacon, Belturbet"},"id":"Belturbet","geometry":{"type":"Point","coordinates":[-7.4680225,54.0957871]}},{"type":"Feature","properties":{"name":"Legnabrocky Farms BT92 1EW"},"id":"Legnabrocky Farms","geometry":{"type":"Point","coordinates":[-7.8232173,54.2543531]}},{"type":"Feature","properties":{"name":"Jonesborough Parish Church, BT35 8SG"},"id":"Jonesborough","geometry":{"type":"Point","coordinates":[-6.3587273,54.1637592]}},{"type":"Feature","properties":{"name":"Newry River Memorial"},"id":"Newry River Memorial","geometry":{"type":"Point","coordinates":[-6.3392627,54.1722935]}},{"type":"Feature","properties":{"name":"Warrenpoint, BT34 3NB"},"id":"Warrenpoint","geometry":{"type":"Point","coordinates":[-6.256386,54.0999246]}},{"type":"Feature","id":"Newtownbutler","properties":{"name":"15 Galloon Road Derrydoon, Newtownbutler, BT92 8HN"},"geometry":{"type":"Point","coordinates":[-8.249196,54.3227898]}},{"type":"Feature","properties":{},"geometry":{"type":"LineString","coordinates":[[-7.320499420166016,54.99228985002795],[-7.334403991699219,54.987759521586526],[-7.348480224609374,54.98549416559231],[-7.36307144165039,54.975544784454684],[-7.375602722167968,54.97712108840263],[-7.3901939392089835,54.968155034807836],[-7.4919891357421875,54.92201227565568],[-7.465209960937499,54.866333938349605],[-7.5002288818359375,54.84815271989618],[-7.483749389648437,54.83114982073622],[-7.4102783203125,54.718275018302315],[-7.495422363281249,54.60866430797486],[-7.48443603515625,54.54657953840501],[-7.45147705078125,54.51470449573694],[-7.46795654296875,54.457266680933856],[-7.63275146484375,54.38535590680546],[-7.610778808593751,54.33734527614333],[-7.57232666015625,54.316523240258256],[-7.4981689453125,54.26361995010228],[-7.450103759765625,54.25479612755466],[-7.450790405273437,54.23513628109273],[-7.497482299804687,54.19819860290669],[-7.5263214111328125,54.15358850331774],[-7.464523315429687,54.09644955669078],[-7.581939697265625,54.20382168527194],[-7.69866943359375,54.25559837127025],[-7.704162597656249,54.270036089610755],[-7.766647338867188,54.25880719007081],[-7.808532714843749,54.270838036831144],[-7.822265625000001,54.2529910221332],[-7.724761962890626,54.21466404047702],[-7.598419189453125,54.20984556727275],[-7.522888183593749,54.189762544552885],[-7.439117431640624,54.23955053156177],[-7.400665283203125,54.2162700733],[-7.285308837890626,54.22911608763996],[-6.7291259765625,54.234734962180816],[-6.700286865234375,54.24877880222132],[-6.606903076171875,54.21024712817615],[-6.5732574462890625,54.190566052866075],[-6.508712768554687,54.17328718204277],[-6.4867401123046875,54.18293209328758],[-6.420135498046875,54.17489482345622],[-6.38031005859375,54.187351925903],[-6.3590240478515625,54.16484603944897],[-6.339111328124999,54.17891365362512],[-6.2903594970703125,54.11416300731598],[-6.255340576171874,54.10047600536083]]}}]}
-
-/***/ }),
-
-/***/ 22:
-/***/ (function(module, exports) {
-
-module.exports = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"name":"Londonderry"},"id":"Londonderry","geometry":{"type":"Point","coordinates":[-7.308575,54.996612]}},{"type":"Feature","properties":{"name":"Mullenan Road"},"id":"Mullenan Rd","geometry":{"type":"Point","coordinates":[-7.39015,54.96788]}},{"type":"Feature","properties":{"name":"88 Innishroosk Road, Currogs, Lisnaskea, BT92 0PS"},"id":"Lisnaskea","geometry":{"type":"Point","coordinates":[-7.4984588,54.2521987]}},{"type":"Feature","properties":{"name":"Staghall, Old School, Drumacon, Belturbet"},"id":"Belturbet","geometry":{"type":"Point","coordinates":[-7.4680225,54.0957871]}},{"type":"Feature","properties":{"name":"Legnabrocky Farms BT92 1EW"},"id":"Legnabrocky Farms","geometry":{"type":"Point","coordinates":[-7.8232173,54.2543531]}},{"type":"Feature","properties":{},"id":"Jonesborough","geometry":{"type":"Point","coordinates":[-6.3587273,54.1637592]}},{"type":"Feature","properties":{},"id":"Newry River Memorial","geometry":{"type":"Point","coordinates":[-6.3392627,54.1722935]}},{"type":"Feature","properties":{},"id":"Warrenpoint","geometry":{"type":"Point","coordinates":[-6.256386,54.0999246]}},{"type":"Feature","id":"Newtownbutler","properties":{"name":"15 Galloon Road Derrydoon, Newtownbutler, BT92 8HN"},"geometry":{"type":"Point","coordinates":[-8.249196,54.3227898]}}]}
+module.exports = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"name":"Londonderry"},"id":"Londonderry","geometry":{"type":"Point","coordinates":[-7.3203,54.9921]}},{"type":"Feature","properties":{"name":"Mullenan Road"},"id":"Mullenan Rd","geometry":{"type":"Point","coordinates":[-7.39015,54.96788]}},{"type":"Feature","properties":{"name":"88 Innishroosk Road, Currogs, Lisnaskea, BT92 0PS"},"id":"Lisnaskea","geometry":{"type":"Point","coordinates":[-7.4955934,54.2531331]}},{"type":"Feature","properties":{"name":"Staghall, Old School, Drumacon, Belturbet"},"id":"Belturbet","geometry":{"type":"Point","coordinates":[-7.4680225,54.0957871]}},{"type":"Feature","properties":{"name":"Legnabrocky Farms BT92 1EW"},"id":"Legnabrocky Farms","geometry":{"type":"Point","coordinates":[-7.8232173,54.2543531]}},{"type":"Feature","properties":{"name":"Jonesborough Parish Church, BT35 8SG"},"id":"Jonesborough","geometry":{"type":"Point","coordinates":[-6.3587273,54.1637592]}},{"type":"Feature","properties":{"name":"Newry River Memorial"},"id":"Newry River Memorial","geometry":{"type":"Point","coordinates":[-6.3392627,54.1722935]}},{"type":"Feature","properties":{"name":"Warrenpoint, BT34 3NB"},"id":"Warrenpoint","geometry":{"type":"Point","coordinates":[-6.256386,54.0999246]}},{"type":"Feature","id":"Newtownbutler","properties":{"name":"15 Galloon Road Derrydoon, Newtownbutler, BT92 8HN"},"geometry":{"type":"Point","coordinates":[-8.249196,54.3227898]}},{"type":"Feature","properties":{},"geometry":{"type":"LineString","coordinates":[[-7.320499420166016,54.99228985002795],[-7.334403991699219,54.987759521586526],[-7.348480224609374,54.98549416559231],[-7.36307144165039,54.975544784454684],[-7.375602722167968,54.97712108840263],[-7.3901939392089835,54.968155034807836],[-7.4919891357421875,54.92201227565568],[-7.465209960937499,54.866333938349605],[-7.5002288818359375,54.84815271989618],[-7.483749389648437,54.83114982073622],[-7.4102783203125,54.718275018302315],[-7.495422363281249,54.60866430797486],[-7.48443603515625,54.54657953840501],[-7.45147705078125,54.51470449573694],[-7.46795654296875,54.457266680933856],[-7.63275146484375,54.38535590680546],[-7.610778808593751,54.33734527614333],[-7.57232666015625,54.316523240258256],[-7.4981689453125,54.26361995010228],[-7.450103759765625,54.25479612755466],[-7.450790405273437,54.23513628109273],[-7.497482299804687,54.19819860290669],[-7.5263214111328125,54.15358850331774],[-7.464523315429687,54.09644955669078],[-7.581939697265625,54.20382168527194],[-7.69866943359375,54.25559837127025],[-7.704162597656249,54.270036089610755],[-7.766647338867188,54.25880719007081],[-7.808532714843749,54.270838036831144],[-7.822265625000001,54.2529910221332],[-7.724761962890626,54.21466404047702],[-7.598419189453125,54.20984556727275],[-7.522888183593749,54.189762544552885],[-7.439117431640624,54.23955053156177],[-7.400665283203125,54.2162700733],[-7.285308837890626,54.22911608763996],[-6.7291259765625,54.234734962180816],[-6.700286865234375,54.24877880222132],[-6.606903076171875,54.21024712817615],[-6.5732574462890625,54.190566052866075],[-6.508712768554687,54.17328718204277],[-6.4867401123046875,54.18293209328758],[-6.420135498046875,54.17489482345622],[-6.38031005859375,54.187351925903],[-6.3590240478515625,54.16484603944897],[-6.339111328124999,54.17891365362512],[-6.2903594970703125,54.11416300731598],[-6.255340576171874,54.10047600536083]]}}]}
 
 /***/ })
 

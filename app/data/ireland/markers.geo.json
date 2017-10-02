@@ -10,8 +10,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -7.308575,
-          54.996612
+          -7.3203,
+          54.9921
         ]
       }
     },
@@ -38,8 +38,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -7.4984588,
-          54.2521987
+          -7.4955934,
+          54.2531331
         ]
       }
     },
@@ -73,7 +73,9 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Jonesborough Parish Church, BT35 8SG"
+      },
       "id": "Jonesborough",
       "geometry": {
         "type": "Point",
@@ -85,7 +87,9 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Newry River Memorial"
+      },
       "id": "Newry River Memorial",
       "geometry": {
         "type": "Point",
@@ -97,7 +101,9 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Warrenpoint, BT34 3NB"
+      },
       "id": "Warrenpoint",
       "geometry": {
         "type": "Point",
