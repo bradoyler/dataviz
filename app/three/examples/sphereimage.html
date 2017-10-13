@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			body {
+				background-color: #ffffff;
+				margin: 0;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+
+		<script src="http://brangerbriz.net/labs/threejs_playGnd/js/three.min.js"></script>
+		<script src="http://brangerbriz.net/labs/threejs_playGnd/js/Detector.js"></script>
+		<script>
+
+			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+			var camera, scene, renderer;
+			var geometry, material, mesh;
+
+			function setup() {
+				var W = window.innerWidth, H = window.innerHeight;
+				renderer = new THREE.WebGLRenderer();
+				renderer.setSize( W, H );
+				document.body.appendChild( renderer.domElement );
+				camera = new THREE.PerspectiveCamera( 50, W/H, 1, 10000 );
+				camera.position.z = 500;
+				scene = new THREE.Scene();
+				map = THREE.ImageUtils.loadTexture('images/dead.jpg');
+        geometry = new THREE.SphereGeometry(150, 100, 93.43);
+        material = new THREE.MeshBasicMaterial({shading: THREE.SmoothShading, color: 0xdcdcdc, map: map});
+        mesh = new THREE.Mesh(geometry, material);
+        map.wrapS = map.wrapT = THREE.RepeatWrapping;
+        map.repeat.set( 1, 1 );
+        mesh.scale.x = mesh.scale.y = mesh.scale.z = 1.73;
+        mesh.position.y = 59.56;
+        mesh.rotation.x = 6;
+        mesh.rotation.y = 5.56;
+        mesh.rotation.z = 0.44;
+        mesh.castShadow = true;
+        scene.add(mesh);
+
+        bg = document.body.style;
+        bg.background = '#0c0c8e';
+
+        renderer.shadowMapEnabled = true;
+
+        scene.fog = new THREE.Fog( 0xf7f7f7, 1, 9000 );ambientLight = new THREE.AmbientLight( 0x000000 );
+        scene.add( ambientLight );
+
+        directionalLight = new THREE.DirectionalLight(0x40527d, 0.1);
+        directionalLight.position.set( 0, 3.77, 3.27 );
+        directionalLight.castShadow = true;
+        scene.add( directionalLight );
+
+        spotLight2 = new THREE.SpotLight( 0x591111, 5.51 );
+        spotLight2.position.set( 100, 1000, 100 );
+        spotLight2.castShadow = true;
+        spotLight2.shadowDarkness = 0.46;
+        scene.add( spotLight2 );
+			}
+
+			function draw() {
+				requestAnimationFrame(draw);
+				mesh.rotation.x = Date.now() * 0.0004;
+				mesh.rotation.y = Date.now() * 0.0001;
+				mesh.rotation.z = Date.now() * 0.002
+				renderer.render( scene, camera );
+			}
+
+			setup();
+			draw();
+
+		</script>
+
+	</body>
+</html>
