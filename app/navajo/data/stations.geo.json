@@ -1,0 +1,5255 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1131,
+        "Name": "Streeter Station",
+        "GrossLoadMWh": 998.36
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.4394,
+          42.5267
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2378,
+        "Name": "B L England",
+        "GrossLoadMWh": 16469.91
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.6339,
+          39.29
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2403,
+        "Name": "Hudson Generating Station",
+        "GrossLoadMWh": 19902.32
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.0719,
+          40.7478
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50611,
+        "Name": "WPS Westwood Generation, LLC",
+        "GrossLoadMWh": 20682.87
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.45,
+          40.6191
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 55749,
+        "Name": "Hardin Generating Station",
+        "GrossLoadMWh": 25803.81
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -107.6,
+          45.7578
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1040,
+        "Name": "Whitewater Valley",
+        "GrossLoadMWh": 30041.55
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.8953,
+          39.8028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6124,
+        "Name": "McIntosh (6124)",
+        "GrossLoadMWh": 32903
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.1683,
+          32.3558
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1740,
+        "Name": "River Rouge",
+        "GrossLoadMWh": 44256.59
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1131,
+          42.2733
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3809,
+        "Name": "Yorktown Power Station",
+        "GrossLoadMWh": 83695.52
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.4611,
+          37.2144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6061,
+        "Name": "R D Morrow Senior Generating Plant",
+        "GrossLoadMWh": 94036.48
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.3933,
+          31.2194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 527,
+        "Name": "Nucla",
+        "GrossLoadMWh": 101247.09
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.5083,
+          38.2387
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 568,
+        "Name": "Bridgeport Harbor Station",
+        "GrossLoadMWh": 120144.9
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.1843,
+          41.1706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2527,
+        "Name": "Greenidge Generation LLC",
+        "GrossLoadMWh": 122534.13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9483,
+          42.6789
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50039,
+        "Name": "Northeastern Power Company",
+        "GrossLoadMWh": 135447.72
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9936,
+          40.8737
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3982,
+        "Name": "Bay Front",
+        "GrossLoadMWh": 136020.55
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.9017,
+          46.5869
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 52007,
+        "Name": "Mecklenburg Power Station",
+        "GrossLoadMWh": 148017.27
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.53,
+          36.6009
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2364,
+        "Name": "Merrimack",
+        "GrossLoadMWh": 165206.33
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4692,
+          43.1411
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1554,
+        "Name": "Herbert A Wagner",
+        "GrossLoadMWh": 176579.99
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.5268,
+          39.1781
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1843,
+        "Name": "Shiras",
+        "GrossLoadMWh": 184931.68
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.3917,
+          46.5314
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1943,
+        "Name": "Hoot Lake",
+        "GrossLoadMWh": 191214
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.0428,
+          46.29
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10603,
+        "Name": "Ebensburg Power Company",
+        "GrossLoadMWh": 196654.08
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.7472,
+          40.455
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1572,
+        "Name": "Dickerson",
+        "GrossLoadMWh": 198049.91
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.4644,
+          39.2086
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1552,
+        "Name": "C P Crane",
+        "GrossLoadMWh": 200889.88
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.365,
+          39.3269
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1008,
+        "Name": "R Gallagher",
+        "GrossLoadMWh": 205071.65
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.8381,
+          38.2636
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50888,
+        "Name": "Northampton Generating Plant",
+        "GrossLoadMWh": 213397.28
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4792,
+          40.6917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6089,
+        "Name": "Lewis & Clark",
+        "GrossLoadMWh": 231889.38
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.1569,
+          47.6788
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2535,
+        "Name": "Cayuga Operating Company, LLC",
+        "GrossLoadMWh": 234230.52
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.6336,
+          42.6028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 477,
+        "Name": "Valmont",
+        "GrossLoadMWh": 234266.59
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.202,
+          40.0195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10343,
+        "Name": "Mt. Carmel Cogeneration",
+        "GrossLoadMWh": 241776.64
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.4539,
+          40.8092
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6082,
+        "Name": "Somerset Operating Company  (Kintigh)",
+        "GrossLoadMWh": 242467.21
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6039,
+          43.3561
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1825,
+        "Name": "J B Sims",
+        "GrossLoadMWh": 261269.07
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.2342,
+          43.0722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1252,
+        "Name": "Tecumseh Energy Center",
+        "GrossLoadMWh": 264403.3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.5669,
+          39.0522
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2367,
+        "Name": "Schiller",
+        "GrossLoadMWh": 265364.63
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7842,
+          43.0978
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2324,
+        "Name": "Reid Gardner",
+        "GrossLoadMWh": 292771.71
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.6364,
+          36.6531
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 59,
+        "Name": "Platte",
+        "GrossLoadMWh": 304317.19
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.3481,
+          40.8538
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2240,
+        "Name": "Lon D Wright Power Plant",
+        "GrossLoadMWh": 307302.51
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.4619,
+          41.4275
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 594,
+        "Name": "Indian River",
+        "GrossLoadMWh": 319933.83
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.2341,
+          38.5857
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1831,
+        "Name": "Eckert Station",
+        "GrossLoadMWh": 320718.98
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.5586,
+          42.7183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10849,
+        "Name": "Northshore Mining Silver Bay Power",
+        "GrossLoadMWh": 324752.54
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.26,
+          47.286
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 54304,
+        "Name": "Birchwood Power Facility",
+        "GrossLoadMWh": 336539.27
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.3147,
+          38.2667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2790,
+        "Name": "R M Heskett",
+        "GrossLoadMWh": 348175.28
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -100.8839,
+          46.8669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50951,
+        "Name": "Sunnyside Cogeneration Associates",
+        "GrossLoadMWh": 352700.66
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.3917,
+          39.5472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2080,
+        "Name": "Montrose",
+        "GrossLoadMWh": 365120.12
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.9331,
+          38.3108
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 663,
+        "Name": "Deerhaven",
+        "GrossLoadMWh": 383828.5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.3883,
+          29.7586
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1384,
+        "Name": "John S. Cooper",
+        "GrossLoadMWh": 396533.18
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.5917,
+          37
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 4072,
+        "Name": "Pulliam",
+        "GrossLoadMWh": 399591.39
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0083,
+          44.5397
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 7504,
+        "Name": "Neil Simpson II",
+        "GrossLoadMWh": 417323.96
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.3841,
+          44.2853
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2836,
+        "Name": "Avon Lake Power Plant",
+        "GrossLoadMWh": 424554.1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.05,
+          41.5042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1571,
+        "Name": "Chalk Point",
+        "GrossLoadMWh": 441403.11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.6861,
+          38.5444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 165,
+        "Name": "Grand River Dam Authority",
+        "GrossLoadMWh": 447531.52
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.2889,
+          36.1906
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 884,
+        "Name": "Will County",
+        "GrossLoadMWh": 454018
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0626,
+          41.6334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 708,
+        "Name": "Hammond",
+        "GrossLoadMWh": 592013.75
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.3456,
+          34.2533
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 55479,
+        "Name": "Wygen I",
+        "GrossLoadMWh": 593764.07
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.3843,
+          44.2862
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 56319,
+        "Name": "Wygen II",
+        "GrossLoadMWh": 619234.03
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.3815,
+          44.2911
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2277,
+        "Name": "Sheldon",
+        "GrossLoadMWh": 626261.54
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7842,
+          40.5589
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 56596,
+        "Name": "Wygen III",
+        "GrossLoadMWh": 682508.49
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.3795,
+          44.2892
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1167,
+        "Name": "Muscatine",
+        "GrossLoadMWh": 715764.73
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.0569,
+          41.3917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10143,
+        "Name": "Colver Power Project",
+        "GrossLoadMWh": 729792.56
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.8,
+          40.55
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 8224,
+        "Name": "North Valmy",
+        "GrossLoadMWh": 757529.16
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1542,
+          40.8831
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 108,
+        "Name": "Holcomb",
+        "GrossLoadMWh": 773231.74
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -100.9725,
+          37.9306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1047,
+        "Name": "Lansing",
+        "GrossLoadMWh": 799871.45
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.1672,
+          43.3359
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10678,
+        "Name": "AES Warrior Run",
+        "GrossLoadMWh": 805778.3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.7456,
+          39.5944
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 87,
+        "Name": "Escalante ",
+        "GrossLoadMWh": 813570.79
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.082,
+          35.4159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 56224,
+        "Name": "TS Power Plant",
+        "GrossLoadMWh": 823470.77
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.5297,
+          40.7458
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1832,
+        "Name": "Erickson",
+        "GrossLoadMWh": 836961.79
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.6572,
+          42.6919
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2076,
+        "Name": "Asbury",
+        "GrossLoadMWh": 875923.59
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.5913,
+          37.3596
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1104,
+        "Name": "Burlington (IA)",
+        "GrossLoadMWh": 884590.97
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.1168,
+          40.7412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 997,
+        "Name": "Michigan City Generating Station",
+        "GrossLoadMWh": 886327.58
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.9097,
+          41.7203
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2104,
+        "Name": "Meramec",
+        "GrossLoadMWh": 909915.61
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.3358,
+          38.4017
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6064,
+        "Name": "Nearman Creek",
+        "GrossLoadMWh": 923225.99
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.6958,
+          39.1714
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6768,
+        "Name": "Sikeston",
+        "GrossLoadMWh": 928549.56
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.6209,
+          36.8791
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 492,
+        "Name": "Martin Drake",
+        "GrossLoadMWh": 973031.58
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8331,
+          38.8244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2718,
+        "Name": "G G Allen",
+        "GrossLoadMWh": 992755.13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.0122,
+          35.1897
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 8226,
+        "Name": "Cheswick",
+        "GrossLoadMWh": 1007656.49
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7906,
+          40.5383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 8219,
+        "Name": "Ray D Nixon",
+        "GrossLoadMWh": 1023543.37
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.7056,
+          38.6306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2706,
+        "Name": "Asheville",
+        "GrossLoadMWh": 1044209.78
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.5431,
+          35.4714
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 676,
+        "Name": "C D McIntosh Jr Power Plant",
+        "GrossLoadMWh": 1085975.63
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.9256,
+          28.0809
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 60,
+        "Name": "Gerald Whelan Energy Center",
+        "GrossLoadMWh": 1136136.65
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.3106,
+          40.5806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1355,
+        "Name": "E W Brown",
+        "GrossLoadMWh": 1140905.81
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.7139,
+          37.7889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 4143,
+        "Name": "Genoa",
+        "GrossLoadMWh": 1144008.83
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.2333,
+          43.5592
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6249,
+        "Name": "Winyah",
+        "GrossLoadMWh": 1201847.58
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3611,
+          33.3303
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1382,
+        "Name": "HMP&L Station 2",
+        "GrossLoadMWh": 1231811.75
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.5028,
+          37.6472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2094,
+        "Name": "Sibley",
+        "GrossLoadMWh": 1233281.31
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.1861,
+          39.1778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 56,
+        "Name": "Charles R Lowman",
+        "GrossLoadMWh": 1246809.71
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9106,
+          31.4858
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1619,
+        "Name": "Brayton Point",
+        "GrossLoadMWh": 1267037
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1914,
+          41.7125
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1769,
+        "Name": "Presque Isle",
+        "GrossLoadMWh": 1269555.6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.395,
+          46.5789
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 4271,
+        "Name": "J P Madgett",
+        "GrossLoadMWh": 1286360.32
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.9126,
+          44.3026
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 469,
+        "Name": "Cherokee",
+        "GrossLoadMWh": 1328871.8
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9648,
+          39.8078
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 667,
+        "Name": "Northside",
+        "GrossLoadMWh": 1337049.43
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.5525,
+          30.4172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 892,
+        "Name": "Hennepin Power Station",
+        "GrossLoadMWh": 1364094.11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.3136,
+          41.3017
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 976,
+        "Name": "Marion",
+        "GrossLoadMWh": 1376538.69
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.955,
+          37.6206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 995,
+        "Name": "Bailly Generating Station",
+        "GrossLoadMWh": 1402161.84
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.1225,
+          41.6433
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 127,
+        "Name": "Oklaunion Power Station",
+        "GrossLoadMWh": 1459096.23
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.1753,
+          34.0825
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6016,
+        "Name": "Duck Creek",
+        "GrossLoadMWh": 1460452.08
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.9841,
+          40.4663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 160,
+        "Name": "Apache Station",
+        "GrossLoadMWh": 1471917.58
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.8931,
+          32.0619
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3406,
+        "Name": "Johnsonville",
+        "GrossLoadMWh": 1478963.48
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9861,
+          36.0278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1012,
+        "Name": "F B Culley Generating Station",
+        "GrossLoadMWh": 1487334.66
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.3267,
+          37.91
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1374,
+        "Name": "Elmer Smith",
+        "GrossLoadMWh": 1536195.08
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.0597,
+          37.7958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2291,
+        "Name": "North Omaha Station",
+        "GrossLoadMWh": 1575746.88
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9458,
+          41.3297
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6106,
+        "Name": "Boardman",
+        "GrossLoadMWh": 1603949.19
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.8056,
+          45.6933
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6195,
+        "Name": "John Twitty Energy Center",
+        "GrossLoadMWh": 1634968.31
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3892,
+          37.1519
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6098,
+        "Name": "Big Stone",
+        "GrossLoadMWh": 1653632.39
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.5103,
+          45.3047
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6137,
+        "Name": "A B Brown Generating Station",
+        "GrossLoadMWh": 1668708.01
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.715,
+          37.9053
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 883,
+        "Name": "Waukegan",
+        "GrossLoadMWh": 1681144
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8133,
+          42.3833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6136,
+        "Name": "Gibbons Creek Steam Electric Station",
+        "GrossLoadMWh": 1698488.74
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.0778,
+          30.6167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6761,
+        "Name": "Rawhide Energy Station",
+        "GrossLoadMWh": 1796369.06
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0206,
+          40.8611
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3149,
+        "Name": "Montour, LLC",
+        "GrossLoadMWh": 1824010.98
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.6672,
+          41.0714
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6639,
+        "Name": "R D Green",
+        "GrossLoadMWh": 1923476
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.5006,
+          37.6467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 7210,
+        "Name": "Cope Station",
+        "GrossLoadMWh": 1926985.51
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.03,
+          33.3642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1091,
+        "Name": "George Neal North",
+        "GrossLoadMWh": 1927906.75
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.3797,
+          42.3251
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6823,
+        "Name": "D B Wilson",
+        "GrossLoadMWh": 1978506
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.0803,
+          37.4497
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6073,
+        "Name": "Daniel Electric Generating Plant",
+        "GrossLoadMWh": 1981945.5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.5574,
+          30.5335
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 7030,
+        "Name": "Twin Oaks",
+        "GrossLoadMWh": 1995636.76
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.6965,
+          31.0932
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1393,
+        "Name": "R S Nelson",
+        "GrossLoadMWh": 2024074.35
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2917,
+          30.2861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6183,
+        "Name": "San Miguel",
+        "GrossLoadMWh": 2040036.48
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.4781,
+          28.7044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 8222,
+        "Name": "Coyote",
+        "GrossLoadMWh": 2052492.59
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.8139,
+          47.2217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1250,
+        "Name": "Lawrence Energy Center",
+        "GrossLoadMWh": 2057951.89
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.2692,
+          39.0072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6772,
+        "Name": "Hugo",
+        "GrossLoadMWh": 2078434.3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.3206,
+          34.0158
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1573,
+        "Name": "Morgantown",
+        "GrossLoadMWh": 2098479.42
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9767,
+          38.3592
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 891,
+        "Name": "Havana",
+        "GrossLoadMWh": 2129159.83
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.0775,
+          40.2797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6138,
+        "Name": "Flint Creek Power Plant",
+        "GrossLoadMWh": 2137732.03
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.5241,
+          36.2561
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6705,
+        "Name": "Alcoa Allowance Management Inc",
+        "GrossLoadMWh": 2165188.28
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.3328,
+          37.915
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6101,
+        "Name": "Wyodak",
+        "GrossLoadMWh": 2166150.19
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.3847,
+          44.2886
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 51,
+        "Name": "Dolet Hills Power Station",
+        "GrossLoadMWh": 2167932.07
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.5692,
+          32.0306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 963,
+        "Name": "Dallman",
+        "GrossLoadMWh": 2192355.56
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.6011,
+          39.7539
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2712,
+        "Name": "Roxboro",
+        "GrossLoadMWh": 2200886.93
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.0731,
+          36.4833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 7343,
+        "Name": "George Neal South",
+        "GrossLoadMWh": 2211037.5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.3622,
+          42.3022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2963,
+        "Name": "Northeastern",
+        "GrossLoadMWh": 2238476.38
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.7008,
+          36.4317
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1915,
+        "Name": "Allen S King",
+        "GrossLoadMWh": 2261635.29
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.7786,
+          45.03
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 525,
+        "Name": "Hayden",
+        "GrossLoadMWh": 2303511.52
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -107.185,
+          40.4856
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2079,
+        "Name": "Hawthorn",
+        "GrossLoadMWh": 2357125.82
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.4778,
+          39.1306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1702,
+        "Name": "Dan E Karn",
+        "GrossLoadMWh": 2447025.09
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.8431,
+          43.6425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3396,
+        "Name": "Bull Run",
+        "GrossLoadMWh": 2469812.69
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.1567,
+          36.0211
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 56456,
+        "Name": "Plum Point Energy Station",
+        "GrossLoadMWh": 2496511.83
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.9469,
+          35.6626
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3140,
+        "Name": "Brunner Island, LLC",
+        "GrossLoadMWh": 2500422.48
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.6962,
+          40.097
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6017,
+        "Name": "Newton",
+        "GrossLoadMWh": 2532041.61
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2778,
+          38.9361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1004,
+        "Name": "Edwardsport Generating Station",
+        "GrossLoadMWh": 2580733.2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.2472,
+          38.8067
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3,
+        "Name": "Barry",
+        "GrossLoadMWh": 2632097.75
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0103,
+          31.0069
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 7790,
+        "Name": "Bonanza",
+        "GrossLoadMWh": 2654166
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.2844,
+          40.0864
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 856,
+        "Name": "E D Edwards",
+        "GrossLoadMWh": 2663702.47
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.6631,
+          40.5958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 56609,
+        "Name": "Dry Fork Station",
+        "GrossLoadMWh": 2693384.68
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.4591,
+          44.3901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 641,
+        "Name": "Crist Electric Generating Plant",
+        "GrossLoadMWh": 2714853
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.2289,
+          30.5661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1743,
+        "Name": "St. Clair",
+        "GrossLoadMWh": 2756516.4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4719,
+          42.7642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 113,
+        "Name": "Cholla",
+        "GrossLoadMWh": 2760393.52
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.3033,
+          34.9394
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6095,
+        "Name": "Sooner",
+        "GrossLoadMWh": 2780060.27
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0527,
+          36.4537
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3298,
+        "Name": "Williams",
+        "GrossLoadMWh": 2839902.25
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.9285,
+          33.0163
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 7213,
+        "Name": "Clover Power Station",
+        "GrossLoadMWh": 2849289.25
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.7046,
+          36.8692
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1378,
+        "Name": "Paradise",
+        "GrossLoadMWh": 2896748.52
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.9783,
+          37.2608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6248,
+        "Name": "Pawnee",
+        "GrossLoadMWh": 2916054.64
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.6803,
+          40.2217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6181,
+        "Name": "J T Deely",
+        "GrossLoadMWh": 2918868
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.3228,
+          29.3072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6178,
+        "Name": "Coleto Creek",
+        "GrossLoadMWh": 2939741.76
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.2142,
+          28.7128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3393,
+        "Name": "Allen",
+        "GrossLoadMWh": 3034568.67
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.1439,
+          35.0742
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3297,
+        "Name": "Wateree",
+        "GrossLoadMWh": 3040625.15
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.6218,
+          33.8264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6254,
+        "Name": "Ottumwa",
+        "GrossLoadMWh": 3046097.5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.5556,
+          41.0961
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6052,
+        "Name": "Wansley (6052)",
+        "GrossLoadMWh": 3079633.5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.0345,
+          33.4124
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3797,
+        "Name": "Chesterfield Power Station",
+        "GrossLoadMWh": 3085790.95
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.3833,
+          37.3822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 4050,
+        "Name": "Edgewater (4050)",
+        "GrossLoadMWh": 3104223.32
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7094,
+          43.715
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 887,
+        "Name": "Joppa Steam",
+        "GrossLoadMWh": 3110612.45
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.8606,
+          37.2103
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6177,
+        "Name": "Coronado Generating Station",
+        "GrossLoadMWh": 3209470.21
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.2717,
+          34.5778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 602,
+        "Name": "Brandon Shores",
+        "GrossLoadMWh": 3239376.64
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.5383,
+          39.1792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3845,
+        "Name": "Centralia",
+        "GrossLoadMWh": 3255838.21
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.8578,
+          46.7559
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 7902,
+        "Name": "H W Pirkey Power Plant",
+        "GrossLoadMWh": 3256181.22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.4852,
+          32.4607
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2817,
+        "Name": "Leland Olds",
+        "GrossLoadMWh": 3263062.35
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.3194,
+          47.2819
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6648,
+        "Name": "Sandow",
+        "GrossLoadMWh": 3354077.7
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0639,
+          30.5642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1241,
+        "Name": "La Cygne",
+        "GrossLoadMWh": 3354272.43
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.6389,
+          38.3472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6664,
+        "Name": "Louisa",
+        "GrossLoadMWh": 3355537.2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.0936,
+          41.3153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2840,
+        "Name": "Conesville",
+        "GrossLoadMWh": 3456169.14
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.8811,
+          40.1842
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 56564,
+        "Name": "John W. Turk Jr. Power Plant",
+        "GrossLoadMWh": 3491091.98
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.8119,
+          33.6497
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6031,
+        "Name": "Killen Station",
+        "GrossLoadMWh": 3501517.34
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4803,
+          38.6903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6018,
+        "Name": "East Bend",
+        "GrossLoadMWh": 3505916.45
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.8511,
+          38.9031
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 4078,
+        "Name": "Weston",
+        "GrossLoadMWh": 3602432.71
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.6553,
+          44.8606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 52071,
+        "Name": "Sandow Station",
+        "GrossLoadMWh": 3611546.43
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0614,
+          30.5681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6170,
+        "Name": "Pleasant Prairie",
+        "GrossLoadMWh": 3638170.3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9033,
+          42.5381
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 56671,
+        "Name": "Longview Power",
+        "GrossLoadMWh": 3641444.98
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.9588,
+          39.7078
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 4162,
+        "Name": "Naughton",
+        "GrossLoadMWh": 3776769.69
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.5986,
+          41.7572
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 564,
+        "Name": "Curtis H. Stanton Energy Center",
+        "GrossLoadMWh": 3794157.98
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.1686,
+          28.4836
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 4041,
+        "Name": "South Oak Creek",
+        "GrossLoadMWh": 3797818.81
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8294,
+          42.8457
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 876,
+        "Name": "Kincaid Generating Station",
+        "GrossLoadMWh": 3806031.06
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.4964,
+          39.5906
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 26,
+        "Name": "E C Gaston",
+        "GrossLoadMWh": 3860704
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.4567,
+          33.2442
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 4158,
+        "Name": "Dave Johnston",
+        "GrossLoadMWh": 3874249.96
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.7769,
+          42.8378
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6193,
+        "Name": "Harrington Station",
+        "GrossLoadMWh": 3877010.87
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.7475,
+          35.2972
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6213,
+        "Name": "Merom",
+        "GrossLoadMWh": 3894403.35
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.5108,
+          39.0694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 8,
+        "Name": "Gorgas",
+        "GrossLoadMWh": 4143120.25
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.2003,
+          33.6446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 879,
+        "Name": "Powerton",
+        "GrossLoadMWh": 4156184.5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.6786,
+          40.5408
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6194,
+        "Name": "Tolk Station",
+        "GrossLoadMWh": 4208487.08
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.5686,
+          34.1847
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 8069,
+        "Name": "Huntington",
+        "GrossLoadMWh": 4227359.14
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.0781,
+          39.3792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3122,
+        "Name": "Homer City",
+        "GrossLoadMWh": 4233794.81
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.1968,
+          40.511
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3403,
+        "Name": "Gallatin",
+        "GrossLoadMWh": 4242949.8
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.4006,
+          36.3156
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3407,
+        "Name": "Kingston",
+        "GrossLoadMWh": 4263588.3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.5194,
+          35.8992
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2107,
+        "Name": "Sioux",
+        "GrossLoadMWh": 4270436.2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.2917,
+          38.9158
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2823,
+        "Name": "Milton R Young",
+        "GrossLoadMWh": 4383839.72
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.2139,
+          47.0664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 207,
+        "Name": "St. Johns River Power",
+        "GrossLoadMWh": 4384766.87
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.5508,
+          30.4311
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 56611,
+        "Name": "Sandy Creek Energy Station",
+        "GrossLoadMWh": 4388307.94
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9564,
+          31.4753
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6055,
+        "Name": "Big Cajun 2",
+        "GrossLoadMWh": 4448225.99
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.3669,
+          30.7261
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6190,
+        "Name": "Brame Energy Center",
+        "GrossLoadMWh": 4458174.86
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.7167,
+          31.395
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1001,
+        "Name": "Cayuga",
+        "GrossLoadMWh": 4491390.51
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4272,
+          39.9239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 861,
+        "Name": "Coffeen",
+        "GrossLoadMWh": 4534437.95
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.4031,
+          39.0586
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6139,
+        "Name": "Welsh Power Plant",
+        "GrossLoadMWh": 4602548.69
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.844,
+          33.0583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6085,
+        "Name": "R M Schahfer Generating Station",
+        "GrossLoadMWh": 4704000.18
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.0239,
+          41.2175
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 983,
+        "Name": "Clifty Creek",
+        "GrossLoadMWh": 4771521.11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.4192,
+          38.7383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 645,
+        "Name": "Big Bend",
+        "GrossLoadMWh": 4863710.5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4036,
+          27.7944
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6469,
+        "Name": "Antelope Valley",
+        "GrossLoadMWh": 4921314.8
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.8344,
+          47.3714
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2876,
+        "Name": "Kyger Creek",
+        "GrossLoadMWh": 4936190.36
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.1281,
+          38.9161
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 8023,
+        "Name": "Columbia",
+        "GrossLoadMWh": 5007237.61
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.4203,
+          43.4864
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 7097,
+        "Name": "J K Spruce",
+        "GrossLoadMWh": 5093149.75
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.3205,
+          29.3091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2952,
+        "Name": "Muskogee",
+        "GrossLoadMWh": 5416965.55
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.2847,
+          35.7617
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1379,
+        "Name": "Shawnee",
+        "GrossLoadMWh": 5437833.1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.775,
+          37.1517
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2721,
+        "Name": "Cliffside",
+        "GrossLoadMWh": 5459249.35
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.7594,
+          35.22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2832,
+        "Name": "Miami Fort Power Station",
+        "GrossLoadMWh": 5526931.02
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.8031,
+          39.1131
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6264,
+        "Name": "Mountaineer (1301)",
+        "GrossLoadMWh": 5613197.24
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.9344,
+          38.9794
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2850,
+        "Name": "J M Stuart",
+        "GrossLoadMWh": 5664639.97
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.6939,
+          38.6361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6041,
+        "Name": "H L Spurlock",
+        "GrossLoadMWh": 5686203.44
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.8175,
+          38.7
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1893,
+        "Name": "Boswell Energy Center",
+        "GrossLoadMWh": 5719494.34
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.6531,
+          47.2603
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3954,
+        "Name": "Mount Storm Power Station",
+        "GrossLoadMWh": 5824251.48
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2667,
+          39.2014
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3948,
+        "Name": "Mitchell (WV)",
+        "GrossLoadMWh": 5853933.73
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8153,
+          39.8297
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2442,
+        "Name": "Four Corners Steam Elec Station",
+        "GrossLoadMWh": 5879699.36
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.4814,
+          36.69
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3943,
+        "Name": "Fort Martin Power Station",
+        "GrossLoadMWh": 5965707.47
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.9275,
+          39.7107
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2866,
+        "Name": "W H Sammis",
+        "GrossLoadMWh": 6010932.14
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.6311,
+          40.5308
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6077,
+        "Name": "Gerald Gentleman Station",
+        "GrossLoadMWh": 6019780.75
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.1408,
+          41.0808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6030,
+        "Name": "Coal Creek",
+        "GrossLoadMWh": 6091226.44
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.1567,
+          47.3761
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 136,
+        "Name": "Seminole (136)",
+        "GrossLoadMWh": 6097789.31
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.6339,
+          29.7333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6004,
+        "Name": "Pleasants Power Station",
+        "GrossLoadMWh": 6187994.52
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.2944,
+          39.3668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1710,
+        "Name": "J H Campbell",
+        "GrossLoadMWh": 6193287.16
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.2036,
+          42.9103
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6641,
+        "Name": "Independence",
+        "GrossLoadMWh": 6218457.79
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.4083,
+          35.6733
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 889,
+        "Name": "Baldwin Energy Complex",
+        "GrossLoadMWh": 6228968.39
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.855,
+          38.205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6034,
+        "Name": "Belle River",
+        "GrossLoadMWh": 6263304.26
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4945,
+          42.7748
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3497,
+        "Name": "Big Brown",
+        "GrossLoadMWh": 6286183.35
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.0561,
+          31.8206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6481,
+        "Name": "Intermountain",
+        "GrossLoadMWh": 6365731.5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.5811,
+          39.5035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6021,
+        "Name": "Craig",
+        "GrossLoadMWh": 6376997.65
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -107.5912,
+          40.4627
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2167,
+        "Name": "New Madrid Power Plant",
+        "GrossLoadMWh": 6390987.99
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.5617,
+          36.5147
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6071,
+        "Name": "Trimble County",
+        "GrossLoadMWh": 6394811.05
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.4117,
+          38.5847
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2168,
+        "Name": "Thomas Hill Energy Center",
+        "GrossLoadMWh": 6408828.61
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.6392,
+          39.5531
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6094,
+        "Name": "Bruce Mansfield",
+        "GrossLoadMWh": 6577824.1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.42,
+          40.6344
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 56068,
+        "Name": "Elm Road Generating Station",
+        "GrossLoadMWh": 6578674.32
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.829,
+          42.8445
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6019,
+        "Name": "W H Zimmer Generating Station",
+        "GrossLoadMWh": 6694228.93
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.2286,
+          38.8689
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6009,
+        "Name": "White Bluff",
+        "GrossLoadMWh": 6715617.67
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.1392,
+          34.4236
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6155,
+        "Name": "Rush Island",
+        "GrossLoadMWh": 6727193.79
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.2625,
+          38.1306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6165,
+        "Name": "Hunter",
+        "GrossLoadMWh": 6746539.91
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.0289,
+          39.1747
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 130,
+        "Name": "Cross",
+        "GrossLoadMWh": 6845244.24
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.1119,
+          33.3692
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6096,
+        "Name": "Nebraska City Station",
+        "GrossLoadMWh": 7153123.93
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.7765,
+          40.6215
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2727,
+        "Name": "Marshall",
+        "GrossLoadMWh": 7176303.69
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.9658,
+          35.5975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 8223,
+        "Name": "Springerville Generating Station",
+        "GrossLoadMWh": 7313741.98
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.1636,
+          34.3186
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1364,
+        "Name": "Mill Creek",
+        "GrossLoadMWh": 7322268.13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.91,
+          38.0531
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 298,
+        "Name": "Limestone",
+        "GrossLoadMWh": 7334824.58
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.2525,
+          31.4219
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 470,
+        "Name": "Comanche (470)",
+        "GrossLoadMWh": 7352531.27
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.5747,
+          38.2081
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6147,
+        "Name": "Monticello",
+        "GrossLoadMWh": 7380006.95
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.0417,
+          33.0917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1082,
+        "Name": "Walter Scott Jr. Energy Center",
+        "GrossLoadMWh": 7408012
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.8408,
+          41.18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 994,
+        "Name": "IPL - Petersburg Generating Station",
+        "GrossLoadMWh": 7824094.83
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.2525,
+          38.5267
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3399,
+        "Name": "Cumberland",
+        "GrossLoadMWh": 8157965.5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6539,
+          36.3903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 628,
+        "Name": "Crystal River",
+        "GrossLoadMWh": 8222490.67
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.7003,
+          28.9594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6166,
+        "Name": "Rockport",
+        "GrossLoadMWh": 8314907.12
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.0372,
+          37.9256
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6204,
+        "Name": "Laramie River",
+        "GrossLoadMWh": 8437918.69
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8828,
+          42.1103
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 55856,
+        "Name": "Prairie State Generating Station",
+        "GrossLoadMWh": 8556644.68
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.667,
+          38.2792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 8042,
+        "Name": "Belews Creek",
+        "GrossLoadMWh": 8721255.58
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0603,
+          36.2811
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2828,
+        "Name": "Cardinal",
+        "GrossLoadMWh": 8721485.92
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.6486,
+          40.2522
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2451,
+        "Name": "San Juan",
+        "GrossLoadMWh": 8993589.67
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.4386,
+          36.8006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3118,
+        "Name": "Conemaugh",
+        "GrossLoadMWh": 9118083.61
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.0611,
+          40.3842
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 8066,
+        "Name": "Jim Bridger",
+        "GrossLoadMWh": 9205084.75
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.7875,
+          41.7378
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6179,
+        "Name": "Sam Seymour",
+        "GrossLoadMWh": 9206165.39
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7506,
+          29.9172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6090,
+        "Name": "Sherburne County",
+        "GrossLoadMWh": 9259223.08
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.8958,
+          45.3792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6068,
+        "Name": "Jeffrey Energy Center",
+        "GrossLoadMWh": 9266367.32
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.1153,
+          39.2825
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6065,
+        "Name": "Iatan",
+        "GrossLoadMWh": 9570299.3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.98,
+          39.4472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1356,
+        "Name": "Ghent",
+        "GrossLoadMWh": 9853162.11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.035,
+          38.7497
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3136,
+        "Name": "Keystone",
+        "GrossLoadMWh": 9881004.6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3411,
+          40.6604
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3944,
+        "Name": "Harrison Power Station",
+        "GrossLoadMWh": 10338034.19
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.3325,
+          39.3844
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6146,
+        "Name": "Martin Lake",
+        "GrossLoadMWh": 10402190.05
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.5703,
+          32.2597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6076,
+        "Name": "Colstrip",
+        "GrossLoadMWh": 10409974.84
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.614,
+          45.8831
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6180,
+        "Name": "Oak Grove",
+        "GrossLoadMWh": 10674574.56
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.4853,
+          31.185
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 4941,
+        "Name": "Navajo Generating Station",
+        "GrossLoadMWh": 11359658.41
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.3886,
+          36.9047
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3470,
+        "Name": "W A Parish",
+        "GrossLoadMWh": 11508802.83
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.6358,
+          29.4783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 703,
+        "Name": "Bowen",
+        "GrossLoadMWh": 11998149.5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.9192,
+          34.1256
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6257,
+        "Name": "Scherer",
+        "GrossLoadMWh": 12388158.25
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.8072,
+          33.0583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2103,
+        "Name": "Labadie",
+        "GrossLoadMWh": 12491331.07
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.8361,
+          38.5583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3935,
+        "Name": "John E Amos",
+        "GrossLoadMWh": 12772350.49
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.8233,
+          38.4731
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1733,
+        "Name": "Monroe",
+        "GrossLoadMWh": 13481642.17
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3461,
+          41.8917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 8102,
+        "Name": "Gen J M Gavin",
+        "GrossLoadMWh": 13567645.8
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.1158,
+          38.9347
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6113,
+        "Name": "Gibson",
+        "GrossLoadMWh": 14475053.21
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7661,
+          38.3722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6002,
+        "Name": "James H Miller Jr",
+        "GrossLoadMWh": 15555408
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.0597,
+          33.6319
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 880041,
+        "Name": "Ascend (Decatur Plant)",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.0244,
+          34.6339
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 52140,
+        "Name": "International Paper-Prattville Mill",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.4667,
+          32.4167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 508,
+        "Name": "Lamar",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.6148,
+          38.0921
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50976,
+        "Name": "Indiantown Cogeneration, LP",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.5144,
+          27.0393
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1073,
+        "Name": "Prairie Creek",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.6386,
+          41.9439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10865,
+        "Name": "Archer Daniels Midland Co.",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.885,
+          39.8675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 54556,
+        "Name": "Ingredion Incorporated Argo Plant",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8233,
+          41.7775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10867,
+        "Name": "Tate & Lyle",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.9261,
+          39.8466
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50240,
+        "Name": "Purdue University-Wade Utility",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.9117,
+          40.4172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1381,
+        "Name": "Coleman",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.7917,
+          37.9628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1383,
+        "Name": "Robert Reid",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.5033,
+          37.6467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50030,
+        "Name": "Nelson Industrial Steam Company",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2917,
+          30.2861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50282,
+        "Name": "Luke Paper Company",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.0575,
+          39.4722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10111,
+        "Name": "DTE Pontiac North LLC",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2983,
+          42.6603
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 4259,
+        "Name": "Endicott Generating",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.755,
+          42.0317
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10328,
+        "Name": "T B Simon Power Plant",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.4836,
+          42.7178
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50835,
+        "Name": "TES Filer City Station",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.2906,
+          44.217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1745,
+        "Name": "Trenton Channel",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1811,
+          42.1236
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 1897,
+        "Name": "Hibbard Energy Center",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.1531,
+          46.7356
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10075,
+        "Name": "Taconite Harbor Energy Center",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.9111,
+          47.5314
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2123,
+        "Name": "Columbia",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.3175,
+          38.9658
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 55076,
+        "Name": "Red Hills Generation Facility",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.2183,
+          33.3761
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10379,
+        "Name": "CPI USA North Carolina Roxboro",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.9619,
+          36.435
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10378,
+        "Name": "CPI USA North Carolina Southport",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.0125,
+          33.9444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10384,
+        "Name": "Edgecombe Genco, LLC",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.7542,
+          36.0378
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 6250,
+        "Name": "Mayo",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.8917,
+          36.5278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10380,
+        "Name": "NC Renewable Power - Elizabethtown",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6407,
+          34.6474
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 54276,
+        "Name": "University of NC Chapel Hill",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.0617,
+          35.9069
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 54035,
+        "Name": "Westmoreland Partners Roanoke Valley I",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.6167,
+          36.4364
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 54755,
+        "Name": "Westmoreland Partners Roanoke Valley II",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.6167,
+          36.4364
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 56786,
+        "Name": "Spiritwood Station",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.5,
+          46.925
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2824,
+        "Name": "Stanton",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.3314,
+          47.2872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10566,
+        "Name": "Carneys Point",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4867,
+          39.6928
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10043,
+        "Name": "Logan Generating Plant",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4081,
+          39.7914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2408,
+        "Name": "Mercer Generating Station",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.7325,
+          40.1797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10464,
+        "Name": "Black River Generation, LLC",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.7712,
+          44.0361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2549,
+        "Name": "Huntley Power",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.93,
+          42.97
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 880052,
+        "Name": "Lehigh Northeast Cement Company",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.6208,
+          43.3064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2554,
+        "Name": "NRG Dunkirk Power",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.35,
+          42.49
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50202,
+        "Name": "Niagara Generation, LLC",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.0082,
+          43.0804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10025,
+        "Name": "RED-Rochester, LLC-Eastman Business Park",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.6289,
+          43.1969
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10398,
+        "Name": "ArcelorMittal Cleveland LLC",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.6728,
+          41.4739
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2878,
+        "Name": "Bay Shore",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4375,
+          41.6925
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 880039,
+        "Name": "Cargill Incorporated",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.1747,
+          39.8242
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 2917,
+        "Name": "Hamilton Municipal Power Plant",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.5544,
+          39.4099
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10671,
+        "Name": "AES Shady Point, LLC",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.6458,
+          35.1931
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10641,
+        "Name": "Cambria Cogen",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.7021,
+          40.4748
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 54638,
+        "Name": "Domtar Paper Company, LLC",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6767,
+          41.4908
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10113,
+        "Name": "Gilberton Power Company",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.1984,
+          40.79
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50410,
+        "Name": "Kimberly-Clark Tissue Company",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.3575,
+          39.8439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50397,
+        "Name": "P H Glatfelter Company",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.8664,
+          39.8717
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50776,
+        "Name": "Panther Creek Energy Facility",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.8781,
+          40.8556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50974,
+        "Name": "Scrubgrass Generating Plant",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8114,
+          41.2678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3130,
+        "Name": "Seward",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.0339,
+          40.4081
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 54634,
+        "Name": "St. Nicholas Cogeneration Project",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.1736,
+          40.8222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50879,
+        "Name": "Wheelabrator - Frackville",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.1781,
+          40.7817
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 52151,
+        "Name": "International Paper-Eastover Mill",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.6397,
+          33.8872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 7737,
+        "Name": "KapStone Charleston Kraft, LLC",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.9694,
+          32.8994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50806,
+        "Name": "WestRock CP, LLC Florence Mill",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.5587,
+          34.1519
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50481,
+        "Name": "Eastman Chemical Company",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.535,
+          36.5192
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50956,
+        "Name": "Resolute Forest Products - Calhoun Ops",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.7569,
+          35.2964
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10377,
+        "Name": "City Point Energy Center",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.2697,
+          37.2939
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50900,
+        "Name": "MeadWestvaco of Virginia, Covington",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.9946,
+          37.7997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10017,
+        "Name": "RockTenn West Point Mill",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.8053,
+          37.5392
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 54081,
+        "Name": "Spruance Genco, LLC",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.4308,
+          37.4556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 56808,
+        "Name": "Virginia City Hybrid Energy Center",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.3381,
+          36.9161
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10071,
+        "Name": "Virginia Renewable Power-Portsmouth LLC",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.3519,
+          36.8703
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 4125,
+        "Name": "Manitowoc",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6558,
+          44.082
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 50491,
+        "Name": "Axiall Corporation Natrium Plant",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8547,
+          39.7475
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10151,
+        "Name": "Grant Town Power Plant",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.1642,
+          39.5611
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 3936,
+        "Name": "Kanawha River",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.4211,
+          38.2056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID": 10743,
+        "Name": "Morgantown Energy Facility",
+        "GrossLoadMWh": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.9606,
+          39.6397
+        ]
+      }
+    }
+  ]
+}

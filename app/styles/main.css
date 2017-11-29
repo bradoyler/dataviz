@@ -17,6 +17,16 @@ body { padding-top: 30px; }
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
 }
+
+.stations {
+  fill: #036;
+  stroke: #6cb0e0;
+  stroke-width: 0.3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
 .route {
   fill: none;
   stroke-width: 0;
@@ -41,6 +51,11 @@ body { padding-top: 30px; }
   fill: #ddd;
 }
 
+.homelands-borders {
+  fill: #bbb;
+  stroke: #fff;
+}
+
 .state-borders {
   fill: none;
   stroke: #fff;
@@ -63,7 +78,7 @@ body { padding-top: 30px; }
 
 /* line chart */
 #lineChart {
-  margin:auto; 
+  margin:auto;
   max-width: 900px;
 }
 
