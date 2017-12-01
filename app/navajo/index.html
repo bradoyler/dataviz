@@ -9,14 +9,74 @@
     <meta name="author" content="">
     <title>Map: US</title>
     <link href="../styles/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="../styles/vendor/billboard.min.css" rel="stylesheet">
     <link href="../styles/main.css" rel="stylesheet">
   </head>
   <body>
     <div class="container">
       <h3>Coal Stations and American Indian Homelands</h3>
       <div id="us-map"><svg width="900" height="600"></svg></div>
+
+      <hr />
+      <h3>Cancer... ugh</h3>
+      <div id="stacked-bar"></div>
     </div>
     <script src="../scripts/vendor.bundle.js"></script>
     <script defer src="js/map.js"></script>
+
+    <script type="text/javascript">
+    var data = [
+          ['x', 'Female Breast','Colorectal', 'Prostate', 'Kidney', 'Uterine',
+          'Stomach', 'Non-Hodgkin Lymphoma', 'Pancreatic', 'Thyroid', 'Liver', 'Lung'],
+          ['Navajo', 64.4, 32.7, 85, 25.6, 21.6, 15, 12, 12.6, 8.5, 9.9, 10.4],
+          ['NHW', 118.7, 35.7, 104.6, 14, 20.5, 4.3, 16.5, 10.9, 15.5, 4.8, 56.6],
+        ]
+
+    var rotatedBar = {
+      data: {
+        x:'x',
+        columns: data,
+        type: 'bar',
+        colors: {
+          Navajo: '#ff0000', //'#519694', // hair remover
+            NHW: '#939393' // '#00ff00' // hair remover
+        }
+      },
+      size: {
+          height: 520,
+      },
+      axis: {
+        y: {
+          label: {
+            text: 'Cases per 100k people',
+            position: 'outer-right'
+          }
+        },
+        x: {
+          height: 90,
+          type: 'category'
+        },
+        rotated: true
+      },
+      tooltip: {
+        show: false
+      },
+      bindto: '#stacked-bar'
+    }
+
+    var chart = bb.generate(rotatedBar);
+
+    setTimeout(function () {
+	     chart.transform('area');
+    }, 3000);
+
+    setTimeout(function () {
+	     chart.transform('scatter');
+    }, 4500);
+
+    setTimeout(function () {
+	     chart.transform('bar');
+    }, 6000);
+    </script>
   </body>
 </html>
